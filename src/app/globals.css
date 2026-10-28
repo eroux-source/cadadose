@@ -1,20 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fbfaf7;
-  --foreground: #1c1b18;
-  --accent: #0f766e;
-  --accent-soft: #e6f4f1;
-  --muted: #6b6a66;
+  --background: #f6f5ef;
+  --foreground: #14201a;
+  --accent: #1f4b36;
+  --accent-strong: #163a2a;
+  --accent-soft: #e6eee3;
+  --lime: #d9f55a;
+  --muted: #6c746f;
   --card: #ffffff;
-  --border: #e7e4dd;
+  --border: #e3e5dc;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
   --color-accent-soft: var(--accent-soft);
+  --color-lime: var(--lime);
   --color-muted: var(--muted);
   --color-card: var(--card);
   --color-border: var(--border);
@@ -22,13 +26,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #121311;
-    --foreground: #ecebe6;
-    --accent: #5eead4;
-    --accent-soft: #0f2f2b;
-    --muted: #a3a29c;
-    --card: #1b1d1a;
-    --border: #2b2e2a;
+    --background: #0f1512;
+    --foreground: #eef1ea;
+    --accent: #7fc99a;
+    --accent-strong: #5fb37d;
+    --accent-soft: #17251d;
+    --lime: #c9ea3f;
+    --muted: #9aa39c;
+    --card: #151d18;
+    --border: #243029;
   }
 }
 
@@ -36,4 +42,22 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
+
+h1, h2, h3 { letter-spacing: -0.02em; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+}
+.eyebrow::before { content: "✦"; color: var(--accent); font-size: .8rem; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: 999px; padding: .8rem 1.4rem; font-weight: 600; transition: transform .15s ease, background .15s ease; }
+.btn:active { transform: scale(.98); }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-strong); }
+.btn-ghost { border: 1px solid var(--border); background: var(--card); color: var(--foreground); }
+.btn-ghost:hover { border-color: var(--accent); }
+
+.tile { border-radius: 1.5rem; padding: 1.25rem; }

@@ -1,4 +1,5 @@
 import { allArticles } from "@/content";
+import { guias } from "@/content/guias";
 import { medications } from "@/lib/medications";
 import { intentLabels } from "@/content/types";
 import { siteUrl } from "@/lib/locales";
@@ -18,6 +19,10 @@ export function GET() {
 ## Páginas de conteúdo
 
 ${byMed.filter(Boolean).join("\n\n")}
+
+### Comparações
+
+${guias.map((g) => `- [${g.title}](${siteUrl}/guias/${g.slug}): ${g.answer}`).join("\n")}
 
 ## Aplicativo
 

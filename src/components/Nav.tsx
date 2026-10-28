@@ -9,9 +9,10 @@ export default function Nav() {
           <span className="text-accent">Cada</span>Dose
         </Link>
         <nav className="flex items-center gap-4 text-sm">
+          <Link href="/perguntas" className="hover:text-accent">Perguntas</Link>
           <Link href="/medicamentos" className="hover:text-accent">{t.nav.meds}</Link>
           <Link href="/pro" className="hover:text-accent">Pro</Link>
-          <Link href="/app" className="rounded-full bg-accent text-white px-3 py-1.5 font-medium">
+          <Link href="/app" className="btn btn-primary !py-1.5 !px-4 text-sm">
             {t.nav.app}
           </Link>
         </nav>

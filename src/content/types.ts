@@ -5,7 +5,14 @@ export type Intent =
   | "validade-depois-de-aberta"
   | "onde-aplicar"
   | "efeitos-colaterais"
-  | "regras-anvisa";
+  | "regras-anvisa"
+  | "para-que-serve"
+  | "quem-nao-pode-tomar"
+  | "gravidez-e-amamentacao"
+  | "melhor-horario"
+  | "pode-beber-alcool"
+  | "interacoes-com-remedios"
+  | "pressao-alta";
 
 export interface Section {
   heading: string;
@@ -40,4 +47,11 @@ export const intentLabels: Record<Intent, string> = {
   "onde-aplicar": "Onde aplicar",
   "efeitos-colaterais": "Efeitos colaterais",
   "regras-anvisa": "Regras da ANVISA",
+  "para-que-serve": "Para que serve",
+  "quem-nao-pode-tomar": "Quem não pode tomar",
+  "gravidez-e-amamentacao": "Gravidez e amamentação",
+  "melhor-horario": "Melhor horário",
+  "pode-beber-alcool": "Pode beber álcool?",
+  "interacoes-com-remedios": "Interações com remédios",
+  "pressao-alta": "Pressão alta",
 };
