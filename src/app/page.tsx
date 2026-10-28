@@ -2,6 +2,7 @@ import Link from "next/link";
 import { dictionary as t } from "@/i18n/dictionaries";
 import { medications } from "@/lib/medications";
 import { allArticles } from "@/content";
+import { guias } from "@/content/guias";
 
 const topQuestions: { q: string; slug: string; intent: string }[] = [
   { q: "Como aplicar Mounjaro?", slug: "mounjaro", intent: "como-aplicar" },
@@ -44,7 +45,7 @@ function DiaryMock() {
           </svg>
         </div>
       </div>
-      <div className="absolute -left-6 top-24 hidden rounded-2xl border border-border bg-card px-3 py-2 text-xs shadow md:block">
+      <div className="absolute -bottom-5 -left-6 hidden rounded-2xl border border-border bg-card px-3 py-2 text-xs shadow md:block">
         <span className="eyebrow">Fonte</span>
         <p className="mt-1 font-medium">Bula ANVISA · reg. 1.1260.0202</p>
       </div>
@@ -78,7 +79,7 @@ export default function Landing() {
           <p className="mt-1 text-sm opacity-80">bulas oficiais citadas trecho a trecho</p>
         </div>
         <div className="tile bg-accent-soft">
-          <p className="text-4xl font-semibold">20</p>
+          <p className="text-4xl font-semibold">{allArticles.length + guias.length}</p>
           <p className="mt-1 text-sm text-muted">respostas às perguntas mais buscadas</p>
         </div>
         <div className="tile bg-accent-soft">
