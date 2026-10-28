@@ -36,8 +36,8 @@ export default async function MedicationHub({ params }: { params: Promise<{ slug
         <div className="mt-6 rounded-2xl border border-border bg-card p-5 text-sm">
           <h2 className="font-semibold">{intentLabels["tabela-de-dose"]}</h2>
           <p className="mt-2">{med.doseStepsMg.map((d) => `${d.toLocaleString("pt-BR")} mg`).join(" → ")}</p>
-          {med.dosesPerPen && <p className="mt-1 text-muted">Caneta com {med.dosesPerPen} doses</p>}
-          {med.daysAfterOpening && <p className="text-muted">Validade após o primeiro uso: {med.daysAfterOpening} dias</p>}
+          {med.dosesPerPen && <p className="mt-1 text-muted">{med.form === "single-use-pen" ? "Caneta de uso único (1 dose)" : `Caneta com ${med.dosesPerPen} doses`}</p>}
+          {med.storageDays && <p className="text-muted">Conservação: {med.storageDays} dias {med.storageLabel}</p>}
           {!med.reviewed && <p className="mt-2 text-xs text-muted">{t.content.reviewPending}</p>}
         </div>
       )}

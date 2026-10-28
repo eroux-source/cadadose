@@ -3,7 +3,7 @@ const pt = {
   hero: {
     title: "Seu diário de tratamento com GLP-1, simples e privado.",
     subtitle:
-      "Registre cada aplicação, acompanhe seu peso e os efeitos, saiba quando a caneta vence e nunca esqueça um dia. Para quem usa Mounjaro, Ozempic, Wegovy, Saxenda ou versões manipuladas, com prescrição médica.",
+      "Registre cada aplicação, acompanhe seu peso e os efeitos, saiba quando a caneta vence e nunca esqueça um dia. Para quem usa Mounjaro, Ozempic, Wegovy ou versões manipuladas, com prescrição médica.",
     cta: "Começar agora, é grátis",
     privacy: "Seus dados ficam no seu aparelho. Sem cadastro para começar.",
   },
@@ -74,6 +74,7 @@ const pt = {
       title: "Estoque",
       pens: "Canetas / frascos em casa",
       opened: "Caneta atual aberta em",
+      outOfFridge: "Caixa atual fora da geladeira desde",
       dosesLeft: "Doses restantes na caneta atual",
       expires: "Usar até",
       rule: "Regra da bula",
@@ -87,7 +88,7 @@ const pt = {
   content: {
     updated: "Atualizado em",
     sources: "Fontes oficiais",
-    reviewPending: "Conteúdo em revisão por profissional de saúde.",
+    reviewPending: "Baseado na bula aprovada pela ANVISA. Revisão por profissional de saúde pendente.",
     faq: "Perguntas frequentes",
     allAbout: "Tudo sobre",
     disclaimerShort: "Informação educativa baseada na bula. Não substitui a orientação do seu médico.",

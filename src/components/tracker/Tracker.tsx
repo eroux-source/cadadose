@@ -59,7 +59,7 @@ function TrackerBody({ t }: { t: Dictionary["tracker"] }) {
   const suggestedSite = lastShot ? (lastShot.siteIndex + 1) % t.sites.length : 0;
 
   // Pen / vial validity.
-  const daysAfterOpening = store.stock.daysAfterOpening ?? med?.daysAfterOpening ?? null;
+  const daysAfterOpening = store.stock.daysAfterOpening ?? med?.storageDays ?? null;
   const expiresAt =
     store.stock.currentOpenedAt && daysAfterOpening
       ? new Date(new Date(store.stock.currentOpenedAt).getTime() + daysAfterOpening * dayMs)
@@ -214,7 +214,7 @@ function ProfileForm({
         className="grid gap-4 md:grid-cols-2"
         onSubmit={(e) => {
           e.preventDefault();
-          updateStore((s) => ({ ...s, profile: form, stock: { ...s.stock, daysAfterOpening: s.stock.daysAfterOpening ?? med.daysAfterOpening } }));
+          updateStore((s) => ({ ...s, profile: form, stock: { ...s.stock, daysAfterOpening: s.stock.daysAfterOpening ?? med.storageDays } }));
           setSaved(true);
           setTimeout(onSaved, 600);
         }}
@@ -507,7 +507,7 @@ function StockPanel({
   dosesLeft: number | null;
   }) {
   const fmt = (d: Date) => d.toLocaleDateString("pt-BR", { day: "numeric", month: "long" });
-  const days = store.stock.daysAfterOpening ?? med?.daysAfterOpening ?? null;
+  const days = store.stock.daysAfterOpening ?? med?.storageDays ?? null;
 
   // Buy-by: whichever comes first, the pen expiry or running out of doses.
   let buyBy: Date | null = expiresAt;
@@ -531,7 +531,7 @@ function StockPanel({
           />
         </div>
         <div>
-          <label className={labelCls}>{t.stock.opened}</label>
+          <label className={labelCls}>{med?.form === "single-use-pen" ? t.stock.outOfFridge : t.stock.opened}</label>
           <input
             type="date"
             className={inputCls}
@@ -575,7 +575,7 @@ function StockPanel({
           )}
         </dl>
       )}
-      {med && !med.reviewed && <p className="mt-4 text-xs text-muted">⚠︎ {t.stock.rule}: {med.daysAfterOpening ?? "—"} dias · fonte: bula (em revisão)</p>}
+      {med && <p className="mt-4 text-xs text-muted">{t.stock.rule}: {med.storageDays ?? "—"} dias {med.storageLabel ?? ""} · fonte: bula{med.reviewed ? "" : " (revisão profissional pendente)"}</p>}
     </Card>
   );
 }

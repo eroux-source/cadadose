@@ -1,32 +1,32 @@
 /**
- * Medication catalog used by the tracker and the content pages.
+ * Medication catalog used by the diary and the content pages.
  *
- * IMPORTANT: every number here comes from the product leaflet (bula / prospecto) and
- * must be checked against the current ANVISA / ANMAT version by a health professional
- * before launch. `reviewed` stays false until that check is done. The tracker never
- * computes or recommends a dose: it only stores what the prescription says and applies
- * the leaflet's storage rule to the date the pen was opened.
+ * Every number comes from the Brazilian patient leaflet (bula) linked in `sources`, with its
+ * ANVISA registration and approval date. Nothing is filled from memory: a field we could not
+ * source is null and the diary asks the user. `reviewed` turns true only after a health
+ * professional checks the entry against the current bula. The diary never computes or
+ * recommends a dose: it stores what the prescription says and applies the leaflet's storage
+ * rule to the date the user gives.
  */
-export type MedForm = "pen" | "vial";
+export type MedForm = "single-use-pen" | "multidose-pen" | "vial";
 
 export interface Medication {
   slug: string;
   name: string;
   activeIngredient: string;
   form: MedForm;
-  /** "weekly" | "daily" */
   frequency: "weekly" | "daily";
-  /** Label dose steps in mg, informational only (shown as the official titration table). */
+  /** Label dose steps in mg (informational, from the bula). */
   doseStepsMg: number[];
-  /** Minimum weeks between dose increases per leaflet (informational). */
-  titrationWeeks: number | null;
-  /** Doses contained in one multi-dose pen (null for vials). */
+  /** Doses per pen (multidose) or 1 (single-use); null for vials. */
   dosesPerPen: number | null;
-  /** Days a pen/vial can be used after first use per leaflet (null = set by pharmacy label). */
-  daysAfterOpening: number | null;
-  /** Max storage temperature after opening in °C (informational). */
+  /** Days the product may be used/kept per the storage rule below; null = set by the pharmacy label. */
+  storageDays: number | null;
+  /** What `storageDays` counts from, in the bula's words. */
+  storageLabel: string | null;
+  /** Max storage temperature outside the fridge (°C), from the bula. */
   maxTempC: number | null;
-  /** Missed-dose window in hours per leaflet (take if within; otherwise skip). */
+  /** Missed-dose window in hours per the bula (apply if within; otherwise skip). */
   missedDoseWindowHours: number | null;
   reviewed: boolean;
   sources: { label: string; url: string }[];
@@ -37,64 +37,65 @@ export const medications: Medication[] = [
     slug: "mounjaro",
     name: "Mounjaro (tirzepatida)",
     activeIngredient: "tirzepatida",
-    form: "pen",
+    form: "single-use-pen",
     frequency: "weekly",
     doseStepsMg: [2.5, 5, 7.5, 10, 12.5, 15],
-    titrationWeeks: 4,
-    dosesPerPen: 4,
-    daysAfterOpening: 30,
+    dosesPerPen: 1,
+    storageDays: 21,
+    storageLabel: "fora da geladeira, abaixo de 30 °C",
     maxTempC: 30,
     missedDoseWindowHours: 96,
     reviewed: false,
     sources: [
-      { label: "Bula Mounjaro — Bulário Eletrônico ANVISA", url: "https://consultas.anvisa.gov.br/#/bulario/" },
-      { label: "Lilly — armazenamento da KwikPen", url: "https://medical.lilly.com/es/products/answers/c-mo-se-debe-almacenar-mounjaro-tirzepatida-kwikpen-316116" },
+      {
+        label: "Bula do paciente Mounjaro® — Eli Lilly do Brasil, registro ANVISA 1.1260.0202, aprovada em 21/11/2024",
+        url: "https://static.poder360.com.br/2025/03/bula-mounjaro.pdf",
+      },
     ],
   },
   {
     slug: "ozempic",
     name: "Ozempic (semaglutida)",
     activeIngredient: "semaglutida",
-    form: "pen",
+    form: "multidose-pen",
     frequency: "weekly",
-    doseStepsMg: [0.25, 0.5, 1, 2],
-    titrationWeeks: 4,
+    doseStepsMg: [0.25, 0.5, 1],
     dosesPerPen: 4,
-    daysAfterOpening: 56,
+    storageDays: 42,
+    storageLabel: "após o primeiro uso (6 semanas)",
     maxTempC: 30,
     missedDoseWindowHours: 120,
     reviewed: false,
-    sources: [{ label: "Bula Ozempic — Bulário Eletrônico ANVISA", url: "https://consultas.anvisa.gov.br/#/bulario/" }],
+    sources: [
+      {
+        label: "Bula do paciente Ozempic® 1 mg — Novo Nordisk, registro ANVISA 1.1766.0036, aprovada em 17/04/2026",
+        url: "https://www.novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Ozempic_3mL_1mg_Paciente.pdf",
+      },
+      {
+        label: "Bula do paciente Ozempic® 0,25/0,5 mg — Novo Nordisk, registro ANVISA 1.1766.0036, aprovada em 17/04/2026",
+        url: "https://www.novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Ozempic_1-5mL_0-25mg_0-5mg_Bula_Paciente.pdf",
+      },
+    ],
   },
   {
     slug: "wegovy",
-    name: "Wegovy (semaglutida 2,4 mg)",
+    name: "Wegovy (semaglutida)",
     activeIngredient: "semaglutida",
-    form: "pen",
+    form: "multidose-pen",
     frequency: "weekly",
     doseStepsMg: [0.25, 0.5, 1, 1.7, 2.4],
-    titrationWeeks: 4,
     dosesPerPen: 4,
-    daysAfterOpening: 42,
+    storageDays: 42,
+    storageLabel: "após o primeiro uso (6 semanas)",
     maxTempC: 30,
     missedDoseWindowHours: 120,
     reviewed: false,
-    sources: [{ label: "Bula Wegovy — Bulário Eletrônico ANVISA", url: "https://consultas.anvisa.gov.br/#/bulario/" }],
-  },
-  {
-    slug: "saxenda",
-    name: "Saxenda (liraglutida)",
-    activeIngredient: "liraglutida",
-    form: "pen",
-    frequency: "daily",
-    doseStepsMg: [0.6, 1.2, 1.8, 2.4, 3],
-    titrationWeeks: 1,
-    dosesPerPen: null,
-    daysAfterOpening: 30,
-    maxTempC: 30,
-    missedDoseWindowHours: 12,
-    reviewed: false,
-    sources: [{ label: "Bula Saxenda — Bulário Eletrônico ANVISA", url: "https://consultas.anvisa.gov.br/#/bulario/" }],
+    sources: [
+      {
+        label: "Bula do paciente Wegovy® — Novo Nordisk, registro ANVISA 1.1766.0039, aprovada em 04/05/2026",
+        url: "https://www.novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Wegovy_Bula_Paciente.pdf",
+      },
+    ],
   },
   {
     slug: "semaglutida-manipulada",
@@ -103,9 +104,9 @@ export const medications: Medication[] = [
     form: "vial",
     frequency: "weekly",
     doseStepsMg: [],
-    titrationWeeks: null,
     dosesPerPen: null,
-    daysAfterOpening: null,
+    storageDays: null,
+    storageLabel: "conforme o rótulo da farmácia de manipulação",
     maxTempC: null,
     missedDoseWindowHours: null,
     reviewed: false,
@@ -118,9 +119,9 @@ export const medications: Medication[] = [
     form: "vial",
     frequency: "weekly",
     doseStepsMg: [],
-    titrationWeeks: null,
     dosesPerPen: null,
-    daysAfterOpening: null,
+    storageDays: null,
+    storageLabel: "conforme o rótulo da farmácia de manipulação",
     maxTempC: null,
     missedDoseWindowHours: null,
     reviewed: false,
