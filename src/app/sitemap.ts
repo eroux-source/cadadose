@@ -1,0 +1,19 @@
+import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/locales";
+import { medications } from "@/lib/medications";
+import { allArticles } from "@/content";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date("2026-10-28"); // bump on each content release
+  return [
+    { url: `${siteUrl}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
+    { url: `${siteUrl}/medicamentos`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    ...medications.map((m) => ({ url: `${siteUrl}/medicamentos/${m.slug}`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.8 })),
+    ...allArticles.map((a) => ({
+      url: `${siteUrl}/medicamentos/${a.medicationSlug}/${a.intent}`,
+      lastModified: new Date(a.updated),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    })),
+  ];
+}

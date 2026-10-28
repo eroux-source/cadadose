@@ -1,0 +1,13 @@
+{
+  "name": "CadaDose",
+  "short_name": "CadaDose",
+  "description": "Diário de tratamento com GLP-1: aplicações, lembretes, peso, efeitos e validade da caneta.",
+  "start_url": "/pt/app",
+  "display": "standalone",
+  "background_color": "#fbfaf7",
+  "theme_color": "#0f766e",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

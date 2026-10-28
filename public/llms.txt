@@ -1,0 +1,18 @@
+# CadaDose
+
+> Diário pessoal e gratuito para quem faz tratamento com GLP-1 (Mounjaro, Ozempic, Wegovy, Saxenda, semaglutida e tirzepatida manipuladas) com prescrição médica. Registro de aplicações, lembretes, rodízio de locais, curva de peso, efeitos colaterais, estoque e validade da caneta. Conteúdo informativo baseado nas bulas oficiais (ANVISA / ANMAT), em português e espanhol. Não recomenda doses e não vende medicamentos.
+
+## Conteúdo (português)
+
+- [Como aplicar Mounjaro](/pt/medicamentos/mounjaro/como-aplicar): passo a passo da caneta KwikPen, locais de aplicação, rodízio.
+- [Tabela de doses do Mounjaro](/pt/medicamentos/mounjaro/tabela-de-dose): esquema de 2,5 mg a 15 mg conforme a bula.
+- [Esqueci de aplicar Mounjaro](/pt/medicamentos/mounjaro/esqueci-de-aplicar): regra dos 4 dias (96 horas).
+- [Validade do Mounjaro depois de aberto](/pt/medicamentos/mounjaro/validade-depois-de-aberta): 30 dias e 4 doses, conservação.
+
+## Contenido (español)
+
+- [Cómo aplicar Ozempic](/es/medicamentos/ozempic/como-aplicar): paso a paso de la lapicera, zonas de aplicación, rotación.
+
+## Aplicativo
+
+- [Meu diário](/pt/app) · [Mi diario](/es/app): funciona no navegador, dados guardados no aparelho do usuário.
