@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CadaDose
 
-## Getting Started
+Diário de tratamento com GLP-1 (Mounjaro, Ozempic, Wegovy, versões manipuladas) para o Brasil. Site + PWA, Next.js 16.
 
-First, run the development server:
+- `/` landing · `/medicamentos/[slug]/[intent]` páginas de conteúdo · `/app` diário (local-first) · `/app/relatorio` relatório para o médico · `/pro` assinatura · `/llms.txt`, `/sitemap.xml`, `/robots.txt`.
+- Dados do usuário ficam no aparelho (`localStorage`). Nenhum backend ainda.
+
+## Regra de conteúdo (não negociável)
+
+**Tudo o que aparece no site vem de uma fonte oficial citada no mesmo trecho.** Sem fonte, não publica.
+
+- Fatos sobre medicamentos: bula do paciente aprovada pela ANVISA (PDF do laboratório), com registro e data de aprovação no rótulo da fonte. Frases-chave entre aspas, como na bula.
+- Regras sanitárias: documento da ANVISA ou comunicado do CFF, com data.
+- O catálogo em `src/lib/medications.ts` segue a mesma regra: campo sem fonte fica `null` e o diário pergunta ao usuário.
+- O site **não calcula nem recomenda doses** (calculadora de dose é dispositivo médico para a ANVISA, RDC 657/2022). O usuário informa a dose da receita.
+- Produtos manipulados: nada pré-preenchido; vale o rótulo da farmácia.
+
+Fontes em uso: `src/content/pt.ts`, `src/content/pt-wave3.ts`, `src/content/pt-manipulados.ts` (cabeçalho de cada arquivo).
+
+## Rodar
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build && npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Variáveis (ver `.env.example`): `NEXT_PUBLIC_SITE_URL`; Paddle (`NEXT_PUBLIC_PADDLE_*`) para ativar o checkout do Pro com PIX.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Próximos passos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Deploy (Vercel) + domínio + Search Console + Bing Webmaster/IndexNow.
+2. Paddle Billing (PIX Automático) e verificação de assinatura.
+3. Push notifications (servidor de envio; o service worker já trata `push`).
+4. Comparador de preços em farmácias (dados vivos, citáveis por IAs).
+5. App nativa (Capacitor) quando houver assinantes.
