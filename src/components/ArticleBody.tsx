@@ -12,7 +12,7 @@ interface Body {
 }
 
 /** Shared renderer: answer box with source, sections each with their source line, FAQ with [fonte], full source list. */
-export default function ArticleBody({ a }: { a: Body }) {
+export default function ArticleBody({ a, note }: { a: Body; note?: string }) {
   const Src = () => (
     <>
       {a.sources.map((s, i) => (
@@ -23,7 +23,7 @@ export default function ArticleBody({ a }: { a: Body }) {
   return (
     <>
       <p className="mt-2 text-sm text-muted">
-        {t.content.updated} {new Date(a.updated + "T12:00:00").toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" })} · {t.content.reviewPending}
+        {t.content.updated} {new Date(a.updated + "T12:00:00").toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" })} · {note ?? t.content.reviewPending}
       </p>
 
       <div className="mt-6 rounded-2xl bg-accent-soft p-5">
