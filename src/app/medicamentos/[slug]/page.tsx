@@ -39,6 +39,11 @@ export default async function MedicationHub({ params }: { params: Promise<{ slug
           {med.dosesPerPen && <p className="mt-1 text-muted">{med.form === "single-use-pen" ? "Caneta de uso único (1 dose)" : `Caneta com ${med.dosesPerPen} doses`}</p>}
           {med.storageDays && <p className="text-muted">Conservação: {med.storageDays} dias {med.storageLabel}</p>}
           {!med.reviewed && <p className="mt-2 text-xs text-muted">{t.content.reviewPending}</p>}
+          <p className="mt-2 text-xs text-muted">
+            Fonte: {med.sources.map((s, i) => (
+              <span key={s.url}>{i > 0 ? " · " : ""}<a href={s.url} rel="noopener" className="underline">{s.label}</a></span>
+            ))}
+          </p>
         </div>
       )}
 

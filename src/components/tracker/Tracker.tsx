@@ -575,7 +575,15 @@ function StockPanel({
           )}
         </dl>
       )}
-      {med && <p className="mt-4 text-xs text-muted">{t.stock.rule}: {med.storageDays ?? "—"} dias {med.storageLabel ?? ""} · fonte: bula{med.reviewed ? "" : " (revisão profissional pendente)"}</p>}
+      {med && (
+        <p className="mt-4 text-xs text-muted">
+          {t.stock.rule}: {med.storageDays ?? "—"} dias {med.storageLabel ?? ""}
+          {med.sources[0] && (
+            <> · Fonte: <a href={med.sources[0].url} target="_blank" rel="noopener" className="underline">{med.sources[0].label}</a></>
+          )}
+          {!med.reviewed && " · revisão profissional pendente"}
+        </p>
+      )}
     </Card>
   );
 }

@@ -62,7 +62,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         {!a.reviewed && <> · {t.content.reviewPending}</>}
       </p>
 
-      <p className="mt-6 rounded-2xl bg-accent-soft p-5 text-lg leading-relaxed">{a.answer}</p>
+      <div className="mt-6 rounded-2xl bg-accent-soft p-5">
+        <p className="text-lg leading-relaxed">{a.answer}</p>
+        <p className="mt-3 text-xs text-muted">
+          Fonte: {a.sources.map((s, i) => (
+            <span key={s.url}>{i > 0 ? " · " : ""}<a href={s.url} rel="noopener" className="underline">{s.label}</a></span>
+          ))}
+        </p>
+      </div>
 
       {a.sections.map((s) => (
         <section key={s.heading} className="mt-10">
@@ -94,6 +101,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               </table>
             </div>
           )}
+          <p className="mt-2 text-xs text-muted">Fonte: <a href={a.sources[0].url} rel="noopener" className="underline">{a.sources[0].label}</a></p>
         </section>
       ))}
 
@@ -103,7 +111,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           {a.faq.map((f) => (
             <div key={f.q}>
               <dt className="font-medium">{f.q}</dt>
-              <dd className="mt-1 text-muted leading-relaxed">{f.a}</dd>
+              <dd className="mt-1 text-muted leading-relaxed">{f.a} <a href={a.sources[0].url} rel="noopener" className="underline text-xs">[fonte]</a></dd>
             </div>
           ))}
         </dl>
