@@ -582,7 +582,6 @@ function StockPanel({
           {med.sources[0] && (
             <> · Fonte: <a href={med.sources[0].url} target="_blank" rel="noopener" className="underline">{med.sources[0].label}</a></>
           )}
-          {!med.reviewed && " · revisão profissional pendente"}
         </p>
       )}
     </Card>

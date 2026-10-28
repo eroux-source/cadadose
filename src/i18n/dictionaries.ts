@@ -88,7 +88,7 @@ const pt = {
   content: {
     updated: "Atualizado em",
     sources: "Fontes oficiais",
-    reviewPending: "Baseado na bula aprovada pela ANVISA. Revisão por profissional de saúde pendente.",
+    reviewPending: "Baseado na bula do paciente aprovada pela ANVISA, citada em cada trecho.",
     faq: "Perguntas frequentes",
     allAbout: "Tudo sobre",
     disclaimerShort: "Informação educativa baseada na bula. Não substitui a orientação do seu médico.",
