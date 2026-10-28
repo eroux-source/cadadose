@@ -380,7 +380,7 @@ export const ptArticles: Article[] = [
         heading: "Passo a passo da bula",
         steps: [
           "Use uma agulha nova a cada aplicação e remova as duas tampas. Verifique pela janela que a solução está límpida e incolor.",
-          "Só com uma caneta nova: gire o seletor até o símbolo de teste de fluxo, segure com a agulha para cima e pressione o botão até o contador voltar a 0 mg. \"Uma gota de Wegovy® deve aparecer na ponta da agulha.\" Se não aparecer, repita o teste no máximo duas vezes e troque a agulha; se ainda não aparecer, não use a caneta.",
+          "Só com uma caneta nova: gire o seletor até o símbolo de teste de fluxo, segure com a agulha para cima e pressione o botão até o contador voltar a 0 mg. \"Uma gota de Wegovy® deve aparecer na ponta da agulha.\" Se não aparecer, repita o teste no máximo duas vezes (\"Isso deve ser feito apenas duas vezes\"), troque a agulha e verifique o fluxo mais uma vez; se ainda não aparecer, não use a caneta.",
           "Gire o seletor até o contador mostrar a dose prescrita.",
           "Insira a agulha na pele, mantendo o contador visível. \"Continue pressionando o botão de aplicação com a agulha em sua pele e conte lentamente até 6.\"",
           "Só depois da contagem retire a agulha, tampe e descarte com segurança.",
@@ -410,7 +410,7 @@ export const ptArticles: Article[] = [
       },
     ],
     faq: [
-      { q: "Quantas vezes repito o teste de fluxo do Wegovy?", a: "No máximo duas vezes, segundo a bula; depois troque a agulha. Se ainda não sair gota, não use a caneta." },
+      { q: "Quantas vezes repito o teste de fluxo do Wegovy?", a: "No máximo duas vezes, segundo a bula; depois troque a agulha e verifique o fluxo mais uma vez. Se ainda não sair gota, não use a caneta." },
       { q: "Por que contar até 6?", a: "É a instrução da bula para garantir a dose completa antes de retirar a agulha." },
       { q: "Wegovy tem quantas doses por caneta?", a: "4 doses de uma mesma concentração." },
     ],
