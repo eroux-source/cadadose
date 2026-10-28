@@ -3,13 +3,19 @@ import { Suspense } from "react";
 import { connection } from "next/server";
 import { dictionary, type Dictionary } from "@/i18n/dictionaries";
 import Tracker from "@/components/tracker/Tracker";
+import Pwa from "@/components/Pwa";
 
 export const metadata: Metadata = { robots: { index: false } };
 
 /** The diary is per-user and time-based: it renders at request time, inside a Suspense shell. */
 async function DiaryGate({ t }: { t: Dictionary["tracker"] }) {
   await connection();
-  return <Tracker t={t} />;
+  return (
+    <>
+      <Tracker t={t} />
+      <Pwa />
+    </>
+  );
 }
 
 export default function AppPage() {
