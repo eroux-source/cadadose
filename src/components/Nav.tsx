@@ -10,6 +10,7 @@ export default function Nav() {
         </Link>
         <nav className="flex items-center gap-4 text-sm">
           <Link href="/medicamentos" className="hover:text-accent">{t.nav.meds}</Link>
+          <Link href="/pro" className="hover:text-accent">Pro</Link>
           <Link href="/app" className="rounded-full bg-accent text-white px-3 py-1.5 font-medium">
             {t.nav.app}
           </Link>

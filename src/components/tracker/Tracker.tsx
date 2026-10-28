@@ -162,6 +162,7 @@ function TrackerBody({ t }: { t: Dictionary["tracker"] }) {
       </section>
 
       <div className="mt-10 flex flex-wrap gap-4 text-xs text-muted">
+        <a href="/app/relatorio" className="underline">Relatório para o médico (PDF)</a>
         <button
           onClick={() => {
             const blob = new Blob([exportStore()], { type: "application/json" });
