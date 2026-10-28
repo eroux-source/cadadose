@@ -67,7 +67,7 @@ export default function Landing() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">{t.hero.subtitle}</p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link href="/app" className="btn bg-warm text-warm-ink hover:brightness-105">{t.hero.cta}</Link>
+            <Link href="/em-breve" className="btn bg-warm text-warm-ink hover:brightness-105">Quero o app</Link>
             <Link href="/perguntas" className="btn border border-white/40 text-white hover:border-white">Ver as respostas da bula</Link>
           </div>
           <ul className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm text-white/75">
@@ -227,8 +227,8 @@ export default function Landing() {
           <div>
             <h2 className="text-3xl font-semibold leading-tight md:text-4xl">Você cuida do tratamento. <span className="text-muted">O diário cuida do resto.</span></h2>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/app" className="btn btn-primary">{t.hero.cta}</Link>
-              <Link href="/pro" className="btn btn-ghost">Conhecer o Pro</Link>
+              <Link href="/em-breve" className="btn btn-primary">Quero o app</Link>
+              <Link href="/perguntas" className="btn btn-ghost">Ler as respostas</Link>
             </div>
             <p className="mt-4 text-sm text-muted">{t.hero.privacy}</p>
           </div>

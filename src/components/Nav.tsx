@@ -12,9 +12,8 @@ export default function Nav() {
           <Link href="/#recursos" className="hidden hover:text-accent sm:inline">Recursos</Link>
           <Link href="/perguntas" className="hover:text-accent">Perguntas</Link>
           <Link href="/medicamentos" className="hover:text-accent">{t.nav.meds}</Link>
-          <Link href="/pro" className="hover:text-accent">Pro</Link>
-          <Link href="/app" className="btn btn-primary !py-1.5 !px-4 text-sm">
-            {t.nav.app}
+                    <Link href="/em-breve" className="btn btn-primary !py-1.5 !px-4 text-sm">
+            Quero o app
           </Link>
         </nav>
       </div>

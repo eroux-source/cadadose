@@ -69,7 +69,7 @@ export default function ArticleBody({ a, note }: { a: Body; note?: string }) {
         <InfoNotice className="mt-3" />
       </section>
 
-      <Link href="/app" className="btn btn-primary mt-10">{t.content.openApp}</Link>
+      <Link href="/em-breve" className="btn btn-primary mt-10">Quero o app que avisa a hora da dose</Link>
     </>
   );
 }
