@@ -12,7 +12,21 @@ export type Intent =
   | "melhor-horario"
   | "pode-beber-alcool"
   | "interacoes-com-remedios"
-  | "pressao-alta";
+  | "pressao-alta"
+  | "reacao-no-local"
+  | "desidratacao-e-rins"
+  | "vesicula-e-pancreatite"
+  | "tireoide"
+  | "parar-o-tratamento"
+  | "queda-de-cabelo"
+  | "viagem-e-transporte"
+  | "hipoglicemia"
+  | "nausea-o-que-fazer"
+  | "prisao-de-ventre"
+  | "agulha-e-caneta"
+  | "retinopatia"
+  | "quanto-tempo-fica-no-corpo"
+  | "alergia";
 
 export interface Section {
   heading: string;
@@ -54,4 +68,18 @@ export const intentLabels: Record<Intent, string> = {
   "pode-beber-alcool": "Pode beber álcool?",
   "interacoes-com-remedios": "Interações com remédios",
   "pressao-alta": "Pressão alta",
+  "reacao-no-local": "Reação no local da aplicação",
+  "desidratacao-e-rins": "Desidratação e rins",
+  "vesicula-e-pancreatite": "Vesícula e pancreatite",
+  "tireoide": "Tireoide",
+  "parar-o-tratamento": "Parar o tratamento",
+  "queda-de-cabelo": "Queda de cabelo",
+  "viagem-e-transporte": "Viagem e transporte",
+  "hipoglicemia": "Hipoglicemia",
+  "nausea-o-que-fazer": "Náusea: o que fazer",
+  "prisao-de-ventre": "Prisão de ventre",
+  "agulha-e-caneta": "Agulha e caneta",
+  "retinopatia": "Retinopatia (olhos)",
+  "quanto-tempo-fica-no-corpo": "Quanto tempo fica no corpo",
+  "alergia": "Reação alérgica",
 };

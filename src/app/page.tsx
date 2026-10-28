@@ -58,23 +58,25 @@ export default function Landing() {
   const trust = ["Grátis para começar", "Sem cadastro", "Primeira aplicação registrada em 30 segundos"];
   return (
     <div className="mx-auto max-w-6xl px-4">
-      {/* HERO */}
-      <section className="py-14 text-center md:py-20">
-        <span className="eyebrow">Diário de tratamento GLP-1 · Brasil</span>
-        <h1 className="mx-auto mt-4 max-w-4xl text-4xl font-semibold leading-[1.05] md:text-6xl">
-          Seu diário de GLP-1, <span className="text-muted">da primeira aplicação até a meta.</span>
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-muted">{t.hero.subtitle}</p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Link href="/app" className="btn btn-primary">{t.hero.cta}</Link>
-          <Link href="/perguntas" className="btn btn-ghost">Ver as respostas da bula</Link>
+      {/* HERO: one cobalt slab, everything else on the page stays quiet */}
+      <section className="mt-4 rounded-[2.5rem] bg-accent px-6 pb-0 pt-14 text-white md:px-14 md:pt-20">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-medium text-white/70">Diário de tratamento GLP-1, feito para o Brasil</p>
+          <h1 className="mt-4 text-4xl font-bold leading-[1.02] md:text-6xl">
+            Seu diário de GLP-1, da primeira aplicação até a meta.
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">{t.hero.subtitle}</p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <Link href="/app" className="btn bg-warm text-warm-ink hover:brightness-105">{t.hero.cta}</Link>
+            <Link href="/perguntas" className="btn border border-white/40 text-white hover:border-white">Ver as respostas da bula</Link>
+          </div>
+          <ul className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm text-white/75">
+            {trust.map((x) => <li key={x}>{x}</li>)}
+          </ul>
         </div>
-        <ul className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm text-muted">
-          {trust.map((x) => <li key={x} className="flex items-center gap-1.5"><span className="text-accent">✓</span>{x}</li>)}
-        </ul>
-        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3">
+        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3 sm:items-end">
           <MockSymptoms />
-          <div className="sm:-mt-6"><MockToday /></div>
+          <div className="sm:-mt-8"><MockToday /></div>
           <MockWeight />
         </div>
       </section>

@@ -1,15 +1,18 @@
 @import "tailwindcss";
 
+/* CadaDose palette: "geladeira" — cool pale base, pharmacy cobalt, a warm peach for progress. */
 :root {
-  --background: #f6f5ef;
-  --foreground: #14201a;
-  --accent: #1f4b36;
-  --accent-strong: #163a2a;
-  --accent-soft: #e6eee3;
-  --lime: #d9f55a;
-  --muted: #6c746f;
+  --background: #eef3f7;
+  --foreground: #10243a;
+  --accent: #1e5bd6;
+  --accent-strong: #1446ad;
+  --accent-soft: #dce6f4;
+  --warm: #ff8a5b;
+  --warm-ink: #3a1a0e;
+  --ok: #1b8a5a;
+  --muted: #5b6b7d;
   --card: #ffffff;
-  --border: #e3e5dc;
+  --border: #d5dfea;
 }
 
 @theme inline {
@@ -18,46 +21,53 @@
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
   --color-accent-soft: var(--accent-soft);
-  --color-lime: var(--lime);
+  --color-warm: var(--warm);
+  --color-warm-ink: var(--warm-ink);
+  --color-ok: var(--ok);
   --color-muted: var(--muted);
   --color-card: var(--card);
   --color-border: var(--border);
+  --font-sans: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0f1512;
-    --foreground: #eef1ea;
-    --accent: #7fc99a;
-    --accent-strong: #5fb37d;
-    --accent-soft: #17251d;
-    --lime: #c9ea3f;
-    --muted: #9aa39c;
-    --card: #151d18;
-    --border: #243029;
+    --background: #0b1826;
+    --foreground: #e7eef6;
+    --accent: #6fa3ff;
+    --accent-strong: #8db6ff;
+    --accent-soft: #132840;
+    --warm: #ff9a70;
+    --warm-ink: #2a1208;
+    --ok: #4fc08a;
+    --muted: #93a4b8;
+    --card: #11233a;
+    --border: #1f3650;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  font-optical-sizing: auto;
 }
 
-h1, h2, h3 { letter-spacing: -0.02em; }
+h1, h2, h3 { letter-spacing: -0.025em; font-variation-settings: "wdth" 108; }
+h1 { font-variation-settings: "wdth" 112; }
 
-.eyebrow {
-  display: inline-flex; align-items: center; gap: .4rem;
-  font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
-}
-.eyebrow::before { content: "✦"; color: var(--accent); font-size: .8rem; }
+/* Sentence-case label in the primary color: a signpost, not a tracked-out caps eyebrow. */
+.eyebrow { display: inline-block; font-size: .9rem; font-weight: 600; color: var(--accent); }
 
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: 999px; padding: .8rem 1.4rem; font-weight: 600; transition: transform .15s ease, background .15s ease; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: 999px; padding: .8rem 1.4rem; font-weight: 600; transition: transform .15s ease, background .15s ease, border-color .15s ease; }
 .btn:active { transform: scale(.98); }
+.btn:focus-visible { outline: 3px solid var(--warm); outline-offset: 2px; }
 .btn-primary { background: var(--accent); color: #fff; }
 .btn-primary:hover { background: var(--accent-strong); }
-.btn-ghost { border: 1px solid var(--border); background: var(--card); color: var(--foreground); }
+.btn-ghost { border: 1.5px solid var(--border); background: var(--card); color: var(--foreground); }
 .btn-ghost:hover { border-color: var(--accent); }
 
 .tile { border-radius: 1.5rem; padding: 1.25rem; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

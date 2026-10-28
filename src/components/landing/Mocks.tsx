@@ -2,12 +2,12 @@
 
 function Phone({ children, label }: { children: React.ReactNode; label: string }) {
   return (
-    <figure className="w-full">
+    <figure className="w-full pb-6 sm:pb-10">
       <div className="mx-auto w-full max-w-[260px] rounded-[2.2rem] border border-border bg-card p-3 shadow-[0_30px_60px_-30px_rgba(20,32,26,.35)]">
         <div className="mx-auto mb-3 h-1.5 w-16 rounded-full bg-border" />
         <div className="rounded-[1.6rem] bg-background p-4 text-[13px] leading-snug">{children}</div>
       </div>
-      <figcaption className="mt-3 text-center text-xs text-muted">{label}</figcaption>
+      <figcaption className="mt-3 text-center text-xs opacity-70">{label}</figcaption>
     </figure>
   );
 }
@@ -17,7 +17,7 @@ export function MockToday() {
     <Phone label="Hoje">
       <div className="flex items-center justify-between text-[11px] text-muted">
         <span>Hoje</span>
-        <span className="rounded-full bg-lime px-2 py-0.5 font-semibold text-accent-strong">semana 9</span>
+        <span className="rounded-full bg-warm px-2 py-0.5 font-semibold text-warm-ink">semana 9</span>
       </div>
       <p className="mt-3 text-[11px] text-muted">Próxima aplicação</p>
       <p className="text-lg font-semibold leading-tight">quarta, 4 de nov</p>
