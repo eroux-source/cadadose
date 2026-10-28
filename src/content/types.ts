@@ -4,7 +4,8 @@ export type Intent =
   | "esqueci-de-aplicar"
   | "validade-depois-de-aberta"
   | "onde-aplicar"
-  | "efeitos-colaterais";
+  | "efeitos-colaterais"
+  | "regras-anvisa";
 
 export interface Section {
   heading: string;
@@ -38,4 +39,5 @@ export const intentLabels: Record<Intent, string> = {
   "validade-depois-de-aberta": "Validade depois de aberta",
   "onde-aplicar": "Onde aplicar",
   "efeitos-colaterais": "Efeitos colaterais",
+  "regras-anvisa": "Regras da ANVISA",
 };

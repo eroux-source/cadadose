@@ -5,6 +5,7 @@ import type { Dictionary } from "@/i18n/dictionaries";
 import { medications, getMedication } from "@/lib/medications";
 import { exportStore, resetStore, uid, updateStore, useStore, type Profile, type Shot } from "@/lib/storage";
 import WeightChart from "./WeightChart";
+import { shareWeightChart } from "@/lib/shareChart";
 
 type Tab = "today" | "shots" | "weight" | "symptoms" | "stock" | "profile";
 
@@ -68,7 +69,7 @@ function TrackerBody({ t }: { t: Dictionary["tracker"] }) {
   const shotsSinceOpened = store.stock.currentOpenedAt
     ? store.shots.filter((s) => s.at >= store.stock.currentOpenedAt!).length
     : 0;
-  const dosesLeft = med?.dosesPerPen != null ? Math.max(0, med.dosesPerPen - shotsSinceOpened) : null;
+  const dosesLeft = med?.form === "multidose-pen" && med.dosesPerPen != null ? Math.max(0, med.dosesPerPen - shotsSinceOpened) : null;
 
   // Gentle reminder when the app is open on the due day (web push arrives in sprint 2).
   useEffect(() => {
@@ -364,16 +365,15 @@ function Weight({ t, store }: { t: Dictionary["tracker"]; store: ReturnType<type
   const total = sorted.length > 1 ? sorted[sorted.length - 1].kg - sorted[0].kg : null;
 
   const share = async () => {
-    const text = `${t.weight.total}: ${total?.toFixed(1)} ${t.weight.kg} · CadaDose`;
-    if (navigator.share) {
-      try {
-        await navigator.share({ text });
-      } catch {
-        /* cancelled */
-      }
-    } else {
-      await navigator.clipboard.writeText(text);
-    }
+    const svg = document.querySelector<SVGSVGElement>('svg[aria-label="weight chart"]');
+    if (!svg || total == null) return;
+    const weeks = Math.max(1, Math.round((new Date(sorted[sorted.length - 1].at).getTime() - new Date(sorted[0].at).getTime()) / (7 * dayMs)));
+    await shareWeightChart({
+      svg,
+      headline: `${total > 0 ? "+" : ""}${total.toFixed(1)} kg`,
+      subline: `em ${weeks} semana${weeks > 1 ? "s" : ""} · ${sorted.length} pesagens`,
+      filename: `meu-progresso-cadadose.png`,
+    });
   };
 
   return (

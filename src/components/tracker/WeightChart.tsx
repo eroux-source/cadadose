@@ -40,7 +40,7 @@ export default function WeightChart({ weights, shots }: { weights: WeightEntry[]
           <g key={i}>
             <line x1={pad.l} x2={W - pad.r} y1={sy(y)} y2={sy(y)} stroke="currentColor" strokeOpacity="0.12" />
             <text x={pad.l - 6} y={sy(y) + 4} fontSize="11" textAnchor="end" fill="currentColor" opacity="0.6">
-              {y.toFixed(0)}
+              {Number.isInteger(y) ? y : y.toFixed(1)}
             </text>
           </g>
         );
