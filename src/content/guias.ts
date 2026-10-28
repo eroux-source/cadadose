@@ -24,7 +24,7 @@ const wegovyBula = {
   url: "https://www.novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Wegovy_Bula_Paciente.pdf",
 };
 
-export const guias: Guide[] = [
+const guiasBulas: Guide[] = [
   {
     slug: "ozempic-vs-mounjaro",
     title: "Qual a diferença entre Ozempic e Mounjaro? Comparação pelas bulas",
@@ -101,3 +101,6 @@ export const guias: Guide[] = [
 ];
 
 export const getGuide = (slug: string) => guias.find((g) => g.slug === slug);
+
+import { guiasApps } from "./guias-apps";
+export const guias: Guide[] = [...guiasBulas, ...guiasApps];
