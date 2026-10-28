@@ -1,3 +1,4 @@
+import InfoNotice from "@/components/InfoNotice";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { dictionary } from "@/i18n/dictionaries";
@@ -12,6 +13,7 @@ export default async function MedsIndex() {
     <div className="mx-auto max-w-5xl px-4 py-12">
       <h1 className="text-3xl font-semibold">{t.nav.meds}</h1>
       <p className="mt-2 text-muted">{t.content.disclaimerShort}</p>
+      <InfoNotice className="mt-3" />
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         {medications.map((m) => {
           const articles = getArticlesForMedication(m.slug);

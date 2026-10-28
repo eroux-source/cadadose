@@ -6,6 +6,7 @@ import { useStore } from "@/lib/storage";
 import { getMedication } from "@/lib/medications";
 import { dictionary } from "@/i18n/dictionaries";
 import WeightChart from "./WeightChart";
+import InfoNotice from "@/components/InfoNotice";
 
 const fmt = (iso: string, withTime = false) =>
   new Date(iso.length === 10 ? iso + "T12:00:00" : iso).toLocaleString("pt-BR", withTime ? { dateStyle: "short", timeStyle: "short" } : { dateStyle: "short" });
@@ -42,6 +43,7 @@ export default function Report() {
       <header className="border-b border-border pb-4">
         <h1 className="text-2xl font-semibold">Relatório de tratamento</h1>
         <p className="text-sm text-muted">CadaDose · gerado em {new Date().toLocaleDateString("pt-BR")} · registro feito pelo próprio paciente</p>
+        <InfoNotice className="mt-3" />
       </header>
 
       <section className="mt-6 grid gap-4 md:grid-cols-2 text-sm">

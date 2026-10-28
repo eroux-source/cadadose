@@ -93,6 +93,8 @@ const pt = {
     allAbout: "Tudo sobre",
     disclaimerShort: "Informação educativa baseada na bula. Não substitui a orientação do seu médico.",
     openApp: "Abrir meu diário",
+    infoOnlyTitle: "Apenas para informação, não é orientação médica.",
+    infoOnly: "Fale com quem prescreveu o seu tratamento antes de mudar o medicamento ou o plano de tratamento.",
   },
 };
 

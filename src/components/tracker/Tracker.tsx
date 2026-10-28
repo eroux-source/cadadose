@@ -6,6 +6,7 @@ import { medications, getMedication } from "@/lib/medications";
 import { exportStore, resetStore, uid, updateStore, useStore, type Profile, type Shot } from "@/lib/storage";
 import WeightChart from "./WeightChart";
 import { shareWeightChart } from "@/lib/shareChart";
+import InfoNotice from "@/components/InfoNotice";
 
 type Tab = "today" | "shots" | "weight" | "symptoms" | "stock" | "profile";
 
@@ -142,6 +143,7 @@ function TrackerBody({ t }: { t: Dictionary["tracker"] }) {
                     {dosesLeft != null && <span className="text-muted"> · {t.stock.dosesLeft}: {dosesLeft}</span>}
                   </p>
                 )}
+                <InfoNotice className="mt-2" />
                 {typeof Notification !== "undefined" && Notification.permission === "default" && (
                   <button onClick={() => Notification.requestPermission()} className="text-sm underline text-muted">
                     🔔 {t.profile.time}
@@ -255,6 +257,7 @@ function ProfileForm({
             </select>
           </div>
           <p className="mt-1 text-xs text-muted">{t.profile.doseHint}</p>
+          <InfoNotice className="mt-2" />
         </div>
         {med.frequency === "weekly" && (
           <div>
@@ -475,6 +478,7 @@ function Symptoms({ t, store }: { t: Dictionary["tracker"]; store: ReturnType<ty
         <button className="rounded-full bg-accent px-4 py-2 text-white text-sm font-medium">{t.symptoms.add}</button>
       </form>
       <p className="mt-4 text-xs text-muted">{t.symptoms.warning}</p>
+      <InfoNotice className="mt-2" />
       <ul className="mt-4 divide-y divide-border text-sm">
         {list.length === 0 && <li className="py-3 text-muted">{t.symptoms.empty}</li>}
         {list.map((s) => (
@@ -584,6 +588,7 @@ function StockPanel({
           )}
         </p>
       )}
+      {med && <InfoNotice className="mt-2" />}
     </Card>
   );
 }

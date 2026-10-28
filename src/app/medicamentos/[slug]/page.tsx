@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { dictionary as t } from "@/i18n/dictionaries";
 import { getMedication, medications } from "@/lib/medications";
 import { getArticlesForMedication } from "@/content";
+import InfoNotice from "@/components/InfoNotice";
 import { intentLabels } from "@/content/types";
 
 export function generateStaticParams() {
@@ -31,6 +32,7 @@ export default async function MedicationHub({ params }: { params: Promise<{ slug
     <div className="mx-auto max-w-3xl px-4 py-12">
       <h1 className="text-3xl font-semibold">{med.name}</h1>
       <p className="mt-2 text-muted">{t.content.disclaimerShort}</p>
+      <InfoNotice className="mt-3" />
 
       {med.doseStepsMg.length > 0 && (
         <div className="mt-6 rounded-2xl border border-border bg-card p-5 text-sm">

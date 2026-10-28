@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { dictionary as t } from "@/i18n/dictionaries";
 import type { Section } from "@/content/types";
+import InfoNotice from "@/components/InfoNotice";
 
 interface Body {
   answer: string;
@@ -28,6 +29,7 @@ export default function ArticleBody({ a }: { a: Body }) {
       <div className="mt-6 rounded-2xl bg-accent-soft p-5">
         <p className="text-lg leading-relaxed">{a.answer}</p>
         <p className="mt-3 text-xs text-muted">Fonte: <Src /></p>
+        <InfoNotice className="mt-3" />
       </div>
 
       {a.sections.map((s) => (
@@ -64,6 +66,7 @@ export default function ArticleBody({ a }: { a: Body }) {
         <h2 className="font-semibold text-foreground">{t.content.sources}</h2>
         <ul className="mt-2 list-disc pl-6">{a.sources.map((s) => <li key={s.url}><a href={s.url} rel="noopener" className="underline">{s.label}</a></li>)}</ul>
         <p className="mt-4">{t.content.disclaimerShort}</p>
+        <InfoNotice className="mt-3" />
       </section>
 
       <Link href="/app" className="btn btn-primary mt-10">{t.content.openApp}</Link>
