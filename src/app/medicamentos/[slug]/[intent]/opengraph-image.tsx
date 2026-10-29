@@ -13,14 +13,14 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const title = a?.title ?? "CadaDose";
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", background: "#1e5bd6", color: "#fff", padding: 64, fontFamily: "sans-serif" }}>
+      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", background: "#111a17", color: "#fff", padding: 64, fontFamily: "sans-serif" }}>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 28, opacity: 0.85 }}>
           <span>CadaDose · {med?.name.split(" (")[0] ?? ""}</span>
           <span>pela bula ANVISA</span>
         </div>
-        <div style={{ fontSize: title.length > 70 ? 48 : 58, fontWeight: 700, lineHeight: 1.1, letterSpacing: -1 }}>{title}</div>
+        <div style={{ fontSize: title.length > 70 ? 48 : 58, fontWeight: 400, lineHeight: 1.1, letterSpacing: -1 }}>{title}</div>
         <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 26 }}>
-          <span style={{ background: "#ff8a5b", color: "#3a1a0e", padding: "8px 18px", borderRadius: 999, fontWeight: 700 }}>Baseado na bula</span>
+          <span style={{ background: "#e6d9b8", color: "#3a2e14", padding: "8px 18px", borderRadius: 999, fontWeight: 400 }}>Baseado na bula</span>
           <span style={{ opacity: 0.85 }}>Apenas para informação, não é orientação médica</span>
         </div>
       </div>

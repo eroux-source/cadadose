@@ -5,7 +5,7 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-10 border-b border-border bg-background/90 backdrop-blur">
       <div className="mx-auto max-w-7xl px-6 md:px-12 h-16 flex items-center justify-between gap-4">
-        <Link href="/" className="font-semibold tracking-tight text-lg">
+        <Link href="/" className="font-medium tracking-tight text-lg">
           Cada<span className="text-accent">Dose</span>
         </Link>
         <nav className="flex items-center gap-4 text-sm">

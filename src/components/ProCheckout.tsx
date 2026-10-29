@@ -44,7 +44,7 @@ export default function ProCheckout() {
   if (token && ready) {
     return (
       <div className="mt-6 grid gap-2">
-        <button onClick={() => open(prices.monthly)} className="rounded-full bg-accent px-5 py-3 text-white font-medium">Assinar mensal · R$ 19,90</button>
+        <button onClick={() => open(prices.monthly)} className="btn btn-primary !py-2 !px-4 ">Assinar mensal · R$ 19,90</button>
         <button onClick={() => open(prices.yearly)} className="rounded-full border border-accent px-5 py-3 font-medium text-accent">Assinar anual · R$ 149</button>
       </div>
     );
@@ -67,7 +67,7 @@ export default function ProCheckout() {
     >
       <p className="text-sm">O Pro abre em breve. Os 500 primeiros terão preço de fundador: <strong>R$ 97 para sempre</strong>.</p>
       <input type="email" required placeholder="seu e-mail" value={email} onChange={(e) => setEmail(e.target.value)} className="rounded-lg border border-border bg-background px-3 py-2 text-sm" />
-      <button className="rounded-full bg-accent px-5 py-3 text-white font-medium">{sent ? "Anotado!" : "Quero ser avisado"}</button>
+      <button className="btn btn-primary !py-2 !px-4 ">{sent ? "Anotado!" : "Quero ser avisado"}</button>
     </form>
   );
 }

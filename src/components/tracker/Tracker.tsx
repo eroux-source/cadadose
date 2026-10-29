@@ -98,13 +98,13 @@ function TrackerBody({ t }: { t: Dictionary["tracker"] }) {
   const tabs: Tab[] = ["today", "shots", "weight", "symptoms", "stock", "profile"];
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-6">
+    <div className="mx-auto max-w-3xl px-6 py-10">
       <nav className="flex gap-1 overflow-x-auto rounded-full border border-border bg-card p-1 text-sm">
         {tabs.map((k) => (
           <button
             key={k}
             onClick={() => setTab(k)}
-            className={`whitespace-nowrap rounded-full px-3 py-1.5 ${tab === k ? "bg-accent text-white" : "hover:bg-accent-soft"}`}
+            className={`whitespace-nowrap rounded-full px-3 py-1.5 ${tab === k ? "bg-ink text-[#f7f6f1]" : "hover:bg-accent-soft"}`}
           >
             {t.tabs[k]}
           </button>
@@ -120,7 +120,7 @@ function TrackerBody({ t }: { t: Dictionary["tracker"] }) {
               <div className="space-y-4">
                 <div>
                   <p className="text-sm text-muted">{overdue ? t.today.overdue : t.today.next}</p>
-                  <p className={`text-2xl font-semibold ${overdue ? "text-red-600" : ""}`}>
+                  <p className={`text-2xl font-medium ${overdue ? "text-red-600" : ""}`}>
                     {doneToday ? t.today.done : nextDue?.toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" })}
                   </p>
                   <p className="text-sm text-muted">
@@ -129,7 +129,7 @@ function TrackerBody({ t }: { t: Dictionary["tracker"] }) {
                 </div>
                 {!doneToday && (
                   <div className="flex flex-wrap items-center gap-3">
-                    <button onClick={logNow} className="rounded-full bg-accent px-5 py-2.5 text-white font-medium">
+                    <button onClick={logNow} className="btn btn-primary !py-2 !px-4 ">
                       {t.today.logNow}
                     </button>
                     <span className="text-sm text-muted">
@@ -187,8 +187,8 @@ function TrackerBody({ t }: { t: Dictionary["tracker"] }) {
 
 function Card({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-border bg-card p-5">
-      <h2 className="font-semibold mb-4">{title}</h2>
+    <div className="rounded-md border border-border bg-card p-5">
+      <h2 className="font-medium mb-4">{title}</h2>
       {children}
     </div>
   );
@@ -276,7 +276,7 @@ function ProfileForm({
           <input type="time" className={inputCls} value={form.reminderTime} onChange={(e) => setForm({ ...form, reminderTime: e.target.value })} />
         </div>
         <div className="md:col-span-2 flex items-center gap-3">
-          <button type="submit" className="rounded-full bg-accent px-5 py-2.5 text-white font-medium">
+          <button type="submit" className="btn btn-primary !py-2 !px-4 ">
             {t.profile.save}
           </button>
           {saved && <span className="text-sm text-muted">{t.profile.saved}</span>}
@@ -330,7 +330,7 @@ function Shots({ t, store }: { t: Dictionary["tracker"]; store: ReturnType<typeo
             ))}
           </select>
         </div>
-        <button className="rounded-full bg-accent px-4 py-2 text-white text-sm font-medium">{t.shots.add}</button>
+        <button className="btn btn-primary !py-2 !px-4 text-sm ">{t.shots.add}</button>
         <div className="md:col-span-4">
           <input className={inputCls} placeholder={t.shots.note} value={note} onChange={(e) => setNote(e.target.value)} />
         </div>
@@ -399,7 +399,7 @@ function Weight({ t, store }: { t: Dictionary["tracker"]; store: ReturnType<type
           <label className={labelCls}>{t.weight.kg}</label>
           <input type="number" step="0.1" min="20" max="400" className={inputCls} value={kg} onChange={(e) => setKg(e.target.value)} required />
         </div>
-        <button className="rounded-full bg-accent px-4 py-2 text-white text-sm font-medium">{t.weight.add}</button>
+        <button className="btn btn-primary !py-2 !px-4 text-sm ">{t.weight.add}</button>
       </form>
 
       {sorted.length < 2 ? (
@@ -475,7 +475,7 @@ function Symptoms({ t, store }: { t: Dictionary["tracker"]; store: ReturnType<ty
           </select>
         </div>
         <input className={inputCls} placeholder={t.shots.note} value={note} onChange={(e) => setNote(e.target.value)} />
-        <button className="rounded-full bg-accent px-4 py-2 text-white text-sm font-medium">{t.symptoms.add}</button>
+        <button className="btn btn-primary !py-2 !px-4 text-sm ">{t.symptoms.add}</button>
       </form>
       <p className="mt-4 text-xs text-muted">{t.symptoms.warning}</p>
       <InfoNotice className="mt-2" />
@@ -561,21 +561,21 @@ function StockPanel({
       ) : (
         <dl className="mt-6 grid gap-3 md:grid-cols-3 text-sm">
           {expiresAt && (
-            <div className="rounded-xl bg-accent-soft p-3">
+            <div className="rounded-md bg-accent-soft p-3">
               <dt className="text-muted">{t.stock.expires}</dt>
-              <dd className="font-semibold">{fmt(expiresAt)}</dd>
+              <dd className="font-medium">{fmt(expiresAt)}</dd>
             </div>
           )}
           {dosesLeft != null && (
-            <div className="rounded-xl bg-accent-soft p-3">
+            <div className="rounded-md bg-accent-soft p-3">
               <dt className="text-muted">{t.stock.dosesLeft}</dt>
-              <dd className="font-semibold">{dosesLeft}</dd>
+              <dd className="font-medium">{dosesLeft}</dd>
             </div>
           )}
           {buyBy && store.stock.pensAtHome <= 1 && (
-            <div className="rounded-xl bg-accent-soft p-3">
+            <div className="rounded-md bg-accent-soft p-3">
               <dt className="text-muted">{t.stock.buyBy}</dt>
-              <dd className="font-semibold">{fmt(buyBy)}</dd>
+              <dd className="font-medium">{fmt(buyBy)}</dd>
             </div>
           )}
         </dl>

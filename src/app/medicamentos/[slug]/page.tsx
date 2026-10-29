@@ -6,6 +6,7 @@ import { getMedication, medications } from "@/lib/medications";
 import { getArticlesForMedication } from "@/content";
 import InfoNotice from "@/components/InfoNotice";
 import { medImage, themeImage } from "@/lib/images";
+import PageHero from "@/components/PageHero";
 import { intentLabels } from "@/content/types";
 
 export function generateStaticParams() {
@@ -30,16 +31,10 @@ export default async function MedicationHub({ params }: { params: Promise<{ slug
   const articles = getArticlesForMedication(slug);
 
   return (
+    <>
+    <PageHero eyebrow={`${med.activeIngredient} · ${med.frequency === "daily" ? "uso diário" : "aplicação semanal"}`} title={`${med.name.split(" (")[0]}: ${articles.length} perguntas respondidas pela bula`} lede={t.content.disclaimerShort} image={medImage(slug)} crumbs={[{ label: "Medicamentos", href: "/medicamentos" }, { label: med.name.split(" (")[0] }]} />
     <div className="mx-auto max-w-5xl px-6 py-12 md:py-16">
-      <div className="grid items-center gap-8 md:grid-cols-2">
-        <div>
-          <span className="eyebrow">{med.activeIngredient} · {med.frequency === "daily" ? "uso diário" : "aplicação semanal"}</span>
-          <h1 className="mt-3 text-4xl leading-tight md:text-5xl">{med.name.split(" (")[0]}</h1>
-          <p className="mt-4 text-muted">{t.content.disclaimerShort}</p>
-          <InfoNotice className="mt-4" />
-        </div>
-        <div className="aspect-[3/2] overflow-hidden rounded-md"><img src={medImage(slug)} alt="" className="photo" /></div>
-      </div>
+      <InfoNotice />
 
       {med.doseStepsMg.length > 0 && (
         <div className="mt-10 rounded-md border border-border bg-card p-5 text-sm">
@@ -74,5 +69,6 @@ export default async function MedicationHub({ params }: { params: Promise<{ slug
         {t.content.openApp}
       </Link>
     </div>
+    </>
   );
 }

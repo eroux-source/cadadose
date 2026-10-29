@@ -14,7 +14,7 @@ export default function Related({ slug, intent }: { slug: string; intent: string
     <section className="mt-12 grid gap-6 md:grid-cols-2">
       {sameIntent.length > 0 && (
         <div>
-          <h2 className="font-semibold">{intentLabels[intent as keyof typeof intentLabels]}: outros medicamentos</h2>
+          <h2 className="">{intentLabels[intent as keyof typeof intentLabels]}: outros medicamentos</h2>
           <ul className="mt-3 space-y-2 text-sm">
             {sameIntent.map((a) => <li key={a.medicationSlug}><Link href={`/medicamentos/${a.medicationSlug}/${a.intent}`} className="group flex items-center gap-3"><span className="h-10 w-14 shrink-0 overflow-hidden rounded-sm"><img src={medImage(a.medicationSlug)} alt="" className="photo" loading="lazy" /></span><span className="group-hover:text-accent">{getMedication(a.medicationSlug)?.name}</span></Link></li>)}
           </ul>
@@ -23,7 +23,7 @@ export default function Related({ slug, intent }: { slug: string; intent: string
       )}
       {sameMed.length > 0 && (
         <div>
-          <h2 className="font-semibold">Mais sobre {med?.name.split(" (")[0]}</h2>
+          <h2 className="">Mais sobre {med?.name.split(" (")[0]}</h2>
           <ul className="mt-3 space-y-2 text-sm">
             {sameMed.map((a) => <li key={a.intent}><Link href={`/medicamentos/${a.medicationSlug}/${a.intent}`} className="group flex items-center gap-3"><span className="h-10 w-14 shrink-0 overflow-hidden rounded-sm"><img src={themeImage(a.intent, a.medicationSlug)} alt="" className="photo" loading="lazy" /></span><span className="group-hover:text-accent">{intentLabels[a.intent]}</span></Link></li>)}
           </ul>

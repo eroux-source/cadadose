@@ -29,7 +29,7 @@ export default async function Privacy() {
   const c = copy.pt;
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
-      <h1 className="text-3xl font-semibold">{c.title}</h1>
+      <h1 className="text-3xl">{c.title}</h1>
       {c.body.map((p) => (
         <p key={p} className="mt-4 leading-relaxed">{p}</p>
       ))}

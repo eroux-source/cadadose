@@ -43,8 +43,8 @@ export default function Pwa() {
   };
 
   return (
-    <div className="fixed inset-x-4 bottom-4 z-20 rounded-2xl border border-border bg-card p-4 shadow-lg text-sm md:left-auto md:right-6 md:w-96">
-      <p className="font-semibold">Instalar o CadaDose na tela inicial</p>
+    <div className="fixed inset-x-4 bottom-4 z-20 rounded-md border border-border bg-card p-4 shadow-lg text-sm md:left-auto md:right-6 md:w-96">
+      <p className="font-medium">Instalar o CadaDose na tela inicial</p>
       <p className="mt-1 text-muted">
         {deferred
           ? "Abra o diário com um toque, como um aplicativo, e receba os lembretes."
@@ -59,7 +59,7 @@ export default function Pwa() {
               if (outcome === "accepted") close();
               setDeferred(null);
             }}
-            className="rounded-full bg-accent px-4 py-2 text-white font-medium"
+            className="btn btn-primary !py-2 !px-4 "
           >
             Instalar
           </button>

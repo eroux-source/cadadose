@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PageHero from "@/components/PageHero";
 export const metadata: Metadata = { title: "Política editorial do CadaDose", description: "As regras que cada página do CadaDose segue: fontes admitidas, o que é citado, o que fica de fora, como corrigimos.", alternates: { canonical: "/politica-editorial" } };
 const rules = [
   ["Fonte primária", "A bula do paciente aprovada pela ANVISA, na versão mais recente que conseguimos localizar, com registro e data. Quando usamos uma cópia hospedada fora do site do fabricante, dizemos qual."],
@@ -13,12 +14,13 @@ const rules = [
 ];
 export default function Page() {
   return (
-    <article className="mx-auto max-w-3xl px-4 py-12">
-      <span className="eyebrow">Política editorial</span>
-      <h1 className="mt-2 text-3xl font-semibold leading-tight md:text-4xl">Nove regras, sem exceção.</h1>
+    <>
+    <PageHero eyebrow="Política editorial" title="Nove regras, sem exceção." image="/img/t-regras-anvisa.jpg" />
+    <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
       <dl className="mt-8 space-y-6">
         {rules.map(([t, d]) => (<div key={t}><dt className="font-semibold">{t}</dt><dd className="mt-1 text-muted">{d}</dd></div>))}
       </dl>
     </article>
+    </>
   );
 }

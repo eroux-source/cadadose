@@ -5,6 +5,7 @@ import { guias } from "@/content/guias";
 import { medications } from "@/lib/medications";
 import { intentLabels } from "@/content/types";
 import { themeImage, guideImage } from "@/lib/images";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Perguntas sobre Mounjaro, Ozempic e Wegovy respondidas pela bula",
@@ -14,13 +15,12 @@ export const metadata: Metadata = {
 
 export default function PerguntasHub() {
   return (
+    <>
+    <PageHero eyebrow="Respondido pela bula" title={`${allArticles.length} perguntas sobre GLP-1, com a fonte ao lado.`} lede="Cada resposta cita a bula do paciente aprovada pela ANVISA (registro e data na página). Quando a bula não responde, a página diz isso." image="/img/t-para-que-serve.jpg" />
     <div className="mx-auto max-w-7xl px-6 py-12 md:px-12 md:py-16">
-      <span className="eyebrow">Respondido pela bula</span>
-      <h1 className="mt-3 text-3xl font-semibold leading-tight md:text-4xl">{allArticles.length} perguntas sobre GLP-1, com a fonte ao lado.</h1>
-      <p className="mt-3 max-w-2xl text-muted">Cada resposta cita a bula do paciente aprovada pela ANVISA (registro e data na página). Quando a bula não responde, a página diz isso.</p>
 
-      <section className="mt-8">
-        <h2 className="text-xl font-semibold">Por tema</h2>
+      <section>
+        <h2 className="text-2xl md:text-3xl">Por tema</h2>
         <div className="mt-3 flex flex-wrap gap-2">
           {[...new Set(allArticles.map((a) => a.intent))].map((i) => (
             <Link key={i} href={`/temas/${i}`} className="rounded-full border border-border bg-card px-3 py-1.5 text-sm hover:border-accent">{intentLabels[i]}</Link>
@@ -29,7 +29,7 @@ export default function PerguntasHub() {
       </section>
 
       <section className="mt-10">
-        <h2 className="text-xl font-semibold">Comparações e mercado</h2>
+        <h2 className="text-2xl md:text-3xl">Comparações e mercado</h2>
         <ul className="mt-5 grid gap-6 md:grid-cols-2">
           {guias.map((g) => (
             <li key={g.slug}>
@@ -62,5 +62,6 @@ export default function PerguntasHub() {
         );
       })}
     </div>
+    </>
   );
 }

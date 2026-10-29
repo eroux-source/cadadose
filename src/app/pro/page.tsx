@@ -14,17 +14,17 @@ const pro = ["Lembretes no celular no dia e na hora da aplicação", "Backup e s
 export default function ProPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
-      <h1 className="text-3xl font-semibold">CadaDose Pro</h1>
+      <h1 className="text-3xl font-medium">CadaDose Pro</h1>
       <p className="mt-2 text-muted">O diário continua grátis. O Pro paga os lembretes, o backup e o desenvolvimento, sem anúncios e sem comissão de farmácia.</p>
       <div className="mt-8 grid gap-4 md:grid-cols-2">
-        <div className="rounded-2xl border border-border bg-card p-6">
-          <h2 className="font-semibold">Grátis</h2>
-          <p className="mt-1 text-3xl font-semibold">R$ 0</p>
+        <div className="rounded-md border border-border bg-card p-6">
+          <h2 className="font-medium">Grátis</h2>
+          <p className="mt-1 text-3xl font-medium">R$ 0</p>
           <ul className="mt-4 space-y-2 text-sm">{free.map((f) => <li key={f}>✓ {f}</li>)}</ul>
         </div>
-        <div className="rounded-2xl border-2 border-accent bg-card p-6">
-          <h2 className="font-semibold">Pro</h2>
-          <p className="mt-1 text-3xl font-semibold">R$ 19,90<span className="text-base font-normal text-muted">/mês</span></p>
+        <div className="rounded-md border-2 border-accent bg-card p-6">
+          <h2 className="font-medium">Pro</h2>
+          <p className="mt-1 text-3xl font-medium">R$ 19,90<span className="text-base font-normal text-muted">/mês</span></p>
           <p className="text-sm text-muted">ou R$ 149 por ano (2 meses grátis) · PIX ou cartão</p>
           <ul className="mt-4 space-y-2 text-sm">{pro.map((f) => <li key={f}>✓ {f}</li>)}</ul>
           <ProCheckout />

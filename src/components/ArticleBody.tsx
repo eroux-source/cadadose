@@ -64,7 +64,7 @@ export default function ArticleBody({ a, note, path, title }: { a: Body; note?: 
       </section>
 
       <section className="mt-10 text-sm text-muted">
-        <h2 className="font-semibold text-foreground">{t.content.sources}</h2>
+        <h2 className=" text-foreground">{t.content.sources}</h2>
         <ul className="mt-2 list-disc pl-6">{a.sources.map((s) => <li key={s.url}><a href={s.url} rel="noopener" className="underline">{s.label}</a></li>)}</ul>
         <p className="mt-4">{t.content.disclaimerShort}</p>
         <InfoNotice className="mt-3" />

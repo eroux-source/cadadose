@@ -33,7 +33,7 @@ export default function Report() {
     <div className="mx-auto max-w-3xl px-4 py-8 print:max-w-none print:px-0">
       <style>{`@media print { nav, footer, header, .no-print { display: none !important } body { background: #fff } }`}</style>
       <div className="no-print mb-6 flex flex-wrap items-center gap-3 text-sm">
-        <button onClick={() => window.print()} className="rounded-full bg-accent px-5 py-2.5 text-white font-medium">
+        <button onClick={() => window.print()} className="btn btn-primary !py-2 !px-4 ">
           Salvar em PDF / imprimir
         </button>
         <Link href="/app" className="underline text-muted">Voltar ao diário</Link>
@@ -41,21 +41,21 @@ export default function Report() {
       </div>
 
       <header className="border-b border-border pb-4">
-        <h1 className="text-2xl font-semibold">Relatório de tratamento</h1>
+        <h1 className="text-2xl font-medium">Relatório de tratamento</h1>
         <p className="text-sm text-muted">CadaDose · gerado em {new Date().toLocaleDateString("pt-BR")} · registro feito pelo próprio paciente</p>
         <InfoNotice className="mt-3" />
       </header>
 
       <section className="mt-6 grid gap-4 md:grid-cols-2 text-sm">
-        <div className="rounded-xl border border-border p-4">
-          <h2 className="font-semibold">Tratamento informado</h2>
+        <div className="rounded-md border border-border p-4">
+          <h2 className="font-medium">Tratamento informado</h2>
           <p className="mt-2">Medicamento: <strong>{med?.name ?? "—"}</strong></p>
           <p>Dose prescrita (informada): <strong>{store.profile?.doseValue ?? "—"} {store.profile?.doseUnit ?? ""}</strong></p>
           <p>Dia da semana: {store.profile ? t.profile.days[store.profile.weekday] : "—"}</p>
           <p>Período registrado: {period}</p>
         </div>
-        <div className="rounded-xl border border-border p-4">
-          <h2 className="font-semibold">Resumo</h2>
+        <div className="rounded-md border border-border p-4">
+          <h2 className="font-medium">Resumo</h2>
           <p className="mt-2">Aplicações registradas: <strong>{shots.length}</strong></p>
           <p>Pesagens: <strong>{weights.length}</strong>{delta != null && <> · variação <strong>{delta > 0 ? "+" : ""}{delta.toFixed(1)} kg</strong></>}</p>
           <p>Efeitos registrados: <strong>{symptoms.length}</strong></p>
@@ -64,13 +64,13 @@ export default function Report() {
 
       {weights.length > 1 && (
         <section className="mt-6">
-          <h2 className="font-semibold">Curva de peso (linhas tracejadas = mudança de dose)</h2>
+          <h2 className="font-medium">Curva de peso (linhas tracejadas = mudança de dose)</h2>
           <div className="mt-2 text-foreground"><WeightChart weights={weights} shots={shots} /></div>
         </section>
       )}
 
       <section className="mt-6 text-sm">
-        <h2 className="font-semibold">Aplicações</h2>
+        <h2 className="font-medium">Aplicações</h2>
         <table className="mt-2 w-full border-collapse">
           <thead><tr>{["Data", "Dose", "Local", "Obs."].map((h) => <th key={h} className="border-b border-border py-1 pr-3 text-left">{h}</th>)}</tr></thead>
           <tbody>
@@ -88,7 +88,7 @@ export default function Report() {
       </section>
 
       <section className="mt-6 text-sm">
-        <h2 className="font-semibold">Efeitos colaterais relatados</h2>
+        <h2 className="font-medium">Efeitos colaterais relatados</h2>
         <table className="mt-2 w-full border-collapse">
           <thead><tr>{["Data", "Efeito", "Intensidade", "Obs."].map((h) => <th key={h} className="border-b border-border py-1 pr-3 text-left">{h}</th>)}</tr></thead>
           <tbody>
