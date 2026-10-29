@@ -21,6 +21,8 @@ const cff = {
   label: "CFF — Anvisa estabelece novas regras para prescrição e dispensação de agonistas de GLP-1 (RDC 973/2025 e IN 360/2025), 16/01/2026",
   url: "https://site.cff.org.br/noticia/Noticias-gerais/16/01/2026/anvisa-estabelece-novas-regras-para-prescricao-e-dispensacao-de-medicamentos-agonistas-de-glp-1",
 };
+const sx = { label: "Bula do paciente Saxenda® (liraglutida), Novo Nordisk — registro ANVISA 1.1766.0032, aprovada em 17/04/2026", url: "https://novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Saxenda_Bula_Paciente1.pdf" };
+const rb = { label: "Bula do paciente Rybelsus® (semaglutida), Novo Nordisk — registro ANVISA 1.1766.0037, aprovada em 08/09/2026", url: "https://www.novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Rybelsus_Bula_PACIENTE.pdf" };
 const bulario = { label: "Bulário Eletrônico — ANVISA (confira a versão mais recente)", url: "https://consultas.anvisa.gov.br/#/bulario/" };
 const U = "2026-10-28";
 
@@ -120,5 +122,5 @@ const receita = (slug: string, nome: string, bula: { label: string; url: string 
 
 export const ptWave6: Article[] = [
   ...mjDose, ...wgDose, ...ozDose,
-  receita("mounjaro", "Mounjaro", mj), receita("ozempic", "Ozempic", oz), receita("wegovy", "Wegovy", wg),
+  receita("mounjaro", "Mounjaro", mj), receita("ozempic", "Ozempic", oz), receita("wegovy", "Wegovy", wg), receita("saxenda", "Saxenda", sx), receita("rybelsus", "Rybelsus", rb),
 ];

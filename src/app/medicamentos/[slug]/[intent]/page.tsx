@@ -7,6 +7,7 @@ import { getMedication } from "@/lib/medications";
 import { allArticles, getArticle } from "@/content";
 import { intentLabels } from "@/content/types";
 import ArticleBody from "@/components/ArticleBody";
+import Related from "@/components/Related";
 
 export function generateStaticParams() {
   return allArticles.map((a) => ({ slug: a.medicationSlug, intent: a.intent }));
@@ -55,6 +56,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <span className="eyebrow mt-4">{intentLabels[a.intent]}</span>
       <h1 className="mt-2 text-3xl font-semibold leading-tight md:text-4xl">{a.title}</h1>
       <ArticleBody a={a} path={`/medicamentos/${slug}/${intent}`} title={a.title} />
+      <Related slug={slug} intent={intent} />
     </article>
   );
 }

@@ -103,5 +103,5 @@ const guiasBulas: Guide[] = [
 export const getGuide = (slug: string) => guias.find((g) => g.slug === slug);
 
 import { guiasApps } from "./guias-apps";
-import { guiasMarcas } from "./guias-marcas";
-export const guias: Guide[] = [...guiasBulas, ...guiasApps, ...guiasMarcas];
+import { guiasMarcas, guiasMarcasExtra } from "./guias-marcas";
+export const guias: Guide[] = [...guiasBulas, ...guiasApps, ...guiasMarcas, ...guiasMarcasExtra];

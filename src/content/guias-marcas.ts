@@ -111,3 +111,36 @@ export const guiasMarcas: Guide[] = [
     sources: [istoe, tnh1, nt200, bulario],
   },
 ];
+
+const mjBula = { label: "Bula do paciente Mounjaro® — versão 05/2026", url: "https://bkt-prd-grupopanvel-datalake-documents.s3.amazonaws.com/bulas/anomesdia=20260513/codigo_item=89181/bula_paciente.pdf" };
+export const guiasMarcasExtra: Guide[] = [
+  {
+    slug: "mounjaro-natural-ou-de-pobre-existe",
+    title: "“Mounjaro natural” ou “Mounjaro de pobre” existe? O que tem registro na ANVISA",
+    answer:
+      "Não existe produto registrado na ANVISA com esse nome, e nenhum chá, cápsula ou suplemento tem bula que o equipare à tirzepatida. O que existe com registro: Mounjaro (tirzepatida, Lilly), Ozempic, Wegovy e as semaglutidas nacionais registradas em 2026, Saxenda e as liraglutidas genéricas, e Rybelsus em comprimido. Tudo isso exige receita retida. As “canetas do Paraguai” vendidas como alternativa barata (Tirzec, Lipoless, Gluconex, Tirzedral) não têm registro e foram proibidas pela ANVISA. Se o seu problema é preço, a conversa é com o médico sobre as opções registradas, não com um produto sem bula.",
+    description: "O que está por trás das buscas “Mounjaro natural” e “Mounjaro de pobre”: o que tem registro na ANVISA, o que foi proibido, e o que não existe.",
+    updated: U,
+    sections: [
+      { heading: "O que tem registro na ANVISA (e bula)", table: { head: ["Produto", "Substância", "Via", "Indicação na bula"], rows: [
+        ["Mounjaro (Lilly)", "tirzepatida", "injeção semanal", "diabetes tipo 2; controle do peso; apneia do sono (versão 05/2026)"],
+        ["Ozempic (Novo Nordisk)", "semaglutida", "injeção semanal", "diabetes tipo 2"],
+        ["Wegovy (Novo Nordisk)", "semaglutida", "injeção semanal", "controle do peso; MASH; risco cardiovascular"],
+        ["Ozivy (EMS) e outras semaglutidas registradas em 2026", "semaglutida", "injeção semanal", "diabetes tipo 2 (registro)"],
+        ["Saxenda (Novo Nordisk)", "liraglutida", "injeção diária", "controle do peso"],
+        ["Rybelsus (Novo Nordisk)", "semaglutida", "comprimido diário", "diabetes tipo 2"],
+      ] } },
+      { heading: "O que não existe", bullets: [
+        "Não há “tirzepatida natural”: tirzepatida é uma molécula sintética produzida por laboratório, com registro de medicamento. Chás, cápsulas de berberina, canela ou “GLP-1 natural” não têm bula que os equipare e não são regulados como medicamento.",
+        "Não há “Mounjaro de pobre” registrado: o termo circula para canetas contrabandeadas do Paraguai (Tirzec, Lipoless, Gluconex, Tirzedral, T36), proibidas pela ANVISA, ou para manipulados, que a ANVISA só admite em caráter excepcional (Nota Técnica 200/2025).",
+      ] },
+      { heading: "Se a questão é preço", paragraphs: ["Este site não publica preços nem indica onde comprar. O que a regulação permite: medicamentos registrados, com receita retida (RDC 973/2025). Em 2026 a ANVISA registrou semaglutidas nacionais e liraglutidas genéricas, que dependem de preço da CMED para chegar às farmácias. Converse com o médico sobre o que está disponível e registrado."] },
+    ],
+    faq: [
+      { q: "Berberina é o Mounjaro natural?", a: "Não. Berberina é um suplemento; não tem registro como medicamento nem bula que a equipare à tirzepatida. Este site só trata de produtos com bula." },
+      { q: "Tirzepatida manipulada é o Mounjaro de pobre?", a: "É um preparado de farmácia, sem bula aprovada. A ANVISA só admite manipulação em caráter excepcional (NT 200/2025). Veja a página sobre tirzepatida manipulada." },
+      { q: "Existe genérico do Mounjaro?", a: "Não localizamos registro de tirzepatida genérica na ANVISA até 28/10/2026. As canetas de tirzepatida vendidas como genérico vêm do Paraguai e foram proibidas." },
+    ],
+    sources: [mjBula, anvisaOzivy, diarioRO, istoe, tnh1, nt200, bulario],
+  },
+];
