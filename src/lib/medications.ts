@@ -8,7 +8,7 @@
  * recommends a dose: it stores what the prescription says and applies the leaflet's storage
  * rule to the date the user gives.
  */
-export type MedForm = "single-use-pen" | "multidose-pen" | "vial";
+export type MedForm = "single-use-pen" | "multidose-pen" | "vial" | "tablet";
 
 export interface Medication {
   slug: string;
@@ -114,6 +114,26 @@ export const medications: Medication[] = [
       {
         label: "Bula do paciente Saxenda® (liraglutida) — Novo Nordisk, registro ANVISA 1.1766.0032, aprovada em 17/04/2026",
         url: "https://novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Saxenda_Bula_Paciente1.pdf",
+      },
+    ],
+  },
+  {
+    slug: "rybelsus",
+    name: "Rybelsus (semaglutida em comprimido)",
+    activeIngredient: "semaglutida",
+    form: "tablet",
+    frequency: "daily",
+    doseStepsMg: [3, 7, 14],
+    dosesPerPen: 30, // comprimidos por caixa
+    storageDays: null,
+    storageLabel: "em temperatura ambiente (15 °C a 30 °C), no blíster original",
+    maxTempC: 30,
+    missedDoseWindowHours: null, // bula: pule a dose e tome um comprimido na manhã seguinte
+    reviewed: false,
+    sources: [
+      {
+        label: "Bula do paciente Rybelsus® (semaglutida), Novo Nordisk — registro ANVISA 1.1766.0037, aprovada em 08/09/2026",
+        url: "https://www.novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Rybelsus_Bula_PACIENTE.pdf",
       },
     ],
   },

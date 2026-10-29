@@ -34,6 +34,7 @@ const also = [
 
 const groups = [
   { label: "Aplicação semanal (caneta)", slugs: ["mounjaro", "ozempic", "wegovy"] },
+  { label: "Uso diário", slugs: ["saxenda", "rybelsus"] },
   { label: "Manipulados (frasco e seringa)", slugs: ["semaglutida-manipulada", "tirzepatida-manipulada"] },
 ];
 
