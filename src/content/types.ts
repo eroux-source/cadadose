@@ -28,6 +28,7 @@ export type Intent =
   | "quanto-tempo-fica-no-corpo"
   | "alergia"
   | "precisa-de-receita"
+  | "menstruacao" | "anticoncepcional" | "quantos-quilos" | "o-que-comer" | "frasco-ampola"
   | "dose-2-5-mg" | "dose-5-mg" | "dose-7-5-mg" | "dose-10-mg" | "dose-12-5-mg" | "dose-15-mg"
   | "dose-0-25-mg" | "dose-0-5-mg" | "dose-1-mg" | "dose-1-7-mg" | "dose-2-4-mg";
 
@@ -86,6 +87,7 @@ export const intentLabels: Record<Intent, string> = {
   "quanto-tempo-fica-no-corpo": "Quanto tempo fica no corpo",
   "alergia": "Reação alérgica",
   "precisa-de-receita": "Precisa de receita?",
+  "menstruacao": "Menstruação", "anticoncepcional": "Anticoncepcional", "quantos-quilos": "Quantos quilos?", "o-que-comer": "O que comer", "frasco-ampola": "Frasco-ampola",
   "dose-2-5-mg": "2,5 mg", "dose-5-mg": "5 mg", "dose-7-5-mg": "7,5 mg", "dose-10-mg": "10 mg", "dose-12-5-mg": "12,5 mg", "dose-15-mg": "15 mg",
   "dose-0-25-mg": "0,25 mg", "dose-0-5-mg": "0,5 mg", "dose-1-mg": "1 mg", "dose-1-7-mg": "1,7 mg", "dose-2-4-mg": "2,4 mg",
 };

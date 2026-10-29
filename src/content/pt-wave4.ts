@@ -91,13 +91,14 @@ export const ptWave4: Article[] = [
     updated: U,
     reviewed: false,
     sections: [
-      { heading: "Gravidez", paragraphs: ["\"MOUNJARO somente deve ser utilizado em gestantes se o benefício potencial para a mãe justificar o risco para o bebê.\" Se você está grávida ou planeja engravidar, fale com seu médico antes de usar ou continuar."] },
+      { heading: "Gravidez (bula versão 05/2026)", bullets: ["\"Para diabetes mellitus tipo 2, MOUNJARO somente deve ser utilizado em gestantes se o benefício potencial para a mãe justificar o risco para o bebê.\"", "\"Para controle crônico do peso e apneia obstrutiva do sono, MOUNJARO não deve ser utilizado para redução do peso durante a gravidez.\"", "\"Se você deseja engravidar, MOUNJARO deve ser descontinuado pelo menos 1 mês antes de uma gravidez planejada.\""] },
       { heading: "Amamentação", paragraphs: ["A bula informa que a quantidade de tirzepatida no leite materno é \"considerada indetectável a muito baixa\". O uso durante a amamentação deve ser avaliado pelo médico."] },
-      { heading: "Contraceptivos orais", paragraphs: ["A bula não menciona redução da eficácia de contraceptivos orais; ela lista etinilestradiol e norelgestromina entre os medicamentos cuja absorção não é significativamente afetada."] },
+      { heading: "Contraceptivos orais (bula versão 05/2026)", paragraphs: ["A bula passou a orientar: \"recomenda-se o uso de outro método que não seja oral ou acrescentar um método de barreira (como preservativo) no início do tratamento com MOUNJARO (por 4 semanas) e por 4 semanas após cada aumento de dose\". Métodos hormonais não orais não devem ser afetados. Veja a página sobre anticoncepcional."] },
     ],
     faq: [
       { q: "Posso usar Mounjaro amamentando?", a: "Só com avaliação do seu médico. A bula descreve a quantidade no leite como indetectável a muito baixa, mas não libera o uso por conta própria." },
-      { q: "Mounjaro corta o efeito do anticoncepcional?", a: "A bula não descreve redução da eficácia e cita etinilestradiol e norelgestromina entre os medicamentos não afetados de forma significativa." },
+      { q: "Mounjaro corta o efeito do anticoncepcional?", a: "A bula versão 05/2026 recomenda método não oral ou barreira por 4 semanas no início e após cada aumento de dose, por possível redução da eficácia dos orais." },
+      { q: "Quero engravidar: quando parar o Mounjaro?", a: "Pelo menos 1 mês antes de uma gravidez planejada, segundo a bula." },
     ],
     sources: [mounjaroBula],
   },
@@ -176,7 +177,7 @@ export const ptWave4: Article[] = [
     reviewed: false,
     sections: [
       { heading: "O mecanismo", paragraphs: ["O medicamento retarda o esvaziamento gástrico, o que pode alterar a absorção de remédios tomados por via oral ao mesmo tempo."] },
-      { heading: "O que a bula diz não ser afetado de forma significativa", paragraphs: ["Atorvastatina, digoxina, metformina, paracetamol, varfarina, etinilestradiol e norelgestromina, entre outros listados na bula, sem necessidade de ajuste de dose."] },
+      { heading: "O que a bula diz não ser afetado de forma significativa", paragraphs: ["Atorvastatina, digoxina, metformina, paracetamol, varfarina, etinilestradiol e norelgestromina, entre outros listados na bula. A bula pede, porém, monitoramento para medicamentos de margem estreita (varfarina, digoxina) e, para anticoncepcionais orais em mulheres com obesidade ou sobrepeso, recomenda método não oral ou barreira por 4 semanas no início e após cada aumento de dose (versão 05/2026)."] },
       { heading: "Atenção com insulina e sulfonilureia", paragraphs: ["Risco aumentado de hipoglicemia. \"Informe ao seu médico se fizer uso de sulfonilureia ou insulina.\" Com insulina, as injeções devem ser separadas e nunca misturadas."] },
     ],
     faq: [
