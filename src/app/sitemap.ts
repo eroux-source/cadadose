@@ -3,6 +3,7 @@ import { siteUrl } from "@/lib/locales";
 import { medications } from "@/lib/medications";
 import { allArticles } from "@/content";
 import { guias } from "@/content/guias";
+import { intentLabels } from "@/content/types";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date("2026-10-28"); // bump on each content release
@@ -11,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/medicamentos`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${siteUrl}/pro`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${siteUrl}/calendario`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    ...["sobre", "politica-editorial", "fontes", "para-clinicas"].map((p) => ({ url: `${siteUrl}/${p}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.5 })),
+    ...[...new Set(allArticles.map((a) => a.intent))].map((i) => ({ url: `${siteUrl}/temas/${i}`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.7 })),
     { url: `${siteUrl}/perguntas`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     ...guias.map((g) => ({ url: `${siteUrl}/guias/${g.slug}`, lastModified: new Date(g.updated), changeFrequency: "monthly" as const, priority: 0.9 })),
     ...medications.map((m) => ({ url: `${siteUrl}/medicamentos/${m.slug}`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.8 })),

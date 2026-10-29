@@ -24,6 +24,12 @@ ${byMed.filter(Boolean).join("\n\n")}
 
 ${guias.map((g) => `- [${g.title}](${siteUrl}/guias/${g.slug}): ${g.answer}`).join("\n")}
 
+## Sobre o site
+
+- [Sobre](${siteUrl}/sobre), [Política editorial](${siteUrl}/politica-editorial), [Fontes e versões das bulas](${siteUrl}/fontes)
+- [Calendário do tratamento](${siteUrl}/calendario): ferramenta gratuita; marca as aplicações semanais e a validade da caneta pela bula; não sugere dose.
+- Temas: ${[...new Set(allArticles.map((a) => a.intent))].map((i) => `[${intentLabels[i]}](${siteUrl}/temas/${i})`).join(", ")}
+
 ## Aplicativo
 
 - [Meu diário](${siteUrl}/app): funciona no navegador e pode ser instalado na tela inicial; os dados ficam no aparelho do usuário.

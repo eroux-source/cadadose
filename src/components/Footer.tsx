@@ -9,7 +9,7 @@ const cols = [
   { title: "Medicamentos", links: medications.map((m) => [m.name.split(" (")[0], `/medicamentos/${m.slug}`]) },
   { title: "Comparar", links: guias.map((g) => [g.title.split("?")[0] + "?", `/guias/${g.slug}`]) },
   { title: "Perguntas", links: [["Todas as perguntas", "/perguntas"], ["Como aplicar Mounjaro", "/medicamentos/mounjaro/como-aplicar"], ["Esqueci de aplicar", "/medicamentos/mounjaro/esqueci-de-aplicar"], ["Validade da caneta", "/medicamentos/ozempic/validade-depois-de-aberta"]] },
-  { title: "CadaDose", links: [[t.footer.privacy, "/privacidade"], [t.footer.terms, "/termos"], ["Fontes (llms.txt)", "/llms.txt"]] },
+  { title: "CadaDose", links: [["Sobre", "/sobre"], ["Política editorial", "/politica-editorial"], ["Fontes e bulas", "/fontes"], ["Para clínicas (widget)", "/para-clinicas"], [t.footer.privacy, "/privacidade"], [t.footer.terms, "/termos"], ["RSS", "/feed.xml"], ["llms.txt", "/llms.txt"]] },
 ];
 
 export default function Footer() {

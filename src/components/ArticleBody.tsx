@@ -2,6 +2,7 @@ import Link from "next/link";
 import { dictionary as t } from "@/i18n/dictionaries";
 import type { Section } from "@/content/types";
 import InfoNotice from "@/components/InfoNotice";
+import CiteBlock from "@/components/CiteBlock";
 
 interface Body {
   answer: string;
@@ -12,7 +13,7 @@ interface Body {
 }
 
 /** Shared renderer: answer box with source, sections each with their source line, FAQ with [fonte], full source list. */
-export default function ArticleBody({ a, note }: { a: Body; note?: string }) {
+export default function ArticleBody({ a, note, path, title }: { a: Body; note?: string; path?: string; title?: string }) {
   const Src = () => (
     <>
       {a.sources.map((s, i) => (
@@ -69,6 +70,7 @@ export default function ArticleBody({ a, note }: { a: Body; note?: string }) {
         <InfoNotice className="mt-3" />
       </section>
 
+      {path && title && <CiteBlock title={title} path={path} updated={a.updated} />}
       <div className="mt-10 flex flex-wrap gap-3"><Link href="/calendario" className="btn btn-primary">Montar meu calendário de aplicações</Link><Link href="/em-breve" className="btn btn-ghost">Quero o app</Link></div>
     </>
   );

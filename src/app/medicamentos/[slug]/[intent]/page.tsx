@@ -42,6 +42,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       about: { "@type": "Drug", name: med.name, activeIngredient: med.activeIngredient },
       publisher: { "@type": "Organization", name: siteName, url: siteUrl },
     },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Perguntas", item: `${siteUrl}/perguntas` }, { "@type": "ListItem", position: 2, name: med.name, item: `${siteUrl}/medicamentos/${slug}` }, { "@type": "ListItem", position: 3, name: intentLabels[a.intent], item: url }] },
     { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: a.faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) },
   ];
   return (
@@ -53,7 +54,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       </nav>
       <span className="eyebrow mt-4">{intentLabels[a.intent]}</span>
       <h1 className="mt-2 text-3xl font-semibold leading-tight md:text-4xl">{a.title}</h1>
-      <ArticleBody a={a} />
+      <ArticleBody a={a} path={`/medicamentos/${slug}/${intent}`} title={a.title} />
     </article>
   );
 }
