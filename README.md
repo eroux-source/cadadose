@@ -34,3 +34,12 @@ Variáveis (ver `.env.example`): `NEXT_PUBLIC_SITE_URL`; Paddle (`NEXT_PUBLIC_PA
 3. Push notifications (servidor de envio; o service worker já trata `push`).
 4. Comparador de preços em farmácias (dados vivos, citáveis por IAs).
 5. App nativa (Capacitor) quando houver assinantes.
+
+## Estado em 29/10/2026
+
+- 234 páginas: 128 respostas (Mounjaro, Ozempic, Wegovy, Saxenda, Rybelsus, manipulados), 11 guias, 28 hubs de tema, calendário, em-breve, sobre, política editorial, fontes, para-clínicas, widget.
+- Cada resposta: answer-first, seções com a frase da bula entre aspas, FAQ, fontes com registro/data, InfoNotice, bloco "Citar esta página", links relacionados, OG image, JSON-LD (MedicalWebPage, FAQPage, BreadcrumbList).
+- GEO: `/llms.txt`, `/llms-full.txt`, `/feed.xml`, Organization JSON-LD, páginas E-E-A-T.
+- Lead capture: `/calendario` e `/em-breve` → `POST /api/lead` → `LEAD_WEBHOOK_URL`.
+- Máquina SEO: `tools/seo/` (ingest, gaps, forecast, check-bulas, indexnow) + Action mensal de verificação das bulas.
+- Deploy: ver `DEPLOY.md`.
