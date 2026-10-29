@@ -47,7 +47,7 @@ export default function EmBreve() {
           <p className="text-sm font-medium text-white/70">Estamos criando o app</p>
           <h1 className="mt-4 text-4xl font-bold leading-[1.02] md:text-6xl">Um diário de GLP-1 que só repete o que a bula diz.</h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">
-            Para quem usa Mounjaro, Ozempic, Wegovy ou versões manipuladas no Brasil. Enquanto o app não sai, as {allArticles.length + guias.length} respostas já estão no ar, com a fonte ao lado de cada uma.
+            Para quem usa Mounjaro, Ozempic, Wegovy, Saxenda, Rybelsus ou versões manipuladas no Brasil. Enquanto o app não sai, as {allArticles.length + guias.length} respostas já estão no ar, com a fonte ao lado de cada uma.
           </p>
           <a href="#avise" className="btn mt-8 bg-warm text-warm-ink">Quero ser avisado</a>
         </div>
