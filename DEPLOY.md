@@ -4,7 +4,8 @@
 1. Import the GitHub repo `eroux-source/cadadose` in Vercel (framework: Next.js, defaults are fine).
 2. Environment variables (Production):
    - `NEXT_PUBLIC_SITE_URL=https://cadadose.com`
-   - `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=cadadose.com` (optional; or add GA4 in `layout.tsx`).
+   - `NEXT_PUBLIC_GA_ID` (Google Analytics 4; defaults to `G-BEGVPYBY9Q`, property "CadaDose"; set to `off` to disable).
+   - `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=cadadose.com` (optional alternative).
    - Later, for Pro: `NEXT_PUBLIC_PADDLE_*` (see `.env.example`).
 3. Add the domain `cadadose.com` (+ `www` redirect) in Vercel → DNS at the registrar.
 

@@ -9,6 +9,7 @@ import { siteName, siteUrl } from "@/lib/locales";
 import { social } from "@/lib/seo";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import Analytics from "@/components/Analytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN && <script defer data-domain={process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN} src="https://plausible.io/js/script.js" />}
       </head>
       <body className="min-h-screen flex flex-col">
+        <Analytics />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
