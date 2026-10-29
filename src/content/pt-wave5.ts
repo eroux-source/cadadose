@@ -176,10 +176,11 @@ export const ptWave5: Article[] = [
   // ───────── TIREOIDE ─────────
   A("mounjaro", "tireoide",
     "Mounjaro e tireoide: o que a bula brasileira diz sobre tumores de células C",
-    "A bula do Mounjaro afirma: “não se sabe se MOUNJARO causa tumores de células C da tireoide em humanos” e orienta: “Informe ao seu médico caso tenha nódulos na tireoide.”",
-    "O aviso da bula do Mounjaro sobre tireoide e nódulos.",
+    "A bula do Mounjaro (versão 05/2026) contraindica o uso em quem tem “histórico pessoal ou familiar de carcinoma medular de tireoide” ou neoplasia endócrina múltipla tipo 2 (NEM2). Na seção de advertências, orienta: “Informe ao seu médico caso tenha nódulos na tireoide.” Aumento de calcitonina aparece entre as reações comuns ou incomuns, conforme o estudo.",
+    "Tireoide na bula do Mounjaro: contraindicação por carcinoma medular/NEM2, nódulos e calcitonina.",
     [
-      { heading: "Texto da bula (seção 4, “Risco de tumores de células C da tireoide”)", bullets: ["“não se sabe se MOUNJARO causa tumores de células C da tireoide em humanos.”", "“Informe ao seu médico caso tenha nódulos na tireoide.”"] },
+      { heading: "Contraindicação (seção 3)", bullets: ["“histórico pessoal ou familiar de carcinoma medular de tireoide”.", "Neoplasia endócrina múltipla tipo 2 (NEM2)."] },
+      { heading: "Advertência (seção 4, “Risco de tumores de células C da tireoide”)", bullets: ["“Informe ao seu médico caso tenha nódulos na tireoide.”", "Reações listadas (seção 8): aumento de calcitonina, comum nos estudos de controle do peso e incomum no diabetes tipo 2."] },
       silent("Mounjaro", "hipotireoidismo ou uso de levotiroxina"),
     ],
     [
@@ -255,14 +256,15 @@ export const ptWave5: Article[] = [
     [wg, bulario]),
   A("mounjaro", "queda-de-cabelo",
     "Mounjaro causa queda de cabelo? O que a bula diz (e não diz)",
-    "A bula brasileira do Mounjaro não menciona queda de cabelo nem alopecia entre as reações listadas. Isso não prova que não aconteça; significa que não consta na bula versão 05/2026. Se notar queda, registre e informe o médico.",
-    "Queda de cabelo e Mounjaro: o que consta (e o que não consta) na bula brasileira.",
+    "Sim, consta na bula. A versão 05/2026 da bula do Mounjaro lista queda de cabelo como reação comum (1% a 10%) nos estudos de controle do peso, apneia do sono e insuficiência cardíaca; não aparece na lista dos estudos de diabetes tipo 2. A bula anterior (21/11/2024) não trazia esse item.",
+    "Queda de cabelo na bula do Mounjaro versão 05/2026: frequência e em quais estudos aparece.",
     [
-      silent("Mounjaro", "queda de cabelo ou alopecia"),
-      { heading: "Para comparar", paragraphs: ["A bula do Wegovy (semaglutida), outro medicamento da mesma classe, lista queda de cabelo como efeito comum. Cada bula vale só para o seu medicamento."] },
+      { heading: "Texto da bula (seção 8)", bullets: ["Comum (1% a 10%): queda de cabelo, nos estudos de controle crônico do peso, apneia obstrutiva do sono e insuficiência cardíaca.", "Não listada nos estudos de diabetes tipo 2."] },
+      { heading: "O que mudou", paragraphs: ["A bula de 21/11/2024 não mencionava queda de cabelo; o item entrou com a ampliação de uso aprovada em 22/04/2026. Este site acompanha a versão mais recente."] },
+      silent("Mounjaro", "duração da queda, causa ou suplementos"),
       diario,
     ],
-    [{ q: "Mounjaro está ligado à queda de cabelo?", a: "A bula brasileira não lista. Informe seu médico se notar." }],
+    [{ q: "Mounjaro causa queda de cabelo?", a: "A bula versão 05/2026 lista como reação comum nos estudos de controle do peso. Registre e informe o médico." }],
     [mj, wg, bulario]),
 
   // ───────── VIAGEM ─────────
@@ -447,10 +449,10 @@ export const ptWave5: Article[] = [
     [oz, bulario]),
   A("mounjaro", "alergia",
     "Reação alérgica ao Mounjaro: urticária, eczema e quando interromper",
-    "A bula do Mounjaro descreve reações de hipersensibilidade como urticária (vergões avermelhados na pele) e eczema (inflamação na pele) e orienta: “Caso ocorra uma reação de hipersensibilidade, interrompa o uso de MOUNJARO e informe ao seu médico.”",
-    "Reações de hipersensibilidade ao Mounjaro segundo a bula brasileira.",
+    "A bula do Mounjaro lista reação de hipersensibilidade como comum (1% a 10%), com urticária (vergões avermelhados na pele) e eczema como exemplos, e orienta: “interrompa o uso de MOUNJARO e informe ao seu médico.” Reação anafilática e angioedema são raras (0,01% a 0,1%). Alergia à tirzepatida ou a qualquer componente é contraindicação.",
+    "Reações de hipersensibilidade ao Mounjaro segundo a bula versão 05/2026: frequência, sinais e o que fazer.",
     [
-      { heading: "Texto da bula (seção 4, “Reações de hipersensibilidade”)", bullets: ["“urticária (vergões avermelhados na pele) e eczema (inflamação na pele)”.", "“Caso ocorra uma reação de hipersensibilidade, interrompa o uso de MOUNJARO e informe ao seu médico.”"] },
+      { heading: "Texto da bula (seções 3, 4 e 8)", bullets: ["Contraindicação: “Não utilize MOUNJARO caso seja alérgico à tirzepatida” ou a qualquer excipiente.", "Hipersensibilidade: reação comum; exemplos na bula: urticária e eczema. “interrompa o uso de MOUNJARO e informe ao seu médico.”", "Raras: “reação anafilática” e angioedema (dados pós-comercialização)."] },
     ],
     [{ q: "Urticária depois do Mounjaro: continuo aplicando?", a: "A bula orienta interromper o uso e informar o médico." }],
     [mj, bulario]),

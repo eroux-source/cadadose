@@ -186,7 +186,7 @@ export const ptArticles: Article[] = [
     intent: "efeitos-colaterais",
     title: "Efeitos colaterais do Mounjaro (tirzepatida) segundo a bula brasileira",
     answer:
-      "Os efeitos muito comuns do Mounjaro (mais de 10% dos pacientes) são náusea e diarreia, e hipoglicemia quando usado com insulina basal ou sulfonilureia. Os comuns (1% a 10%) incluem dor abdominal, vômito, indigestão, prisão de ventre, distensão abdominal, arrotos, gases, refluxo, doença aguda da vesícula biliar, cansaço, reação no local da aplicação, hipersensibilidade e redução do apetite.",
+      "Os efeitos muito comuns do Mounjaro (mais de 10% dos pacientes) são náusea e diarreia, e hipoglicemia quando usado com insulina basal ou sulfonilureia; nos estudos de controle do peso (bula versão 05/2026), também vômito e prisão de ventre. Os comuns (1% a 10%) incluem dor abdominal, vômito, indigestão, prisão de ventre, distensão abdominal, arrotos, gases, refluxo, doença aguda da vesícula biliar, cansaço, reação no local da aplicação, hipersensibilidade e redução do apetite.",
     description: "Efeitos colaterais do Mounjaro por frequência, como listados na bula brasileira, e os avisos da bula sobre pancreatite, hipoglicemia, desidratação, vesícula, retinopatia e alergia.",
     updated: "2026-10-28",
     reviewed: false,
@@ -197,8 +197,8 @@ export const ptArticles: Article[] = [
           head: ["Frequência", "Reações listadas"],
           rows: [
             ["Muito comum (> 10%)", "Náusea; diarreia; hipoglicemia com insulina basal ou sulfonilureia (com ou sem metformina / inibidor de SGLT-2)"],
-            ["Comum (1% a 10%)", "Dor abdominal, vômito, dispepsia, prisão de ventre, distensão abdominal, arrotos, flatulência, refluxo; doença aguda da vesícula biliar; cansaço; reação no local da aplicação; reação de hipersensibilidade; redução do apetite; hipoglicemia com metformina + inibidor de SGLT-2"],
-            ["Incomum (0,1% a 1%)", "Alteração do paladar (disgeusia); hipoglicemia com metformina isolada; disestesia"],
+            ["Comum (1% a 10%)", "Dor abdominal, vômito, dispepsia, prisão de ventre, distensão abdominal, arrotos, flatulência, refluxo; doença aguda da vesícula biliar; cansaço; reação no local da aplicação; reação de hipersensibilidade; redução do apetite; aumento da frequência cardíaca; aumento de lipase e amilase; hipoglicemia com metformina + inibidor de SGLT-2. Nos estudos de controle do peso/apneia (versão 05/2026): também tontura, queda de cabelo, hipotensão, cálculos biliares, aumento de calcitonina"],
+            ["Incomum (0,1% a 1%)", "Pancreatite aguda; alteração do paladar (disgeusia); hipoglicemia com metformina isolada; dor no local da injeção; cálculos biliares e colecistite (conforme o estudo); disestesia"],
             ["Rara (0,01% a 0,1%)", "Reação anafilática; angioedema"],
           ],
         },

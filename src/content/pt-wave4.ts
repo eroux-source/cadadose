@@ -57,7 +57,7 @@ export const ptWave4: Article[] = [
     intent: "quem-nao-pode-tomar",
     title: "Quem não pode tomar Mounjaro: as contraindicações da bula",
     answer:
-      "Segundo a bula, Mounjaro não deve ser usado por quem tem alergia à tirzepatida ou a qualquer componente da fórmula, nem por quem tem histórico pessoal ou familiar de carcinoma medular de tireoide ou de neoplasia endócrina múltipla tipo 2 (NEM2). Pessoas com doença gastrointestinal grave não foram estudadas, e menores de 18 anos não têm segurança e eficácia estabelecidas.",
+      "Segundo a bula, Mounjaro não deve ser usado por quem tem alergia à tirzepatida ou a qualquer componente da fórmula, nem por quem tem histórico pessoal ou familiar de carcinoma medular de tireoide ou de neoplasia endócrina múltipla tipo 2 (NEM2). A bula versão 05/2026 também não recomenda o uso em gastroparesia grave ou outra doença gastrointestinal grave, e traz advertências novas: aspiração pulmonar em anestesia geral ou sedação profunda, desnutrição e relatos de pensamento suicida com produtos para perda de peso. Para diabetes tipo 2, a bula admite uso a partir de 10 anos.",
     description: "Contraindicações do Mounjaro segundo a bula brasileira, e os grupos para os quais a bula pede cautela.",
     updated: U,
     reviewed: false,
@@ -66,11 +66,14 @@ export const ptWave4: Article[] = [
       {
         heading: "Situações em que a bula pede atenção",
         bullets: [
-          "Doença gastrointestinal grave: o medicamento \"não foi estudado em pacientes com doença gastrointestinal grave\".",
+          "Doença gastrointestinal grave: não recomendado em gastroparesia grave ou outra doença gastrointestinal grave (versão 05/2026).",
+          "Anestesia: “Foi reportada aspiração pulmonar (broncoaspiração) em pacientes submetidos a anestesia geral ou sedação profunda”; informe a equipe antes de qualquer procedimento.",
+          "Pensamentos suicidas: “comportamento e pensamento suicida foram reportados com o uso de produtos que induzem a perda de peso”; mudanças de humor devem ser informadas ao médico.",
+          "Desnutrição: a bula relata casos, possivelmente graves.",
           "Pancreatite: diante de suspeita, interromper e informar o médico; se confirmada, \"MOUNJARO não deverá ser reiniciado\".",
           "Uso com insulina ou sulfonilureia: maior risco de hipoglicemia; o médico pode ajustar as doses.",
           "Doença da vesícula biliar e retinopatia diabética: informe seu médico.",
-          "Menores de 18 anos: segurança e eficácia não estabelecidas.",
+          "Crianças e adolescentes: para diabetes tipo 2, a bula versão 05/2026 descreve uso a partir de 10 anos (dose máxima 10 mg); para controle do peso e apneia, uso adulto.",
         ],
       },
     ],
