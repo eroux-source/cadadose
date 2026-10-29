@@ -8,6 +8,7 @@ import { allArticles, getArticle } from "@/content";
 import { intentLabels } from "@/content/types";
 import ArticleBody from "@/components/ArticleBody";
 import Related from "@/components/Related";
+import { themeImage } from "@/lib/images";
 
 export function generateStaticParams() {
   return allArticles.map((a) => ({ slug: a.medicationSlug, intent: a.intent }));
@@ -47,14 +48,15 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: a.faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) },
   ];
   return (
-    <article className="mx-auto max-w-3xl px-4 py-12">
+    <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <nav className="text-sm text-muted">
         <Link href="/perguntas" className="hover:text-accent">Perguntas</Link> ›{" "}
         <Link href={`/medicamentos/${slug}`} className="hover:text-accent">{med.name}</Link> › {intentLabels[a.intent]}
       </nav>
       <span className="eyebrow mt-4">{intentLabels[a.intent]}</span>
-      <h1 className="mt-2 text-3xl font-semibold leading-tight md:text-4xl">{a.title}</h1>
+      <h1 className="mt-2 text-3xl leading-tight md:text-5xl">{a.title}</h1>
+      <div className="mt-8 aspect-[3/2] overflow-hidden rounded-md"><img src={themeImage(intent, slug)} alt="" className="photo" /></div>
       <ArticleBody a={a} path={`/medicamentos/${slug}/${intent}`} title={a.title} />
       <Related slug={slug} intent={intent} />
     </article>

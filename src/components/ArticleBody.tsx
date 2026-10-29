@@ -27,7 +27,7 @@ export default function ArticleBody({ a, note, path, title }: { a: Body; note?: 
         {t.content.updated} {new Date(a.updated + "T12:00:00").toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" })} · {note ?? t.content.reviewPending}
       </p>
 
-      <div className="mt-6 rounded-2xl bg-accent-soft p-5">
+      <div className="mt-6 rounded-md bg-accent-soft p-6">
         <p className="text-lg leading-relaxed">{a.answer}</p>
         <p className="mt-3 text-xs text-muted">Fonte: <Src /></p>
         <InfoNotice className="mt-3" />
@@ -35,7 +35,7 @@ export default function ArticleBody({ a, note, path, title }: { a: Body; note?: 
 
       {a.sections.map((s) => (
         <section key={s.heading} className="mt-10">
-          <h2 className="text-xl font-semibold">{s.heading}</h2>
+          <h2 className="text-2xl">{s.heading}</h2>
           {s.paragraphs?.map((p) => <p key={p} className="mt-3 leading-relaxed">{p}</p>)}
           {s.steps && <ol className="mt-3 list-decimal space-y-2 pl-6 leading-relaxed">{s.steps.map((x) => <li key={x}>{x}</li>)}</ol>}
           {s.bullets && <ul className="mt-3 list-disc space-y-2 pl-6 leading-relaxed">{s.bullets.map((x) => <li key={x}>{x}</li>)}</ul>}
@@ -52,7 +52,7 @@ export default function ArticleBody({ a, note, path, title }: { a: Body; note?: 
       ))}
 
       <section className="mt-10">
-        <h2 className="text-xl font-semibold">{t.content.faq}</h2>
+        <h2 className="text-2xl">{t.content.faq}</h2>
         <dl className="mt-3 space-y-4">
           {a.faq.map((f) => (
             <div key={f.q}>

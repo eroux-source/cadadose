@@ -5,6 +5,7 @@ import { allArticles } from "@/content";
 import { intentLabels, type Intent } from "@/content/types";
 import { getMedication } from "@/lib/medications";
 import InfoNotice from "@/components/InfoNotice";
+import { themeImage } from "@/lib/images";
 
 const intents = [...new Set(allArticles.map((a) => a.intent))];
 export function generateStaticParams() { return intents.map((intent) => ({ intent })); }
@@ -22,13 +23,14 @@ export default async function Tema({ params }: { params: Promise<{ intent: strin
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
       <nav className="text-sm text-muted"><Link href="/perguntas" className="hover:text-accent">Perguntas</Link> › {label}</nav>
-      <h1 className="mt-2 text-3xl font-semibold leading-tight md:text-4xl">{label}: o que diz a bula de cada medicamento</h1>
+      <h1 className="mt-2 text-3xl leading-tight md:text-5xl">{label}: o que diz a bula de cada medicamento</h1>
+      <div className="mt-8 aspect-[3/2] overflow-hidden rounded-md"><img src={themeImage(intent)} alt="" className="photo" /></div>
       <p className="mt-3 text-muted">A mesma pergunta, respondida pela bula de cada produto. As respostas diferem porque as bulas diferem.</p>
       <ul className="mt-8 space-y-4">
         {arts.map((a) => {
           const med = getMedication(a.medicationSlug);
           return (
-            <li key={a.medicationSlug} className="rounded-2xl border border-border bg-card p-5">
+            <li key={a.medicationSlug} className="rounded-md border border-border bg-card p-5">
               <p className="eyebrow">{med?.name}</p>
               <Link href={`/medicamentos/${a.medicationSlug}/${a.intent}`} className="mt-1 block text-lg font-semibold hover:text-accent">{a.title}</Link>
               <p className="mt-2 text-sm text-muted">{a.answer}</p>

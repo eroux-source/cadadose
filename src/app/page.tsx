@@ -3,240 +3,193 @@ import { dictionary as t } from "@/i18n/dictionaries";
 import { medications } from "@/lib/medications";
 import { allArticles } from "@/content";
 import { guias } from "@/content/guias";
-import { MockToday, MockWeight, MockSymptoms, MockReport, MockStock } from "@/components/landing/Mocks";
+import { intentLabels } from "@/content/types";
+import { medImage, themeImage } from "@/lib/images";
 import InfoNotice from "@/components/InfoNotice";
-import PenTabs from "@/components/landing/PenTabs";
+import MedTabs from "@/components/landing/MedTabs";
 
-/* FAQ: every answer is a verbatim FAQ answer from a sourced article (linked). */
-const faq: { q: string; slug: string; intent: string; idx: number }[] = [
-  { q: "O diário calcula ou recomenda a minha dose?", slug: "", intent: "", idx: -1 },
-  { q: "Preciso criar conta ou pagar para usar?", slug: "", intent: "", idx: -1 },
-  { q: "Mounjaro pode ficar fora da geladeira?", slug: "mounjaro", intent: "validade-depois-de-aberta", idx: 0 },
-  { q: "Esqueci o Mounjaro por 2 dias, posso aplicar?", slug: "mounjaro", intent: "esqueci-de-aplicar", idx: 0 },
-  { q: "A caneta do Mounjaro no Brasil tem várias doses?", slug: "mounjaro", intent: "como-aplicar", idx: 1 },
-  { q: "Posso mudar o dia da aplicação?", slug: "mounjaro", intent: "como-aplicar", idx: 3 },
-];
-const ownAnswers: Record<string, string> = {
-  "O diário calcula ou recomenda a minha dose?":
-    "Não. Você informa a dose exatamente como está na sua receita e o diário só registra. Mudanças de dose são decisão do seu médico; as tabelas que publicamos reproduzem a bula aprovada pela ANVISA, com a fonte ao lado.",
-  "Preciso criar conta ou pagar para usar?":
-    "Não. O diário funciona no navegador do celular, sem cadastro, e os dados ficam no seu aparelho. Tudo é gratuito.",
-};
-
-const also = [
-  { title: "Rodízio de locais", text: "Abdômen, coxa ou braço: o diário sugere o próximo ponto para não repetir o mesmo lugar." },
-  { title: "Canetas e frascos", text: "Caneta de uso único, caneta multidose ou frasco manipulado com seringa, cada um com suas regras." },
-  { title: "Lembrete semanal", text: "Escolha o dia e a hora. O diário avisa quando chega a vez, mesmo com o celular no bolso." },
-  { title: "Exportar e apagar", text: "Seus dados em um arquivo, quando quiser. Apagar tudo leva um toque." },
-  { title: "Curva de peso", text: "Cada mudança de dose fica marcada no gráfico, para ver o que aconteceu depois." },
-  { title: "Relatório para o médico", text: "Aplicações, peso e efeitos em uma página, pronta para imprimir ou mandar por WhatsApp." },
+const familiar = [
+  { img: "/img/card-1.jpg", title: "A caneta ficou fora da geladeira. Ainda vale?", href: "/temas/validade-depois-de-aberta" },
+  { img: "/img/card-2.jpg", title: "Passou o dia da dose. E agora?", href: "/temas/esqueci-de-aplicar" },
+  { img: "/img/card-3.jpg", title: "Enjoo na semana do aumento. É normal?", href: "/temas/nausea-o-que-fazer" },
+  { img: "/img/t-precisa-de-receita.jpg", title: "A farmácia pediu a receita retida. Por quê?", href: "/temas/precisa-de-receita" },
 ];
 
-const groups = [
-  { label: "Aplicação semanal (caneta)", slugs: ["mounjaro", "ozempic", "wegovy"] },
-  { label: "Uso diário", slugs: ["saxenda", "rybelsus"] },
-  { label: "Manipulados (frasco e seringa)", slugs: ["semaglutida-manipulada", "tirzepatida-manipulada"] },
+const reading = [
+  { slug: "mounjaro", intent: "validade-depois-de-aberta" },
+  { slug: "wegovy", intent: "nausea-o-que-fazer" },
+  { slug: "mounjaro", intent: "anticoncepcional" },
 ];
 
-function Row({ eyebrow, title, bullets, children, flip }: { eyebrow: string; title: string; bullets: string[]; children: React.ReactNode; flip?: boolean }) {
-  return (
-    <div className={`grid items-center gap-10 md:grid-cols-2 ${flip ? "md:[&>*:first-child]:order-2" : ""}`}>
-      <div>
-        <span className="eyebrow">{eyebrow}</span>
-        <h3 className="mt-3 text-2xl font-semibold leading-tight md:text-3xl">{title}</h3>
-        <ul className="mt-5 space-y-2 text-muted">
-          {bullets.map((b) => (
-            <li key={b} className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />{b}</li>
-          ))}
-        </ul>
-      </div>
-      <div className="grid grid-cols-2 gap-4 md:gap-6">{children}</div>
-    </div>
-  );
-}
+const faq = [
+  ["O site calcula ou recomenda a minha dose?", "Não. Você informa a dose exatamente como está na sua receita e o diário só registra. As tabelas publicadas reproduzem a bula aprovada pela ANVISA, com a fonte ao lado."],
+  ["De onde vêm as respostas?", "Da bula do paciente de cada medicamento, citada entre aspas com a seção. Quando a bula não trata do assunto, a página diz isso e para por aí."],
+  ["Preciso criar conta ou pagar?", "Não. Tudo é gratuito. O diário funciona no navegador do celular, sem cadastro, e os dados ficam no seu aparelho."],
+  ["Vocês vendem ou indicam onde comprar?", "Não. Sem venda, sem comissão de farmácia, sem anúncios."],
+  ["Com que frequência as bulas são verificadas?", "Todo mês. Em maio de 2026 a bula do Mounjaro mudou de indicações e de regras de contracepção; o site mudou com ela, e cada página mostra a data da revisão."],
+  ["Isso substitui o meu médico?", "Não. Cada página traz a mesma frase: apenas para informação, não é orientação médica. Fale com quem prescreveu o seu tratamento antes de mudar qualquer coisa."],
+];
 
 export default function Landing() {
-  const trust = ["Grátis para começar", "Sem cadastro", "Primeira aplicação registrada em 30 segundos"];
+  const count = allArticles.length;
   return (
-    <div className="mx-auto max-w-6xl px-4">
-      {/* HERO: one cobalt slab, everything else on the page stays quiet */}
-      <section className="mt-4 rounded-[2.5rem] bg-accent px-6 pb-0 pt-14 text-white md:px-14 md:pt-20">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium text-white/70">Diário de tratamento GLP-1, feito para o Brasil</p>
-          <h1 className="mt-4 text-4xl font-bold leading-[1.02] md:text-6xl">
-            Seu diário de GLP-1, da primeira aplicação até a meta.
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">{t.hero.subtitle}</p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link href="/app" className="btn bg-warm text-warm-ink hover:brightness-105">Abrir meu diário, é grátis</Link>
-            <Link href="/perguntas" className="btn border border-white/40 text-white hover:border-white">Ver as respostas da bula</Link>
+    <div>
+      {/* HERO: ink background, photo right */}
+      <section className="bg-ink text-[#f7f6f1]">
+        <div className="mx-auto grid max-w-7xl items-stretch md:grid-cols-2">
+          <div className="flex flex-col justify-center px-6 py-16 md:px-12 md:py-24">
+            <div className="flex flex-wrap gap-2">
+              <span className="chip !border-white/20 !text-white/70">Grátis, sem conta</span>
+              <span className="chip !border-white/20 !text-white/70">Baseado nas bulas da ANVISA</span>
+            </div>
+            <h1 className="mt-8 text-5xl leading-[1.02] md:text-6xl lg:text-7xl">Mounjaro, Ozempic e Wegovy, respondidos pela bula.</h1>
+            <p className="mt-6 max-w-md text-lg text-white/75">{count} perguntas que as pessoas fazem de verdade, respondidas com a bula do paciente, frase por frase. E um diário para a semana da dose.</p>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Link href="/perguntas" className="btn btn-light">Ver as respostas</Link>
+              <Link href="/app" className="text-sm text-white/80 underline underline-offset-4 hover:text-white">Abrir meu diário</Link>
+            </div>
+            <ul className="mt-8 space-y-1 text-sm text-white/70">
+              <li>· Nenhuma calculadora de dose, nenhum “nível no sangue”</li>
+              <li>· Nenhuma venda, comissão ou anúncio</li>
+            </ul>
           </div>
-          <ul className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm text-white/75">
-            {trust.map((x) => <li key={x}>{x}</li>)}
-          </ul>
-        </div>
-        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3 sm:items-end">
-          <MockSymptoms />
-          <div className="sm:-mt-8"><MockToday /></div>
-          <MockWeight />
+          <div className="relative min-h-[360px] md:min-h-[640px]">
+            <img src="/img/hero.jpg" alt="" className="photo absolute inset-0" />
+          </div>
         </div>
       </section>
 
-      {/* INSIDE THE DIARY */}
-      <section id="recursos" className="scroll-mt-20 py-16">
-        <div className="text-center">
-          <span className="eyebrow">Dentro do diário</span>
-          <h2 className="mx-auto mt-3 max-w-2xl text-3xl font-semibold leading-tight md:text-4xl">Tudo o que a sua rotina com GLP-1 precisa.</h2>
-        </div>
-        <div className="mt-14 space-y-20">
-          <Row
-            eyebrow="Efeitos colaterais"
-            title="Veja como você se sentiu em cada dose, não só hoje."
-            bullets={[
-              "Registre náusea, enjoo, prisão de ventre e o que mais sentir, com intensidade.",
-              "Cada registro fica ligado à dose da semana: dá para ver se o aumento mudou algo.",
-              "Sintomas fortes ou persistentes: o diário lembra de falar com o médico.",
-            ]}
-          >
-            <MockSymptoms />
-            <MockWeight />
-          </Row>
-          <Row
-            flip
-            eyebrow="Estoque e validade"
-            title="Saiba até quando a caneta aberta pode ser usada."
-            bullets={[
-              "Mounjaro: até 21 dias fora da geladeira, abaixo de 30 °C (bula).",
-              "Ozempic e Wegovy: 6 semanas após o primeiro uso (bula).",
-              "Doses restantes na caneta multidose e quantas canetas há em casa.",
-            ]}
-          >
-            <MockStock />
-            <MockToday />
-          </Row>
-          <Row
-            eyebrow="Relatório para o médico"
-            title="Chegue na consulta com a história completa."
-            bullets={[
-              "Aplicações, doses, peso e efeitos das últimas semanas em uma página.",
-              "Imprima, salve em PDF ou mande por WhatsApp antes da consulta.",
-              "Grátis, como o resto do diário.",
-            ]}
-          >
-            <MockReport />
-            <MockSymptoms />
-          </Row>
+      {/* INTRO */}
+      <section className="mx-auto max-w-7xl px-6 py-20 md:px-12 md:py-28">
+        <span className="eyebrow">O que fazemos</span>
+        <h2 className="mt-5 max-w-4xl text-3xl leading-[1.15] md:text-5xl">
+          Sem reels, sem opinião de blog, sem “depende”. Só o que está escrito na bula
+          <img src="/img/t-tabela-de-dose.jpg" alt="" className="mx-2 inline-block h-9 w-16 rounded-sm object-cover align-middle md:h-12 md:w-20" />
+          e a seção onde está.
+          <img src="/img/principles.jpg" alt="" className="mx-2 inline-block h-9 w-16 rounded-sm object-cover align-middle md:h-12 md:w-20" />
+        </h2>
+        <div className="mt-8 flex flex-wrap gap-4">
+          <Link href="/sobre" className="btn btn-primary">Como fazemos</Link>
+          <Link href="/politica-editorial" className="btn btn-ghost">Política editorial</Link>
         </div>
       </section>
 
-      {/* PEN VALIDITY TABS (replaces the drug-level estimator: that would be unsourced) */}
-      <section id="validade" className="scroll-mt-20 py-16">
-        <div className="text-center">
-          <span className="eyebrow">Regra da bula</span>
-          <h2 className="mx-auto mt-3 max-w-2xl text-3xl font-semibold leading-tight md:text-4xl">Quanto tempo a caneta aberta dura, segundo a bula.</h2>
-          <p className="mx-auto mt-3 max-w-xl text-muted">O diário conta os dias a partir da data em que você abriu a caneta ou tirou a caixa da geladeira. Nenhuma estimativa: só o que está escrito na bula aprovada pela ANVISA.</p>
-        </div>
-        <PenTabs meds={medications.filter((m) => m.storageDays !== null).map((m) => ({ slug: m.slug, name: m.name, storageDays: m.storageDays!, storageLabel: m.storageLabel ?? "", dosesPerPen: m.dosesPerPen, source: m.sources[0] }))} />
-      </section>
-
-      {/* ALSO IN THE DIARY */}
-      <section className="py-16">
-        <div className="text-center">
-          <span className="eyebrow">Também no diário</span>
-          <h2 className="mx-auto mt-3 max-w-2xl text-3xl font-semibold leading-tight md:text-4xl">O diário de GLP-1 para o tratamento inteiro, em um só lugar.</h2>
-        </div>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-          {also.map((f, i) => (
-            <div key={f.title} className={`tile border border-border ${i === 0 ? "bg-accent text-white" : "bg-card"}`}>
-              <h3 className="font-semibold">{f.title}</h3>
-              <p className={`mt-2 text-sm ${i === 0 ? "text-white/80" : "text-muted"}`}>{f.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* COVERAGE */}
-      <section id="medicamentos" className="scroll-mt-20 py-16">
-        <div className="text-center">
-          <span className="eyebrow">Medicamentos</span>
-          <h2 className="mx-auto mt-3 max-w-2xl text-3xl font-semibold leading-tight md:text-4xl">Funciona com os GLP-1 vendidos no Brasil.</h2>
-        </div>
-        <div className="mt-10 space-y-8">
-          {groups.map((g) => (
-            <div key={g.label}>
-              <p className="text-sm font-semibold text-muted">{g.label}</p>
-              <div className="mt-3 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
-                {g.slugs.map((s) => {
-                  const m = medications.find((x) => x.slug === s)!;
-                  const [brand, generic] = m.name.split(" (");
-                  return (
-                    <Link key={s} href={`/medicamentos/${s}`} className="tile border border-border bg-card transition hover:border-accent">
-                      <p className="font-semibold">{brand}</p>
-                      <p className="text-sm text-muted">{generic ? generic.replace(")", "") : m.activeIngredient}</p>
-                    </Link>
-                  );
-                })}
+      {/* FAMILIAR */}
+      <section className="mx-auto max-w-7xl px-6 md:px-12">
+        <h2 className="text-3xl md:text-4xl">Alguma dessas situações soa familiar?</h2>
+        <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+          {familiar.map((c) => (
+            <Link key={c.href} href={c.href} className="group">
+              <div className="aspect-[3/4] overflow-hidden rounded-md bg-accent-soft">
+                <img src={c.img} alt="" className="photo transition group-hover:scale-[1.02]" loading="lazy" />
               </div>
-            </div>
+              <h3 className="mt-3 text-lg leading-snug">{c.title}</h3>
+              <p className="mt-1 text-sm text-muted">A resposta da bula →</p>
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* PRIVACY */}
-      <section className="py-16">
-        <div className="tile bg-accent px-6 py-12 text-center text-white md:py-16">
-          <span className="eyebrow !text-white/70">Privacidade</span>
-          <h2 className="mx-auto mt-3 max-w-2xl text-3xl font-semibold leading-tight md:text-4xl">Sem conta. Sem anúncios. Sem vender seus dados de saúde.</h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/80">Seus registros ficam no seu aparelho. Nada é enviado a servidores para começar a usar, e você pode exportar ou apagar tudo quando quiser. Sem comissão de farmácia, sem venda de medicamentos.</p>
+      {/* MEDICATION TABS */}
+      <section id="medicamentos" className="mx-auto max-w-7xl scroll-mt-20 px-6 py-20 md:px-12 md:py-28">
+        <h2 className="max-w-3xl text-3xl md:text-5xl">Respostas organizadas pelo que você usa.</h2>
+        <MedTabs
+          meds={medications.filter((m) => ["mounjaro", "ozempic", "wegovy", "saxenda", "rybelsus"].includes(m.slug)).map((m) => ({
+            slug: m.slug,
+            name: m.name.split(" (")[0],
+            generic: m.activeIngredient,
+            img: medImage(m.slug),
+            count: allArticles.filter((a) => a.medicationSlug === m.slug).length,
+            frequency: m.frequency === "daily" ? "Uso diário" : "Aplicação semanal",
+            storage: m.storageDays ? `${m.storageDays} dias ${m.storageLabel}` : m.storageLabel ?? "",
+            themes: allArticles.filter((a) => a.medicationSlug === m.slug && !a.intent.startsWith("dose-")).slice(0, 6).map((a) => intentLabels[a.intent]),
+          }))}
+        />
+        <p className="mt-6 text-sm text-muted">Também: <Link href="/medicamentos/tirzepatida-manipulada" className="underline">tirzepatida manipulada</Link> e <Link href="/medicamentos/semaglutida-manipulada" className="underline">semaglutida manipulada</Link>, pelas regras da ANVISA.</p>
+      </section>
+
+      {/* PRINCIPLES */}
+      <section className="bg-accent-soft">
+        <div className="mx-auto max-w-7xl px-6 py-20 md:px-12 md:py-28">
+          <h2 className="max-w-3xl text-3xl md:text-5xl">Os princípios em que tudo o resto se apoia.</h2>
+          <p className="mt-3 text-muted">Fonte. Silêncio. Limite. Atualização.</p>
+          <div className="mt-10 grid gap-8 md:grid-cols-[1.1fr_1fr]">
+            <div className="aspect-[3/2] overflow-hidden rounded-md"><img src="/img/principles.jpg" alt="" className="photo" loading="lazy" /></div>
+            <div className="flex flex-col justify-center">
+              <h3 className="text-2xl md:text-3xl">A bula antes da opinião.</h3>
+              <p className="mt-4 text-muted">Cada frase do site aponta para uma frase da bula do paciente aprovada pela ANVISA, com a seção. Quando a bula é omissa, a página diz “a bula não diz” e para por aí. Nenhuma calculadora de dose, nenhuma estimativa de nível no sangue, nenhuma promessa de quilos.</p>
+              <Link href="/fontes" className="btn btn-primary mt-6 w-fit">Ver todas as fontes</Link>
+            </div>
+          </div>
+          <div className="mt-12 grid gap-6 border-t border-border pt-10 sm:grid-cols-3">
+            <div><p className="text-5xl">{count}</p><p className="mt-1 text-sm text-muted">respostas, cada uma com a fonte ao lado</p></div>
+            <div><p className="text-5xl">5</p><p className="mt-1 text-sm text-muted">bulas do paciente citadas, verificadas todo mês</p></div>
+            <div><p className="text-5xl">0</p><p className="mt-1 text-sm text-muted">calculadoras de dose, anúncios ou comissões</p></div>
+          </div>
+        </div>
+      </section>
+
+      {/* READING */}
+      <section className="mx-auto max-w-7xl px-6 py-20 md:px-12 md:py-28">
+        <div className="flex items-end justify-between gap-4">
+          <h2 className="text-3xl md:text-5xl">Coisas que valem a leitura.</h2>
+          <Link href="/perguntas" className="text-sm underline underline-offset-4">Ver todas</Link>
+        </div>
+        <div className="mt-10 grid gap-8 md:grid-cols-3">
+          {reading.map((r) => {
+            const a = allArticles.find((x) => x.medicationSlug === r.slug && x.intent === r.intent);
+            if (!a) return null;
+            return (
+              <Link key={r.slug + r.intent} href={`/medicamentos/${r.slug}/${r.intent}`} className="group">
+                <div className="aspect-[3/2] overflow-hidden rounded-md"><img src={themeImage(r.intent, r.slug)} alt="" className="photo transition group-hover:scale-[1.02]" loading="lazy" /></div>
+                <p className="eyebrow mt-4">{intentLabels[a.intent]}</p>
+                <h3 className="mt-2 text-xl leading-snug">{a.title}</h3>
+                <p className="mt-2 text-sm text-muted line-clamp-2">{a.answer}</p>
+              </Link>
+            );
+          })}
+        </div>
+        <div className="mt-10 grid gap-8 md:grid-cols-3">
+          {guias.slice(0, 3).map((g) => (
+            <Link key={g.slug} href={`/guias/${g.slug}`} className="group border-t border-border pt-4">
+              <p className="eyebrow">Guia</p>
+              <h3 className="mt-2 text-lg leading-snug">{g.title}</h3>
+            </Link>
+          ))}
         </div>
       </section>
 
       {/* FAQ */}
-      <section id="perguntas" className="scroll-mt-20 py-16">
-        <div className="text-center">
-          <span className="eyebrow">Boas perguntas</span>
-          <h2 className="mx-auto mt-3 max-w-2xl text-3xl font-semibold leading-tight md:text-4xl">O que as pessoas perguntam antes de começar.</h2>
+      <section className="mx-auto max-w-7xl px-6 pb-20 md:px-12 md:pb-28">
+        <div className="grid gap-10 md:grid-cols-[2fr_3fr]">
+          <div>
+            <div className="aspect-[3/4] overflow-hidden rounded-md"><img src="/img/faq-portrait.jpg" alt="" className="photo" loading="lazy" /></div>
+          </div>
+          <div>
+            <h2 className="text-3xl md:text-5xl">O que as pessoas perguntam primeiro.</h2>
+            <dl className="mt-8 divide-y divide-border">
+              {faq.map(([q, a]) => (
+                <div key={q} className="py-5">
+                  <dt className="text-lg">{q}</dt>
+                  <dd className="mt-2 text-muted">{a}</dd>
+                </div>
+              ))}
+            </dl>
+            <InfoNotice className="mt-4" />
+          </div>
         </div>
-        <div className="mx-auto mt-10 grid max-w-4xl gap-4 md:grid-cols-2">
-          {faq.map((f) => {
-            const a = f.slug ? allArticles.find((x) => x.medicationSlug === f.slug && x.intent === f.intent) : null;
-            const answer = a ? a.faq[f.idx]?.a : ownAnswers[f.q];
-            if (!answer) return null;
-            return (
-              <div key={f.q} className="tile border border-border bg-card">
-                <h3 className="font-semibold">{f.q}</h3>
-                <p className="mt-2 text-sm text-muted">{answer}</p>
-                {a && (
-                  <p className="mt-3 text-xs text-muted">
-                    Fonte: <a href={a.sources[0].url} target="_blank" rel="noopener" className="underline hover:text-accent">{a.sources[0].label}</a> ·{" "}
-                    <Link href={`/medicamentos/${f.slug}/${f.intent}`} className="underline hover:text-accent">ler a resposta completa</Link>
-                  </p>
-                )}
-              </div>
-            );
-          })}
-        </div>
-        <InfoNotice className="mx-auto mt-6 max-w-4xl" />
-        <p className="mt-6 text-center text-sm text-muted">
-          Mais {allArticles.length + guias.length} respostas, cada uma com a fonte ao lado: <Link href="/perguntas" className="underline hover:text-accent">ver todas as perguntas</Link>
-        </p>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="py-16">
-        <div className="grid items-center gap-10 rounded-[2rem] bg-accent-soft px-6 py-12 md:grid-cols-2 md:px-12">
-          <div>
-            <h2 className="text-3xl font-semibold leading-tight md:text-4xl">Você cuida do tratamento. <span className="text-muted">O diário cuida do resto.</span></h2>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/app" className="btn btn-primary">Abrir meu diário, é grátis</Link>
-              <Link href="/perguntas" className="btn btn-ghost">Ler as respostas</Link>
-            </div>
-            <p className="mt-4 text-sm text-muted">{t.hero.privacy}</p>
+      {/* CTA */}
+      <section className="bg-ink text-[#f7f6f1]">
+        <div className="mx-auto grid max-w-7xl md:grid-cols-2">
+          <div className="flex flex-col justify-center px-6 py-16 md:px-12 md:py-24">
+            <h2 className="text-4xl leading-[1.05] md:text-6xl">Você cuida do tratamento. O diário cuida de lembrar.</h2>
+            <p className="mt-6 max-w-md text-white/75">Aplicações, rodízio, peso, efeitos, validade da caneta e um relatório de uma página para a consulta. Grátis, sem conta, no seu aparelho.</p>
+            <div className="mt-8"><Link href="/app" className="btn btn-light">Abrir meu diário</Link></div>
+            <p className="mt-4 text-sm text-white/60">{t.hero.privacy}</p>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            <MockStock />
-            <MockToday />
-          </div>
+          <div className="relative min-h-[360px] md:min-h-[560px]"><img src="/img/cta-portrait.jpg" alt="" className="photo absolute inset-0" loading="lazy" /></div>
         </div>
       </section>
     </div>

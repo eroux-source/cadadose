@@ -4,6 +4,7 @@ import { allArticles } from "@/content";
 import { guias } from "@/content/guias";
 import { medications } from "@/lib/medications";
 import { intentLabels } from "@/content/types";
+import { themeImage, guideImage } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Perguntas sobre Mounjaro, Ozempic e Wegovy respondidas pela bula",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function PerguntasHub() {
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12">
+    <div className="mx-auto max-w-7xl px-6 py-12 md:px-12 md:py-16">
       <span className="eyebrow">Respondido pela bula</span>
       <h1 className="mt-3 text-3xl font-semibold leading-tight md:text-4xl">{allArticles.length} perguntas sobre GLP-1, com a fonte ao lado.</h1>
       <p className="mt-3 max-w-2xl text-muted">Cada resposta cita a bula do paciente aprovada pela ANVISA (registro e data na página). Quando a bula não responde, a página diz isso.</p>
@@ -29,11 +30,13 @@ export default function PerguntasHub() {
 
       <section className="mt-10">
         <h2 className="text-xl font-semibold">Comparações e mercado</h2>
-        <ul className="mt-3 grid gap-3 md:grid-cols-2">
+        <ul className="mt-5 grid gap-6 md:grid-cols-2">
           {guias.map((g) => (
-            <li key={g.slug} className="tile border border-border bg-card hover:border-accent">
-              <Link href={`/guias/${g.slug}`} className="font-semibold">{g.title}</Link>
-              <p className="mt-2 text-sm text-muted line-clamp-2">{g.answer}</p>
+            <li key={g.slug}>
+              <Link href={`/guias/${g.slug}`} className="group flex gap-4">
+                <div className="h-24 w-36 shrink-0 overflow-hidden rounded-md"><img src={guideImage(g.slug)} alt="" className="photo" loading="lazy" /></div>
+                <div><p className="text-lg leading-snug group-hover:text-accent">{g.title}</p><p className="mt-1 text-sm text-muted line-clamp-2">{g.answer}</p></div>
+              </Link>
             </li>
           ))}
         </ul>
@@ -44,13 +47,14 @@ export default function PerguntasHub() {
         if (!arts.length) return null;
         return (
           <section key={m.slug} className="mt-12">
-            <h2 className="text-xl font-semibold"><Link href={`/medicamentos/${m.slug}`} className="hover:text-accent">{m.name}</Link></h2>
-            <ul className="mt-3 grid gap-3 md:grid-cols-2">
+            <h2 className="text-2xl md:text-3xl"><Link href={`/medicamentos/${m.slug}`} className="hover:text-accent">{m.name}</Link></h2>
+            <ul className="mt-5 grid gap-6 md:grid-cols-2">
               {arts.map((a) => (
-                <li key={a.intent} className="tile border border-border bg-card hover:border-accent">
-                  <span className="eyebrow">{intentLabels[a.intent]}</span>
-                  <Link href={`/medicamentos/${m.slug}/${a.intent}`} className="mt-1 block font-semibold">{a.title}</Link>
-                  <p className="mt-2 text-sm text-muted line-clamp-2">{a.answer}</p>
+                <li key={a.intent}>
+                  <Link href={`/medicamentos/${m.slug}/${a.intent}`} className="group flex gap-4">
+                    <div className="h-24 w-36 shrink-0 overflow-hidden rounded-md"><img src={themeImage(a.intent, m.slug)} alt="" className="photo" loading="lazy" /></div>
+                    <div><span className="eyebrow">{intentLabels[a.intent]}</span><p className="mt-1 text-lg leading-snug group-hover:text-accent">{a.title}</p></div>
+                  </Link>
                 </li>
               ))}
             </ul>

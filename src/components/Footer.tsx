@@ -7,7 +7,7 @@ import InfoNotice from "@/components/InfoNotice";
 const cols = [
   { title: "Diário", links: [["Meu diário (grátis)", "/app"], ["Calendário do tratamento", "/calendario"], ["Relatório para o médico", "/app/relatorio"], ["Recursos", "/#recursos"]] },
   { title: "Medicamentos", links: medications.map((m) => [m.name.split(" (")[0], `/medicamentos/${m.slug}`]) },
-  { title: "Comparar", links: guias.map((g) => [g.title.split("?")[0] + "?", `/guias/${g.slug}`]) },
+  { title: "Guias", links: [...guias.slice(0, 5).map((g) => [g.title.split(/[?:]/)[0], `/guias/${g.slug}`]), ["Todos os guias", "/perguntas"]] },
   { title: "Perguntas", links: [["Todas as perguntas", "/perguntas"], ["Como aplicar Mounjaro", "/medicamentos/mounjaro/como-aplicar"], ["Esqueci de aplicar", "/medicamentos/mounjaro/esqueci-de-aplicar"], ["Validade da caneta", "/medicamentos/ozempic/validade-depois-de-aberta"]] },
   { title: "CadaDose", links: [["Sobre", "/sobre"], ["Política editorial", "/politica-editorial"], ["Fontes e bulas", "/fontes"], ["Para clínicas (widget)", "/para-clinicas"], [t.footer.privacy, "/privacidade"], [t.footer.terms, "/termos"], ["RSS", "/feed.xml"], ["llms.txt", "/llms.txt"]] },
 ];
@@ -15,11 +15,11 @@ const cols = [
 export default function Footer() {
   return (
     <footer className="mt-16 border-t border-border">
-      <div className="mx-auto max-w-6xl px-4 py-10 text-sm">
-        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-5">
+      <div className="mx-auto max-w-7xl px-6 py-14 text-sm md:px-12">
+        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-6"><div className="md:col-span-1"><p className="text-xl">Cada<span className="text-accent">Dose</span></p><p className="mt-2 text-muted">O que a bula diz, com a fonte ao lado. Para quem usa GLP-1 no Brasil.</p></div>
           {cols.map((c) => (
             <div key={c.title}>
-              <p className="font-semibold">{c.title}</p>
+              <p className="eyebrow">{c.title}</p>
               <ul className="mt-3 space-y-2 text-muted">
                 {c.links.map(([label, href]) => (
                   <li key={href}><Link href={href} className="hover:text-accent">{label}</Link></li>
