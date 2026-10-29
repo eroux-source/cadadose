@@ -81,4 +81,15 @@ export const ptSaxenda: Article[] = [
     "Saxenda e bebida alcoólica: o que consta e o que não consta na bula.",
     [silent("álcool ou bebidas alcoólicas"), { heading: "O que consta e pode importar", bullets: ["Hipoglicemia é efeito comum na bula.", "Desidratação é efeito incomum; náusea e vômito, muito comuns."] }],
     [{ q: "Posso beber cerveja tomando Saxenda?", a: "A bula não trata de álcool. Pergunte ao médico." }]),
+
+  A("melhor-horario", "Qual o melhor horário para aplicar Saxenda? O que a bula diz",
+    "A bula do Saxenda pede uma aplicação por dia, em qualquer horário, de preferência sempre no mesmo, independentemente das refeições. Escolha um horário que você consiga manter todos os dias; a bula não indica manhã ou noite.",
+    "Horário do Saxenda segundo a bula: uma vez ao dia, sempre no mesmo horário, com ou sem alimentos.",
+    [{ heading: "Texto da bula (seção 6)", bullets: ["Uma vez ao dia.", "Em qualquer horário, de preferência sempre no mesmo.", "Independentemente das refeições."] }, { heading: "Se passar do horário", paragraphs: ["Até 12 horas de atraso, aplique; depois disso, pule e não dobre a dose (regra da bula)."] }, diario],
+    [{ q: "Saxenda de manhã ou à noite?", a: "A bula não escolhe; pede regularidade no mesmo horário." }]),
+  A("quem-nao-pode-tomar", "Quem não pode tomar Saxenda: o que a bula contraindica e onde pede cautela",
+    "A bula do Saxenda contraindica o uso na gravidez e orienta não amamentar durante o tratamento. Não deve ser usado em crianças com menos de 12 anos. Quem tem doença da tireoide, incluindo nódulos e aumento da glândula, deve consultar o médico. A bula também lista pancreatite, cálculo biliar, desidratação e insuficiência renal aguda entre os efeitos a observar.",
+    "Contraindicações e cautelas do Saxenda segundo a bula brasileira.",
+    [{ heading: "Contraindicações e restrições (seções 3 e 4)", bullets: ["“é contraindicado em caso de gravidez”.", "“Não amamente se estiver utilizando Saxenda®.”", "“Saxenda® não deve ser utilizado em crianças com menos de 12 anos de idade”."] }, { heading: "Onde a bula pede cautela", bullets: ["“Se você tem doença da tireoide, incluindo nódulos e aumento da glândula tireoide, consulte o seu médico.”", "Pancreatite: dor abdominal intensa e persistente, que pode ir às costas: interromper e procurar o médico.", "Hipoglicemia é efeito comum; informe o médico se usa outros antidiabéticos."] }],
+    [{ q: "Quem tem hipotireoidismo pode usar Saxenda?", a: "A bula pede consulta ao médico para qualquer doença da tireoide." }]),
 ];

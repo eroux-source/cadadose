@@ -166,7 +166,7 @@ export const guiaCaneta: Guide[] = [
     faq: [
       { q: "Qual é a melhor caneta emagrecedora?", a: "As bulas não comparam eficácia. Com registro e indicação de peso: Wegovy, Mounjaro e Saxenda. A escolha é médica." },
       { q: "Caneta emagrecedora precisa de receita?", a: "Sim, com retenção na farmácia (RDC 973/2025)." },
-      { q: "Caneta emagrecedora brasileira existe?", a: "As semaglutidas nacionais registradas em 2026 têm bula para diabetes tipo 2, não para peso. A liraglutida genérica da EMS com referência Saxenda/Olire foi registrada para obesidade (reportagem de 15/09/2026)." },
+      { q: "Caneta emagrecedora brasileira existe?", a: "As semaglutidas nacionais registradas em 2026 têm bula para diabetes tipo 2, não para peso. A liraglutida genérica da EMS com referência Olire foi registrada para obesidade (reportagem de 15/09/2026)." },
     ],
     sources: [mjBula, { label: "Bula do paciente Wegovy® — Novo Nordisk, registro ANVISA 1.1766.0039, aprovada em 04/05/2026", url: "https://www.novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Wegovy_Bula_Paciente.pdf" }, { label: "Bula do paciente Saxenda® — Novo Nordisk, registro ANVISA 1.1766.0032, aprovada em 17/04/2026", url: "https://novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Saxenda_Bula_Paciente1.pdf" }, istoe, tnh1, diarioRO, anvisaOzivy, bulario],
   },
