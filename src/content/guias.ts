@@ -12,8 +12,8 @@ export interface Guide {
 }
 
 const mounjaroBula = {
-  label: "Bula do paciente Mounjaro® (tirzepatida), Eli Lilly do Brasil — registro ANVISA 1.1260.0202, aprovada em 21/11/2024",
-  url: "https://static.poder360.com.br/2025/03/bula-mounjaro.pdf",
+  label: "Bula do paciente Mounjaro® (tirzepatida), Eli Lilly do Brasil — registro ANVISA 1.1260.0202, versão 05/2026 (ampliação de uso aprovada em 22/04/2026)",
+  url: "https://bkt-prd-grupopanvel-datalake-documents.s3.amazonaws.com/bulas/anomesdia=20260513/codigo_item=89181/bula_paciente.pdf",
 };
 const ozempicBula1 = {
   label: "Bula do paciente Ozempic® 1 mg, Novo Nordisk — registro ANVISA 1.1766.0036, aprovada em 17/04/2026",
@@ -29,7 +29,7 @@ const guiasBulas: Guide[] = [
     slug: "ozempic-vs-mounjaro",
     title: "Qual a diferença entre Ozempic e Mounjaro? Comparação pelas bulas",
     answer:
-      "Ozempic tem semaglutida; Mounjaro tem tirzepatida. Os dois são injeções semanais indicadas, nas bulas brasileiras, para o diabetes tipo 2 em adultos. As doses são diferentes: Ozempic vai de 0,25 mg a 1 mg; Mounjaro, de 2,5 mg a 15 mg. Ozempic vem em caneta multidose (4 doses); Mounjaro, no Brasil, em 4 canetas de uso único por caixa. Qual é melhor para você, só o médico pode dizer.",
+      "Ozempic tem semaglutida; Mounjaro tem tirzepatida. Os dois são injeções semanais; nas bulas brasileiras, Ozempic é indicado para o diabetes tipo 2 e Mounjaro, desde a ampliação de uso de 22/04/2026, para diabetes tipo 2, controle crônico do peso e apneia obstrutiva do sono. As doses são diferentes: Ozempic vai de 0,25 mg a 1 mg; Mounjaro, de 2,5 mg a 15 mg. Ozempic vem em caneta multidose (4 doses); Mounjaro, no Brasil, em 4 canetas de uso único por caixa. Qual é melhor para você, só o médico pode dizer.",
     description: "Ozempic vs Mounjaro: substância, indicação, doses, caneta, conservação e dose esquecida, lado a lado, segundo as bulas brasileiras.",
     updated: "2026-10-28",
     sections: [
@@ -39,7 +39,7 @@ const guiasBulas: Guide[] = [
           head: ["", "Ozempic®", "Mounjaro®"],
           rows: [
             ["Substância", "Semaglutida", "Tirzepatida"],
-            ["Indicação (bula do paciente)", "Diabetes tipo 2 em adultos; redução de risco renal e cardiovascular em DM2 com doença renal crônica", "Controle glicêmico no diabetes tipo 2 em adultos"],
+            ["Indicação (bula do paciente)", "Diabetes tipo 2 em adultos; redução de risco renal e cardiovascular em DM2 com doença renal crônica", "Diabetes tipo 2; controle crônico do peso (IMC ≥ 30, ou ≥ 27 com comorbidade); apneia obstrutiva do sono moderada a grave com obesidade (versão 05/2026)"],
             ["Frequência", "1 vez por semana", "1 vez por semana"],
             ["Doses", "0,25 mg (4 semanas) → 0,5 mg → até 1 mg", "2,5 mg (4 semanas) → 5 mg → +2,5 mg a cada ≥4 semanas → até 15 mg"],
             ["Apresentação", "Caneta multidose: a de 1 mg tem 4 doses", "4 canetas de uso único (0,5 mL) por caixa"],
@@ -62,7 +62,7 @@ const guiasBulas: Guide[] = [
     faq: [
       { q: "Posso trocar Ozempic por Mounjaro?", a: "Só com orientação médica. São substâncias e esquemas de dose diferentes." },
       { q: "Ozempic e Mounjaro podem ser usados juntos?", a: "A bula do Wegovy (semaglutida) proíbe combinar agonistas de GLP-1; a decisão sobre qualquer combinação é exclusivamente médica." },
-      { q: "Os dois são para emagrecer?", a: "Nas bulas brasileiras do paciente, os dois são indicados para o diabetes tipo 2. O uso é definido pelo médico." },
+      { q: "Os dois são para emagrecer?", a: "Na bula brasileira, Mounjaro tem indicação de controle crônico do peso desde 22/04/2026; Ozempic é indicado para o diabetes tipo 2. O uso é definido pelo médico." },
     ],
     sources: [ozempicBula1, mounjaroBula],
   },

@@ -48,8 +48,8 @@ export const medications: Medication[] = [
     reviewed: false,
     sources: [
       {
-        label: "Bula do paciente Mounjaro® — Eli Lilly do Brasil, registro ANVISA 1.1260.0202, aprovada em 21/11/2024",
-        url: "https://static.poder360.com.br/2025/03/bula-mounjaro.pdf",
+        label: "Bula do paciente Mounjaro® — Eli Lilly do Brasil, registro ANVISA 1.1260.0202, versão 05/2026 (ampliação de uso aprovada em 22/04/2026)",
+        url: "https://bkt-prd-grupopanvel-datalake-documents.s3.amazonaws.com/bulas/anomesdia=20260513/codigo_item=89181/bula_paciente.pdf",
       },
     ],
   },

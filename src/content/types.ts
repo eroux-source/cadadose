@@ -26,7 +26,10 @@ export type Intent =
   | "agulha-e-caneta"
   | "retinopatia"
   | "quanto-tempo-fica-no-corpo"
-  | "alergia";
+  | "alergia"
+  | "precisa-de-receita"
+  | "dose-2-5-mg" | "dose-5-mg" | "dose-7-5-mg" | "dose-10-mg" | "dose-12-5-mg" | "dose-15-mg"
+  | "dose-0-25-mg" | "dose-0-5-mg" | "dose-1-mg" | "dose-1-7-mg" | "dose-2-4-mg";
 
 export interface Section {
   heading: string;
@@ -82,4 +85,7 @@ export const intentLabels: Record<Intent, string> = {
   "retinopatia": "Retinopatia (olhos)",
   "quanto-tempo-fica-no-corpo": "Quanto tempo fica no corpo",
   "alergia": "Reação alérgica",
+  "precisa-de-receita": "Precisa de receita?",
+  "dose-2-5-mg": "2,5 mg", "dose-5-mg": "5 mg", "dose-7-5-mg": "7,5 mg", "dose-10-mg": "10 mg", "dose-12-5-mg": "12,5 mg", "dose-15-mg": "15 mg",
+  "dose-0-25-mg": "0,25 mg", "dose-0-5-mg": "0,5 mg", "dose-1-mg": "1 mg", "dose-1-7-mg": "1,7 mg", "dose-2-4-mg": "2,4 mg",
 };

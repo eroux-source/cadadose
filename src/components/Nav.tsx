@@ -11,6 +11,7 @@ export default function Nav() {
         <nav className="flex items-center gap-4 text-sm">
           <Link href="/#recursos" className="hidden hover:text-accent sm:inline">Recursos</Link>
           <Link href="/perguntas" className="hover:text-accent">Perguntas</Link>
+          <Link href="/calendario" className="hover:text-accent">Calendário</Link>
           <Link href="/medicamentos" className="hover:text-accent">{t.nav.meds}</Link>
                     <Link href="/em-breve" className="btn btn-primary !py-1.5 !px-4 text-sm">
             Quero o app

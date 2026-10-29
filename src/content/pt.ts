@@ -8,8 +8,8 @@ import type { Article } from "./types";
  */
 
 const mounjaroBula = {
-  label: "Bula do paciente Mounjaro® (tirzepatida), Eli Lilly do Brasil — registro ANVISA 1.1260.0202, aprovada em 21/11/2024",
-  url: "https://static.poder360.com.br/2025/03/bula-mounjaro.pdf",
+  label: "Bula do paciente Mounjaro® (tirzepatida), Eli Lilly do Brasil — registro ANVISA 1.1260.0202, versão 05/2026 (ampliação de uso aprovada em 22/04/2026)",
+  url: "https://bkt-prd-grupopanvel-datalake-documents.s3.amazonaws.com/bulas/anomesdia=20260513/codigo_item=89181/bula_paciente.pdf",
 };
 const lillyDoseEsquecida = {
   label: "Lilly Medical Brasil — Esquecimento de dose (Mounjaro), revisado em 17/03/2025",
@@ -36,7 +36,7 @@ export const ptArticles: Article[] = [
     intent: "como-aplicar",
     title: "Como aplicar Mounjaro (tirzepatida) no Brasil: o que diz a bula",
     answer:
-      "Mounjaro é aplicado por via subcutânea, uma vez por semana, no abdômen, na coxa ou no braço, alternando o local a cada dose. No Brasil, vem em canetas de uso único de 0,5 mL (4 por caixa): cada caneta é uma dose. Pode ser aplicado em qualquer horário, com ou sem alimentos. O passo a passo da caneta está nas Instruções de Uso que acompanham a embalagem.",
+      "Mounjaro é aplicado por via subcutânea, uma vez por semana, no abdômen, na coxa ou no braço, alternando o local a cada dose. No Brasil, vem em canetas de uso único de 0,5 mL (4 por caixa): cada caneta é uma dose. A bula versão 05/2026 também registra o frasco-ampola de dose única (0,5 mL), para aplicação com seringa e agulha novas a cada dose, sem fracionar nem guardar o frasco aberto. Pode ser aplicado em qualquer horário, com ou sem alimentos. O passo a passo da caneta está nas Instruções de Uso que acompanham a embalagem.",
     description: "O que a bula brasileira do Mounjaro diz sobre a aplicação: via, locais, rodízio, horário, uso com insulina e mudança do dia da semana.",
     updated: "2026-10-28",
     reviewed: false,
@@ -69,7 +69,7 @@ export const ptArticles: Article[] = [
     ],
     faq: [
       { q: "Mounjaro pode ser aplicado em qualquer horário?", a: "Sim. Segundo a bula, em qualquer horário do dia, com ou sem alimentos, uma vez por semana." },
-      { q: "A caneta do Mounjaro no Brasil tem várias doses?", a: "Não. No Brasil a apresentação registrada é a caneta de uso único de 0,5 mL, com 4 canetas por caixa. Cada caneta é uma dose." },
+      { q: "A caneta do Mounjaro no Brasil tem várias doses?", a: "Não. No Brasil as apresentações registradas são a caneta de uso único de 0,5 mL (4 por caixa) e o frasco-ampola de dose única. Cada caneta ou frasco é uma dose." },
       { q: "Posso aplicar Mounjaro e insulina no mesmo lugar?", a: "Na mesma região sim, mas em injeções separadas e não próximas uma da outra, segundo a bula." },
       { q: "Posso mudar o dia da aplicação?", a: "Sim, desde que passem pelo menos 72 horas entre as doses." },
     ],

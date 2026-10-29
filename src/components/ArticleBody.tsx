@@ -69,7 +69,7 @@ export default function ArticleBody({ a, note }: { a: Body; note?: string }) {
         <InfoNotice className="mt-3" />
       </section>
 
-      <Link href="/em-breve" className="btn btn-primary mt-10">Quero o app que avisa a hora da dose</Link>
+      <div className="mt-10 flex flex-wrap gap-3"><Link href="/calendario" className="btn btn-primary">Montar meu calendário de aplicações</Link><Link href="/em-breve" className="btn btn-ghost">Quero o app</Link></div>
     </>
   );
 }

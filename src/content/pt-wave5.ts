@@ -6,8 +6,8 @@ import type { Article, Section } from "./types";
  * maps to a leaflet section; when a leaflet is silent, the page says so instead of guessing.
  */
 const mj = {
-  label: "Bula do paciente Mounjaro® (tirzepatida), Eli Lilly do Brasil — registro ANVISA 1.1260.0202, aprovada em 21/11/2024",
-  url: "https://static.poder360.com.br/2025/03/bula-mounjaro.pdf",
+  label: "Bula do paciente Mounjaro® (tirzepatida), Eli Lilly do Brasil — registro ANVISA 1.1260.0202, versão 05/2026 (ampliação de uso aprovada em 22/04/2026)",
+  url: "https://bkt-prd-grupopanvel-datalake-documents.s3.amazonaws.com/bulas/anomesdia=20260513/codigo_item=89181/bula_paciente.pdf",
 };
 const oz = {
   label: "Bula do paciente Ozempic® 1 mg (semaglutida), Novo Nordisk — registro ANVISA 1.1766.0036, aprovada em 17/04/2026",
@@ -255,7 +255,7 @@ export const ptWave5: Article[] = [
     [wg, bulario]),
   A("mounjaro", "queda-de-cabelo",
     "Mounjaro causa queda de cabelo? O que a bula diz (e não diz)",
-    "A bula brasileira do Mounjaro não menciona queda de cabelo nem alopecia entre as reações listadas. Isso não prova que não aconteça; significa que não consta na bula aprovada em 21/11/2024. Se notar queda, registre e informe o médico.",
+    "A bula brasileira do Mounjaro não menciona queda de cabelo nem alopecia entre as reações listadas. Isso não prova que não aconteça; significa que não consta na bula versão 05/2026. Se notar queda, registre e informe o médico.",
     "Queda de cabelo e Mounjaro: o que consta (e o que não consta) na bula brasileira.",
     [
       silent("Mounjaro", "queda de cabelo ou alopecia"),

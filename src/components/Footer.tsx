@@ -5,7 +5,7 @@ import { guias } from "@/content/guias";
 import InfoNotice from "@/components/InfoNotice";
 
 const cols = [
-  { title: "Diário", links: [["O app (em breve)", "/em-breve"], ["Diário (versão de teste)", "/app"], ["Recursos", "/#recursos"]] },
+  { title: "Diário", links: [["Calendário do tratamento", "/calendario"], ["O app (em breve)", "/em-breve"], ["Diário (versão de teste)", "/app"], ["Recursos", "/#recursos"]] },
   { title: "Medicamentos", links: medications.map((m) => [m.name.split(" (")[0], `/medicamentos/${m.slug}`]) },
   { title: "Comparar", links: guias.map((g) => [g.title.split("?")[0] + "?", `/guias/${g.slug}`]) },
   { title: "Perguntas", links: [["Todas as perguntas", "/perguntas"], ["Como aplicar Mounjaro", "/medicamentos/mounjaro/como-aplicar"], ["Esqueci de aplicar", "/medicamentos/mounjaro/esqueci-de-aplicar"], ["Validade da caneta", "/medicamentos/ozempic/validade-depois-de-aberta"]] },

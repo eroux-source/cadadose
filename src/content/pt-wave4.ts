@@ -5,8 +5,8 @@ import type { Article } from "./types";
  * from the patient leaflets. When a leaflet is silent on a question, the page says so.
  */
 const mounjaroBula = {
-  label: "Bula do paciente Mounjaro® (tirzepatida), Eli Lilly do Brasil — registro ANVISA 1.1260.0202, aprovada em 21/11/2024",
-  url: "https://static.poder360.com.br/2025/03/bula-mounjaro.pdf",
+  label: "Bula do paciente Mounjaro® (tirzepatida), Eli Lilly do Brasil — registro ANVISA 1.1260.0202, versão 05/2026 (ampliação de uso aprovada em 22/04/2026)",
+  url: "https://bkt-prd-grupopanvel-datalake-documents.s3.amazonaws.com/bulas/anomesdia=20260513/codigo_item=89181/bula_paciente.pdf",
 };
 const ozempicBula1 = {
   label: "Bula do paciente Ozempic® 1 mg, Novo Nordisk — registro ANVISA 1.1766.0036, aprovada em 17/04/2026",
@@ -33,12 +33,12 @@ export const ptWave4: Article[] = [
     intent: "para-que-serve",
     title: "Para que serve Mounjaro (tirzepatida): a indicação da bula brasileira",
     answer:
-      "Segundo a bula brasileira aprovada em 21/11/2024, Mounjaro é indicado para melhorar o controle glicêmico de adultos com diabetes mellitus tipo 2, junto com dieta e exercícios. A bula explica que ele aumenta a liberação de insulina, melhora a sensibilidade à insulina, reduz o glucagon e retarda o esvaziamento do estômago. Confira no Bulário da ANVISA se há versão mais recente com outras indicações.",
+      "Segundo a bula brasileira versão 05/2026 (ampliação de uso aprovada pela ANVISA em 22/04/2026), Mounjaro tem três indicações: melhorar o controle glicêmico de adultos com diabetes tipo 2; controle crônico do peso em adultos com IMC igual ou maior que 30, ou igual ou maior que 27 com pelo menos uma condição relacionada ao peso; e tratamento da apneia obstrutiva do sono moderada a grave em adultos com obesidade. Sempre junto com dieta e atividade física.",
     description: "Indicação oficial do Mounjaro no Brasil segundo a bula do paciente, e como o medicamento age no corpo.",
     updated: U,
     reviewed: false,
     sections: [
-      { heading: "A indicação na bula", paragraphs: ["\"Melhorar o controle glicêmico de adultos com diabetes mellitus tipo 2\", em conjunto com dieta e exercícios. É isso que consta na bula do paciente aprovada em 21/11/2024."] },
+      { heading: "As três indicações na bula (seção 1)", bullets: ["Diabetes tipo 2: \"MOUNJARO é indicado para melhorar o controle glicêmico de adultos com diabetes mellitus tipo 2 em conjunto com dieta e exercícios.\"", "Peso: \"MOUNJARO é indicado em conjunto à dieta de baixa caloria e aumento de atividade física para controle crônico do peso, incluindo perda de peso e manutenção do peso, em adultos com Índice de Massa Corpórea (IMC): maior ou igual a 30 kg/m² (obesidade) ou maior ou igual a 27 kg/m² (sobrepeso) na presença de pelo menos uma condição de comorbidade relacionada ao peso\".", "Apneia: \"MOUNJARO é indicado para o tratamento de apneia obstrutiva do sono moderada a grave em adultos com obesidade.\"", "Na bula anterior (21/11/2024) só constava o diabetes tipo 2; a ampliação de uso foi aprovada em 22/04/2026."] },
       {
         heading: "Como o Mounjaro age, segundo a bula",
         bullets: ["Aumenta a liberação de insulina.", "Melhora a sensibilidade à insulina.", "Reduz a concentração de glucagon.", "Retarda o esvaziamento gástrico.", "Resultado descrito: redução da glicose em jejum e após as refeições."],
@@ -46,7 +46,7 @@ export const ptWave4: Article[] = [
       { heading: "O que a bula do paciente não traz", paragraphs: ["Números de perda de peso ou de redução de hemoglobina glicada não constam na bula do paciente. Se você usa Mounjaro para emagrecer, siga a prescrição do seu médico e consulte a versão mais recente da bula no Bulário Eletrônico da ANVISA."] },
     ],
     faq: [
-      { q: "Mounjaro é para emagrecer?", a: "A bula do paciente aprovada em 21/11/2024 lista como indicação o controle glicêmico no diabetes tipo 2. O uso é definido pelo médico; verifique no Bulário da ANVISA se há versão mais recente." },
+      { q: "Mounjaro é para emagrecer?", a: "Sim, desde a ampliação de uso aprovada em 22/04/2026: a bula indica o controle crônico do peso em adultos com IMC ≥ 30, ou ≥ 27 com comorbidade relacionada ao peso, junto com dieta e atividade física. A bula também diz que, se não houver perda de pelo menos 5% do peso em 6 meses na maior dose tolerada, o médico decide se continua." },
       { q: "Mounjaro é insulina?", a: "Não. Segundo a bula, ele aumenta a liberação da sua própria insulina e melhora a sensibilidade a ela, entre outros efeitos." },
       { q: "Mounjaro serve para menores de 18 anos?", a: "A bula diz que segurança e eficácia não foram estabelecidas em menores de 18 anos." },
     ],
