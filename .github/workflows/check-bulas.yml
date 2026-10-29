@@ -1,0 +1,35 @@
+name: Verificação mensal das bulas
+on:
+  schedule:
+    - cron: "17 9 1 * *"   # 1st of each month, 09:17 UTC
+  workflow_dispatch:
+permissions:
+  contents: write
+  issues: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Download and hash every bula cited in src/
+        id: run
+        continue-on-error: true
+        run: python3 tools/seo/check-bulas.py | tee bulas-report.txt
+      - name: Commit updated state
+        run: |
+          git config user.name "cadadose-bot"; git config user.email "bot@cadadose.com"
+          git add tools/seo/data/bulas-state.json || true
+          git commit -m "chore: bula check $(date -u +%F)" || echo "no change"
+          git push || true
+      - name: Open an issue if a bula changed
+        if: steps.run.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('bulas-report.txt', 'utf8');
+            await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo,
+              title: `Bula alterada — revisar páginas (${new Date().toISOString().slice(0,10)})`,
+              body: "Uma ou mais bulas mudaram de conteúdo. Reler o 'Histórico de alteração' e atualizar as páginas afetadas.\n\n```\n" + body + "\n```" });

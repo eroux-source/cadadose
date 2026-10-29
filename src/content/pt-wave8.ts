@@ -98,4 +98,14 @@ export const ptWave8: Article[] = [
     ],
     [{ q: "Wegovy corta o efeito da pílula?", a: "A bula não diz isso. Ela recomenda usar contraceptivos durante o tratamento porque o medicamento não deve ser usado na gravidez." }, { q: "Quando parar o Wegovy para engravidar?", a: "Pelo menos dois meses antes, segundo a bula." }],
     [wg, bulario]),
+
+  A("ozempic", "anticoncepcional", "Ozempic e anticoncepcional: o que a bula diz sobre contracepção e gravidez",
+    "A bula do Ozempic orienta não usar na gravidez e “parar de utilizar este medicamento pelo menos 2 meses antes de uma gravidez planejada”; durante o tratamento, “o uso de contraceptivos é recomendado”. A bula não afirma que o Ozempic reduz a eficácia da pílula.",
+    "Contracepção e gravidez na bula do Ozempic: recomendação de contraceptivos e antecedência de 2 meses.",
+    [
+      { heading: "Texto da bula (seção 4)", bullets: ["Não usar durante a gravidez.", "“parar de utilizar este medicamento pelo menos 2 meses antes de uma gravidez planejada”.", "“o uso de contraceptivos é recomendado” durante o tratamento."] },
+      { heading: "O que a bula não diz", paragraphs: ["A bula do Ozempic não afirma redução da eficácia de anticoncepcionais orais. A bula do Mounjaro, por outro lado, traz a regra de método não oral por 4 semanas. Cada bula vale para o seu produto."] },
+    ],
+    [{ q: "Ozempic corta o efeito do anticoncepcional?", a: "A bula não diz isso; recomenda contracepção porque o medicamento não deve ser usado na gravidez." }],
+    [oz, bulario]),
 ];
