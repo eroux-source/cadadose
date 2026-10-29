@@ -88,4 +88,14 @@ export const ptWave8: Article[] = [
     [{ heading: "Texto da bula", bullets: ["Seção 1: IMC ≥ 27 com condição relacionada ao peso, como “diabetes, hipertensão, níveis anormais de gordura no sangue”.", "Seção 3: a única contraindicação é alergia à semaglutida ou componentes.", "Seção 8: “pressão arterial baixa” (incomum); “aumento do batimento cardíaco” (incomum)."] }, { heading: "Na prática", paragraphs: ["Se você usa remédio para pressão, informe o médico; tonturas e palpitações vão para o diário."] }],
     [{ q: "Wegovy aumenta a pressão?", a: "A bula lista pressão baixa como efeito incomum, não aumento." }],
     [wg, bulario]),
+
+  A("wegovy", "anticoncepcional", "Wegovy e anticoncepcional: o que a bula diz sobre contracepção e gravidez",
+    "A bula do Wegovy diz: “Wegovy® não deve ser usado durante a gravidez, pois não se sabe se o medicamento pode afetar o feto. Portanto, é recomendado o uso de contraceptivos durante o uso deste medicamento.” E: “Se você deseja engravidar, deve interromper o uso de Wegovy® pelo menos dois meses antes.” A bula não diz que o Wegovy reduz a eficácia da pílula; a orientação é usar contracepção.",
+    "Contracepção e gravidez na bula do Wegovy: recomendação de contraceptivos e a antecedência de dois meses.",
+    [
+      { heading: "Texto da bula (seção 4)", bullets: ["“Wegovy® não deve ser usado durante a gravidez, pois não se sabe se o medicamento pode afetar o feto.”", "“Portanto, é recomendado o uso de contraceptivos durante o uso deste medicamento.”", "“Se você deseja engravidar, deve interromper o uso de Wegovy® pelo menos dois meses antes.”", "Se engravidar ou suspeitar, “fale imediatamente com o seu médico, pois o seu tratamento deverá ser interrompido”."] },
+      { heading: "O que a bula não diz", paragraphs: ["A bula do Wegovy não afirma que a semaglutida reduz a eficácia de anticoncepcionais orais (diferente da bula do Mounjaro, que traz a regra das 4 semanas). Dúvida sobre o seu método: fale com o médico."] },
+    ],
+    [{ q: "Wegovy corta o efeito da pílula?", a: "A bula não diz isso. Ela recomenda usar contraceptivos durante o tratamento porque o medicamento não deve ser usado na gravidez." }, { q: "Quando parar o Wegovy para engravidar?", a: "Pelo menos dois meses antes, segundo a bula." }],
+    [wg, bulario]),
 ];
