@@ -77,7 +77,7 @@ export const ptWave8: Article[] = [
     [{ q: "Wegovy 2,4 mg emagrece quanto por mês?", a: "A bula não traz esse número." }],
     [wg, bulario]),
   A("wegovy", "quanto-tempo-fica-no-corpo", "Quanto tempo o Wegovy fica no corpo? O que a bula diz (e não diz)",
-    "A bula do paciente do Wegovy não informa meia-vida nem tempo de eliminação. O que ela diz de prazo: a aplicação é semanal; uma dose esquecida pode ser aplicada em até 5 dias; e, para engravidar, a bula orienta conversar com o médico sobre suspender o tratamento com antecedência. O CadaDose não estima “nível no sangue”.",
+    "A bula do paciente do Wegovy não informa meia-vida nem tempo de eliminação. O que ela diz de prazo: a aplicação é semanal; uma dose esquecida pode ser aplicada em até 5 dias. O CadaDose não estima “nível no sangue”.",
     "Meia-vida do Wegovy: o que consta na bula do paciente e por que o site não estima nível no sangue.",
     [silent("Wegovy", "meia-vida ou tempo até a eliminação completa"), { heading: "Prazos que a bula traz", bullets: ["Aplicação uma vez por semana.", "Dose esquecida: até 5 dias (120 horas) depois do dia programado."] }, { heading: "Por que não mostramos “nível do medicamento”", paragraphs: ["Alguns apps exibem uma curva estimada. A bula do paciente não traz esse dado; uma estimativa pode dar falsa segurança em decisões que são do médico."] }],
     [{ q: "Quanto tempo depois de parar o Wegovy ele sai do corpo?", a: "A bula do paciente não informa. Pergunte ao médico." }],
