@@ -33,9 +33,9 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <PageHero eyebrow={guiasApps.some((x) => x.slug === slug) ? "Comparação de apps" : [...guiasMarcas, ...guiasMarcasExtra, ...guiaCaneta].some((x) => x.slug === slug) ? "Mercado brasileiro" : "Comparação pelas bulas"} title={g.title} image={guideImage(slug)} crumbs={[{ label: "Perguntas", href: "/perguntas" }, { label: "Guias" }]} />
-    <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
-      <ArticleBody a={g} path={`/guias/${slug}`} title={g.title} note={guiasApps.some((x) => x.slug === slug) ? "Baseado nas fichas oficiais das lojas de apps, citadas em cada trecho." : [...guiasMarcas, ...guiasMarcasExtra, ...guiaCaneta].some((x) => x.slug === slug) ? "Baseado em comunicados da ANVISA e reportagens que os citam, indicados em cada trecho." : undefined} />
+      <PageHero eyebrow={guiasApps.some((x) => x.slug === slug) ? "Comparação de apps" : [...guiasMarcas, ...guiasMarcasExtra, ...guiaCaneta].some((x) => x.slug === slug) ? "Mercado brasileiro" : "Comparação pelas bulas"} title={g.title} lede={g.description} tall crumbs={[{ label: "Perguntas", href: "/perguntas" }, { label: "Guias" }]} />
+    <article>
+      <ArticleBody a={g} path={`/guias/${slug}`} title={g.title} image={guideImage(slug)} note={guiasApps.some((x) => x.slug === slug) ? "Baseado nas fichas oficiais das lojas de apps, citadas em cada trecho." : [...guiasMarcas, ...guiasMarcasExtra, ...guiaCaneta].some((x) => x.slug === slug) ? "Baseado em comunicados da ANVISA e reportagens que os citam, indicados em cada trecho." : undefined} />
     </article>
     </>
   );

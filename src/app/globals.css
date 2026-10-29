@@ -1,28 +1,33 @@
 @import "tailwindcss";
 
-/* CadaDose, editorial: ivory paper, deep ink, sage accent. Photos square, type light and large. */
+/* CadaDose — after the Healers reference: beige paper, deep teal-ink, mint accent, condensed serif display. */
 :root {
-  --background: #f7f6f1;
-  --foreground: #111a17;
-  --accent: #3f5a46;
-  --accent-strong: #2c4232;
-  --accent-soft: #e9ece4;
-  --warm: #e6d9b8;
-  --warm-ink: #3a2e14;
-  --ok: #3f5a46;
-  --muted: #6b746f;
-  --label: #96a09b;
+  --background: #eae9e2;
+  --foreground: #1b2b2b;
+  --ink: #1b2b2b;
+  --ink-deep: #0c1313;
+  --accent: #7cea99;
+  --accent-strong: #5fd983;
+  --accent-soft: #e0e5dc;
+  --forest: #2f723d;
+  --warm: #7cea99;
+  --warm-ink: #1b2b2b;
+  --ok: #2f723d;
+  --muted: #495757;
+  --label: #6f7b7b;
   --card: #ffffff;
-  --border: #e3e2da;
-  --ink: #111a17;
+  --border: #d3d6d0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-ink-deep: var(--ink-deep);
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
   --color-accent-soft: var(--accent-soft);
+  --color-forest: var(--forest);
   --color-warm: var(--warm);
   --color-warm-ink: var(--warm-ink);
   --color-ok: var(--ok);
@@ -30,48 +35,58 @@
   --color-label: var(--label);
   --color-card: var(--card);
   --color-border: var(--border);
-  --color-ink: var(--ink);
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Instrument Serif", Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #121715;
-    --foreground: #ecebe4;
-    --accent: #9cb8a3;
-    --accent-strong: #b7cfbd;
-    --accent-soft: #1c2420;
-    --warm: #4a4027;
-    --warm-ink: #f1e6c8;
-    --ok: #9cb8a3;
-    --muted: #a3aba6;
-    --label: #7d8781;
-    --card: #181f1c;
-    --border: #273029;
-    --ink: #0e1210;
-  }
-}
+body { background: var(--background); color: var(--foreground); font-family: "Inter", ui-sans-serif, system-ui, sans-serif; font-weight: 300; -webkit-font-smoothing: antialiased; }
+strong, b { font-weight: 500; }
 
-body { background: var(--background); color: var(--foreground); font-family: "Inter", ui-sans-serif, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, .display { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; letter-spacing: 0; line-height: 1.02; }
+h1 { font-size: clamp(2.6rem, 6vw, 5rem); }
+h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
+h3 { font-size: 1.6rem; line-height: 1.15; }
 
-h1, h2, h3 { font-weight: 400; letter-spacing: -0.02em; }
-h1 { letter-spacing: -0.03em; }
+/* Mint period at the end of a display line, as in the reference. */
+.dot::after { content: "."; color: var(--accent); }
 
-/* Tiny tracked label, as in the reference template. */
-.eyebrow { display: inline-block; font-size: .7rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--label); }
-.chip { display: inline-block; font-size: .66rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; padding: .35rem .6rem; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); }
+.eyebrow { display: inline-block; font-size: .72rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.on-light .eyebrow, .eyebrow.dark { color: var(--forest); }
+.chip { display: inline-flex; align-items: center; gap: .35rem; font-size: .72rem; font-weight: 400; padding: .3rem .6rem; border: 1px solid var(--border); border-radius: 4px; color: var(--muted); background: var(--card); }
 
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: 999px; padding: .85rem 1.5rem; font-weight: 500; font-size: .95rem; transition: background .15s ease, color .15s ease, border-color .15s ease, transform .15s ease; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: 4px; padding: .9rem 1.4rem; font-weight: 500; font-size: .95rem; line-height: 1; transition: background .15s ease, color .15s ease, border-color .15s ease, transform .15s ease; }
 .btn:active { transform: scale(.98); }
 .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-.btn-primary { background: var(--ink); color: #f7f6f1; }
-.btn-primary:hover { background: #000; }
-.btn-light { background: #f7f6f1; color: var(--ink); }
-.btn-light:hover { background: #fff; }
+.btn-primary { background: var(--accent); color: var(--ink); }
+.btn-primary:hover { background: var(--accent-strong); }
+.btn-light { background: var(--accent); color: var(--ink); }
+.btn-light:hover { background: var(--accent-strong); }
 .btn-ghost { border: 1px solid var(--border); background: transparent; color: var(--foreground); }
 .btn-ghost:hover { border-color: var(--foreground); }
+.btn-dark { background: var(--ink); color: #fff; }
+.btn-dark:hover { background: var(--ink-deep); }
 
-.tile { border-radius: 6px; padding: 1.25rem; }
+.tile { border-radius: 4px; padding: 1.5rem; }
 .photo { display: block; width: 100%; height: 100%; object-fit: cover; }
+.frame { background: rgba(255,255,255,.12); padding: 10px; border-radius: 4px; }
+
+/* Dark sections: blurry blob texture like the reference hero. */
+.blobs { background-color: var(--ink); background-image:
+  radial-gradient(ellipse 40% 30% at 12% 20%, rgba(255,255,255,.07), transparent 60%),
+  radial-gradient(ellipse 30% 40% at 70% 10%, rgba(255,255,255,.06), transparent 60%),
+  radial-gradient(ellipse 35% 35% at 85% 70%, rgba(255,255,255,.05), transparent 60%),
+  radial-gradient(ellipse 45% 30% at 30% 85%, rgba(255,255,255,.06), transparent 60%); }
+
+/* Marquee ribbon */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ribbon { overflow: hidden; background: var(--accent); color: var(--ink); }
+.ribbon-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
+.ribbon-track span { padding: .9rem 1.5rem; font-family: "Instrument Serif", Georgia, serif; font-size: 1.35rem; white-space: nowrap; }
+.ribbon-track span::after { content: "•"; margin-left: 1.5rem; opacity: .6; }
+
+details.faq > summary { list-style: none; cursor: pointer; display: flex; gap: 1rem; align-items: baseline; padding: 1.1rem 0; }
+details.faq > summary::-webkit-details-marker { display: none; }
+details.faq > summary::after { content: "+"; margin-left: auto; font-size: 1.4rem; line-height: 1; color: var(--muted); }
+details.faq[open] > summary::after { content: "–"; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

@@ -5,7 +5,7 @@ import { allArticles } from "@/content";
 import { intentLabels, type Intent } from "@/content/types";
 import { getMedication } from "@/lib/medications";
 import InfoNotice from "@/components/InfoNotice";
-import { themeImage } from "@/lib/images";
+import { themeImage, medImage } from "@/lib/images";
 import PageHero from "@/components/PageHero";
 
 const intents = [...new Set(allArticles.map((a) => a.intent))];
@@ -21,27 +21,51 @@ export default async function Tema({ params }: { params: Promise<{ intent: strin
   const label = intentLabels[intent as Intent];
   const arts = allArticles.filter((a) => a.intent === intent);
   if (!label || !arts.length) notFound();
+  const others = intents.filter((i) => i !== intent).slice(0, 12);
   return (
     <>
-    <PageHero eyebrow="Tema" title={`${label}: o que diz a bula de cada medicamento`} lede="A mesma pergunta, respondida pela bula de cada produto. As respostas diferem porque as bulas diferem." image={themeImage(intent)} crumbs={[{ label: "Perguntas", href: "/perguntas" }, { label }]} />
-    <div className="mx-auto max-w-3xl px-6 py-12 md:py-16">
-      <ul className="space-y-4">
-        {arts.map((a) => {
-          const med = getMedication(a.medicationSlug);
-          return (
-            <li key={a.medicationSlug} className="flex gap-4 rounded-md border border-border bg-card p-4">
-              <div className="hidden h-24 w-36 shrink-0 overflow-hidden rounded-md sm:block"><img src={themeImage(a.intent, a.medicationSlug)} alt="" className="photo" loading="lazy" /></div>
-              <div>
-              <p className="eyebrow">{med?.name}</p>
-              <Link href={`/medicamentos/${a.medicationSlug}/${a.intent}`} className="mt-1 block text-lg font-semibold hover:text-accent">{a.title}</Link>
-              <p className="mt-2 text-sm text-muted">{a.answer}</p>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-      <InfoNotice className="mt-8" />
-    </div>
+      <PageHero eyebrow="Tema" title={`${label}: o que diz a bula de cada medicamento`} lede="A mesma pergunta, respondida pela bula de cada produto. As respostas diferem porque as bulas diferem." image={themeImage(intent)} crumbs={[{ label: "Perguntas", href: "/perguntas" }, { label }]} />
+
+      <div className="mx-auto max-w-7xl px-6 py-14 md:px-10 md:py-20">
+        <div className="grid gap-10 md:grid-cols-[2fr_3fr]">
+          <div className="grid gap-4 self-start md:sticky md:top-24">
+            <div className="aspect-[4/3] overflow-hidden rounded-[4px]"><img src={medImage(arts[0].medicationSlug)} alt="" className="photo" loading="lazy" /></div>
+            <div className="tile bg-ink text-white">
+              <h3 className="text-3xl">{arts.length} medicamentos, {arts.length} bulas</h3>
+              <p className="mt-2 text-sm font-light text-white/70">Abra cada resposta para ver a frase da bula citada, com a seção e a data da versão.</p>
+              <InfoNotice light className="mt-4" />
+            </div>
+          </div>
+          <div>
+            <h2>{label}</h2>
+            <div className="mt-6 divide-y divide-border border-y border-border">
+              {arts.map((a, i) => {
+                const med = getMedication(a.medicationSlug);
+                return (
+                  <details key={a.medicationSlug} className="faq" open={i === 0}>
+                    <summary><span className="w-8 shrink-0 text-xs text-muted">{String(i + 1).padStart(2, "0")}</span><span className="text-lg md:text-xl">{a.title}</span><span className="ml-auto hidden shrink-0 text-xs text-muted sm:block">{med?.name.split(" (")[0]}</span></summary>
+                    <div className="grid gap-4 pb-6 pl-12 sm:grid-cols-[120px_1fr]">
+                      <div className="aspect-[4/3] overflow-hidden rounded-[4px]"><img src={medImage(a.medicationSlug)} alt="" className="photo" loading="lazy" /></div>
+                      <div>
+                        <p className="text-sm leading-relaxed text-muted">{a.answer}</p>
+                        <Link href={`/medicamentos/${a.medicationSlug}/${a.intent}`} className="mt-3 inline-block text-sm font-medium hover:text-forest">Ler a resposta completa ↗</Link>
+                      </div>
+                    </div>
+                  </details>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        <section className="mt-20">
+          <span className="eyebrow dark">Outros temas</span>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {others.map((i) => <Link key={i} href={`/temas/${i}`} className="chip hover:border-forest hover:text-forest">{intentLabels[i]}</Link>)}
+            <Link href="/perguntas" className="chip bg-ink text-white hover:bg-ink-deep">Todas as perguntas</Link>
+          </div>
+        </section>
+      </div>
     </>
   );
 }

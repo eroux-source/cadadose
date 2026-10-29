@@ -47,14 +47,14 @@ export default function Report() {
       </header>
 
       <section className="mt-6 grid gap-4 md:grid-cols-2 text-sm">
-        <div className="rounded-md border border-border p-4">
+        <div className="rounded-[4px] border border-border p-4">
           <h2 className="font-medium">Tratamento informado</h2>
           <p className="mt-2">Medicamento: <strong>{med?.name ?? "—"}</strong></p>
           <p>Dose prescrita (informada): <strong>{store.profile?.doseValue ?? "—"} {store.profile?.doseUnit ?? ""}</strong></p>
           <p>Dia da semana: {store.profile ? t.profile.days[store.profile.weekday] : "—"}</p>
           <p>Período registrado: {period}</p>
         </div>
-        <div className="rounded-md border border-border p-4">
+        <div className="rounded-[4px] border border-border p-4">
           <h2 className="font-medium">Resumo</h2>
           <p className="mt-2">Aplicações registradas: <strong>{shots.length}</strong></p>
           <p>Pesagens: <strong>{weights.length}</strong>{delta != null && <> · variação <strong>{delta > 0 ? "+" : ""}{delta.toFixed(1)} kg</strong></>}</p>

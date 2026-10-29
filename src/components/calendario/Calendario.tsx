@@ -45,11 +45,12 @@ export default function Calendario() {
   const d0 = new Date(start + "T12:00:00");
   const penExpiry = med.storageDays ? addDays(d0, med.storageDays) : null;
 
-  const inp = "mt-1 w-full rounded-md border border-border bg-background px-3 py-2.5";
+  const inp = "mt-1 w-full rounded-[4px] border border-border bg-background px-3 py-2.5";
   if (!mounted) return <p className="text-sm text-muted">Carregando o calendário…</p>;
   return (
     <div className="grid gap-8 md:grid-cols-[1fr_1.3fr]">
-      <form className="rounded-md border border-border bg-card p-5" onSubmit={(e) => e.preventDefault()}>
+      <div className="grid content-start gap-4">
+      <form className="rounded-[4px] border border-border bg-card p-5" onSubmit={(e) => e.preventDefault()}>
         <label className="block text-sm font-medium">Medicamento</label>
         <select className={inp} value={slug} onChange={(e) => { setSlug(e.target.value); setDoseIdx(0); }}>
           {medications.filter((m) => m.frequency === "weekly").map((m) => <option key={m.slug} value={m.slug}>{m.name}</option>)}
@@ -70,9 +71,12 @@ export default function Calendario() {
         <input type="number" min={1} max={16} className={inp} value={consultIn} onChange={(e) => setConsultIn(Number(e.target.value))} />
         <p className="mt-4 text-xs text-muted">O calendário usa a escada e os prazos da bula do paciente; não sugere dose. Mudanças de dose são decisão do médico.</p>
       </form>
+      <div className="aspect-[4/3] overflow-hidden rounded-[4px]"><img src="/img/card-1.jpg" alt="" className="photo" loading="lazy" /></div>
+      <div className="tile bg-ink text-white"><h3 className="text-2xl">O que o calendário faz</h3><ul className="mt-3 space-y-1.5 text-sm font-light text-white/75"><li>• Marca cada aplicação semanal a partir da data que você informa.</li><li>• Mostra até quando a caneta vale fora da geladeira, pela bula.</li><li>• Conta quantas caixas faltam até a consulta.</li><li>• Não calcula nem sugere dose. A dose é a da sua receita.</li></ul></div>
+      </div>
 
       <div>
-        <div className="rounded-md border border-border bg-card p-5">
+        <div className="rounded-[4px] border border-border bg-card p-5">
           <p className="eyebrow">Seu calendário até a consulta</p>
           <p className="mt-1 text-sm text-muted">Aplicação toda {dayNames[d0.getDay()]}. {penExpiry && med.form === "single-use-pen" ? `Caixa fora da geladeira desde ${fmt(d0)}: usar até ${fmt(penExpiry)} (${med.storageDays} dias, bula).` : penExpiry ? `Caneta aberta em ${fmt(d0)}: usar até ${fmt(penExpiry)} (${med.storageDays} dias após o primeiro uso, bula).` : "Conservação: conforme o rótulo da farmácia de manipulação."}</p>
           <table className="mt-4 w-full text-sm">
@@ -89,15 +93,15 @@ export default function Calendario() {
             </tbody>
           </table>
           <div className="mt-4 grid gap-2 sm:grid-cols-3 text-sm">
-            <div className="rounded-md bg-accent-soft p-3"><p className="text-xs text-muted">Aplicações até a consulta</p><p className="text-xl font-semibold">{untilConsult.length}</p></div>
-            {boxes != null && <div className="rounded-md bg-accent-soft p-3"><p className="text-xs text-muted">{med.dosesPerPen === 1 ? "Caixas (4 canetas)" : "Canetas (4 doses)"}</p><p className="text-xl font-semibold">{boxes}</p></div>}
-            {med.missedDoseWindowHours && <div className="rounded-md bg-accent-soft p-3"><p className="text-xs text-muted">Se esquecer (bula)</p><p className="text-xl font-semibold">{med.missedDoseWindowHours} h</p></div>}
+            <div className="rounded-[4px] bg-accent-soft p-3"><p className="text-xs text-muted">Aplicações até a consulta</p><p className="text-xl font-semibold">{untilConsult.length}</p></div>
+            {boxes != null && <div className="rounded-[4px] bg-accent-soft p-3"><p className="text-xs text-muted">{med.dosesPerPen === 1 ? "Caixas (4 canetas)" : "Canetas (4 doses)"}</p><p className="text-xl font-semibold">{boxes}</p></div>}
+            {med.missedDoseWindowHours && <div className="rounded-[4px] bg-accent-soft p-3"><p className="text-xs text-muted">Se esquecer (bula)</p><p className="text-xl font-semibold">{med.missedDoseWindowHours} h</p></div>}
           </div>
           <p className="mt-3 text-xs text-muted">Fonte: {med.sources[0] ? <a href={med.sources[0].url} target="_blank" rel="noopener" className="underline">{med.sources[0].label}</a> : "rótulo da farmácia"} · <Link href={`/medicamentos/${slug}/tabela-de-dose`} className="underline">ver a tabela da bula</Link></p>
           <InfoNotice className="mt-3" />
         </div>
 
-        <div className="mt-4 rounded-md bg-accent-soft p-5">
+        <div className="mt-4 rounded-[4px] bg-accent-soft p-5">
           <p className="font-semibold">Quer o lembrete de cada aplicação no celular?</p>
           <p className="mt-1 text-sm text-muted">O diário é grátis, sem conta, e avisa no dia da dose. Os dados ficam no seu aparelho.</p>
           <Link href="/app" className="btn btn-primary mt-3">Abrir meu diário</Link>

@@ -24,51 +24,63 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+const fmt = (d: string) => new Date(d + "T12:00:00").toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" });
+
 export default async function MedicationHub({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const med = getMedication(slug);
   if (!med) notFound();
   const articles = getArticlesForMedication(slug);
+  const short = med.name.split(" (")[0];
+  const facts: [string, string][] = [];
+  if (med.doseStepsMg.length) facts.push(["Doses na bula", med.doseStepsMg.map((d) => `${d.toLocaleString("pt-BR")} mg`).join(" · ")]);
+  if (med.dosesPerPen) facts.push([med.form === "tablet" ? "Comprimidos por caixa" : "Doses por caneta", med.form === "single-use-pen" ? "Caneta de uso único (1 dose)" : String(med.dosesPerPen)]);
+  if (med.storageDays && med.storageLabel) facts.push(["Conservação", `${med.storageDays} dias ${med.storageLabel}`]);
+  if (med.maxTempC) facts.push(["Temperatura máxima", `${med.maxTempC} °C`]);
+  if (med.missedDoseWindowHours) facts.push(["Janela da dose esquecida", `${med.missedDoseWindowHours} h`]);
 
   return (
     <>
-    <PageHero eyebrow={`${med.activeIngredient} · ${med.frequency === "daily" ? "uso diário" : "aplicação semanal"}`} title={`${med.name.split(" (")[0]}: ${articles.length} perguntas respondidas pela bula`} lede={t.content.disclaimerShort} image={medImage(slug)} crumbs={[{ label: "Medicamentos", href: "/medicamentos" }, { label: med.name.split(" (")[0] }]} />
-    <div className="mx-auto max-w-5xl px-6 py-12 md:py-16">
-      <InfoNotice />
+      <PageHero eyebrow={`${med.activeIngredient} · ${med.frequency === "daily" ? "uso diário" : "aplicação semanal"}`} title={`${short}: ${articles.length} perguntas respondidas pela bula`} lede={t.content.disclaimerShort} image={medImage(slug)} crumbs={[{ label: "Medicamentos", href: "/medicamentos" }, { label: short }]} />
 
-      {med.doseStepsMg.length > 0 && (
-        <div className="mt-10 rounded-md border border-border bg-card p-5 text-sm">
-          <h2 className="text-lg">{intentLabels["tabela-de-dose"]}</h2>
-          <p className="mt-2">{med.doseStepsMg.map((d) => `${d.toLocaleString("pt-BR")} mg`).join(" → ")}</p>
-          {med.dosesPerPen && <p className="mt-1 text-muted">{med.form === "single-use-pen" ? "Caneta de uso único (1 dose)" : med.form === "tablet" ? `Caixa com ${med.dosesPerPen} comprimidos` : `Caneta com ${med.dosesPerPen} doses`}</p>}
-          {med.storageDays && <p className="text-muted">Conservação: {med.storageDays} dias {med.storageLabel}</p>}
-          {!med.reviewed && <p className="mt-2 text-xs text-muted">{t.content.reviewPending}</p>}
-          <p className="mt-2 text-xs text-muted">
-            Fonte: {med.sources.map((s, i) => (
-              <span key={s.url}>{i > 0 ? " · " : ""}<a href={s.url} rel="noopener" className="underline">{s.label}</a></span>
+      <div className="mx-auto max-w-7xl px-6 py-14 md:px-10 md:py-20">
+        {facts.length > 0 && (
+          <section className="grid gap-4 md:grid-cols-[1fr_2fr]">
+            <div className="tile flex flex-col justify-between bg-forest text-white">
+              <p className="eyebrow">O que a bula fixa</p>
+              <h2 className="mt-6 text-4xl">Números da bula, sem interpretação</h2>
+              <p className="mt-4 text-xs text-white/70">Fonte: {med.sources.map((s, i) => <span key={s.url}>{i > 0 ? " · " : ""}<a href={s.url} rel="noopener" className="underline">{s.label}</a></span>)}</p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {facts.map(([k, v]) => (
+                <div key={k} className="tile bg-card"><p className="text-xs text-label">{k}</p><p className="display mt-2 text-3xl">{v}</p></div>
+              ))}
+              {!med.reviewed && <p className="text-xs text-muted sm:col-span-2">{t.content.reviewPending}</p>}
+            </div>
+          </section>
+        )}
+        <InfoNotice className="mt-4" />
+
+        <section className="mt-16">
+          <div className="flex items-end justify-between gap-4"><h2>{t.content.allAbout} {med.activeIngredient}</h2><span className="text-sm text-muted">{articles.length} páginas</span></div>
+          <div className="mt-8 grid gap-8 sm:grid-cols-2 md:grid-cols-4">
+            {articles.map((a) => (
+              <Link key={a.intent} href={`/medicamentos/${slug}/${a.intent}`} className="group">
+                <div className="aspect-[4/3] overflow-hidden rounded-[4px]"><img src={themeImage(a.intent, slug)} alt="" className="photo transition group-hover:scale-[1.02]" loading="lazy" /></div>
+                <p className="mt-3 flex gap-3 text-xs text-muted"><span>{fmt(a.updated)}</span><span className="text-border">|</span><span>{intentLabels[a.intent]}</span></p>
+                <h3 className="mt-1 text-xl leading-snug">{a.title}</h3>
+                <p className="mt-2 text-sm font-medium">Ler mais <span aria-hidden>↗</span></p>
+              </Link>
             ))}
-          </p>
-        </div>
-      )}
+            {articles.length === 0 && <p className="text-sm text-muted">Em breve.</p>}
+          </div>
+        </section>
 
-      <h2 className="mt-14 text-2xl md:text-3xl">{t.content.allAbout} {med.activeIngredient}</h2>
-      <ul className="mt-6 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-        {articles.map((a) => (
-          <li key={a.intent}>
-            <Link href={`/medicamentos/${slug}/${a.intent}`} className="group block">
-              <div className="aspect-[3/2] overflow-hidden rounded-md"><img src={themeImage(a.intent, slug)} alt="" className="photo transition group-hover:scale-[1.02]" loading="lazy" /></div>
-              <p className="eyebrow mt-3">{intentLabels[a.intent]}</p>
-              <p className="mt-1 text-lg leading-snug">{a.title}</p>
-            </Link>
-          </li>
-        ))}
-        {articles.length === 0 && <li className="text-sm text-muted">Em breve.</li>}
-      </ul>
-
-      <Link href="/app" className="btn btn-primary mt-12">
-        {t.content.openApp}
-      </Link>
-    </div>
+        <section className="mt-20 flex flex-col items-center justify-between gap-6 border-t border-border pt-14 md:flex-row">
+          <h2 className="max-w-xl">Registre a semana da dose de {short}</h2>
+          <div className="flex gap-3"><Link href="/app" className="btn btn-dark">{t.content.openApp}</Link><Link href="/calendario" className="btn btn-ghost">Calendário</Link></div>
+        </section>
+      </div>
     </>
   );
 }

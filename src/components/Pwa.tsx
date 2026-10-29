@@ -43,7 +43,7 @@ export default function Pwa() {
   };
 
   return (
-    <div className="fixed inset-x-4 bottom-4 z-20 rounded-md border border-border bg-card p-4 shadow-lg text-sm md:left-auto md:right-6 md:w-96">
+    <div className="fixed inset-x-4 bottom-4 z-20 rounded-[4px] border border-border bg-card p-4 shadow-lg text-sm md:left-auto md:right-6 md:w-96">
       <p className="font-medium">Instalar o CadaDose na tela inicial</p>
       <p className="mt-1 text-muted">
         {deferred

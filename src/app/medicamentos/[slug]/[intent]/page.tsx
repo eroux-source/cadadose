@@ -51,11 +51,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <PageHero eyebrow={intentLabels[a.intent]} title={a.title} image={themeImage(intent, slug)} crumbs={[{ label: "Perguntas", href: "/perguntas" }, { label: med.name, href: `/medicamentos/${slug}` }, { label: intentLabels[a.intent] }]} />
-    <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
-      <ArticleBody a={a} path={`/medicamentos/${slug}/${intent}`} title={a.title} />
+      <PageHero eyebrow={intentLabels[a.intent]} title={a.title} lede={a.description} tall crumbs={[{ label: "Perguntas", href: "/perguntas" }, { label: med.name, href: `/medicamentos/${slug}` }, { label: intentLabels[a.intent] }]} />
+      <article>
+        <ArticleBody a={a} path={`/medicamentos/${slug}/${intent}`} title={a.title} image={themeImage(intent, slug)} />
+      </article>
       <Related slug={slug} intent={intent} />
-    </article>
     </>
   );
 }

@@ -15,12 +15,22 @@ const rules = [
 export default function Page() {
   return (
     <>
-    <PageHero eyebrow="Política editorial" title="Nove regras, sem exceção." image="/img/t-regras-anvisa.jpg" />
-    <article className="mx-auto max-w-3xl px-6 py-12 md:py-16">
-      <dl className="mt-8 space-y-6">
-        {rules.map(([t, d]) => (<div key={t}><dt className="font-semibold">{t}</dt><dd className="mt-1 text-muted">{d}</dd></div>))}
-      </dl>
-    </article>
+    <PageHero eyebrow="Política editorial" title="Nove regras, sem exceção." lede="O que entra no site, o que fica de fora e como corrigimos. Cada página segue estas regras." image="/img/t-regras-anvisa.jpg" crumbs={[{ label: "Sobre", href: "/sobre" }, { label: "Política editorial" }]} />
+    <div className="mx-auto max-w-7xl px-6 py-14 md:px-10 md:py-20">
+      <div className="grid gap-4 md:grid-cols-3">
+        {rules.map(([t, d], i) => (
+          <div key={t} className={`tile ${i === 4 ? "bg-forest text-white" : i === 8 ? "bg-ink text-white" : "bg-card"}`}>
+            <p className={`display text-4xl ${i === 4 || i === 8 ? "text-accent" : "text-forest"}`}>{String(i + 1).padStart(2, "0")}</p>
+            <h2 className="mt-4 text-2xl">{t}</h2>
+            <p className={`mt-2 text-sm ${i === 4 || i === 8 ? "text-white/75" : "text-muted"}`}>{d}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-10 grid gap-4 md:grid-cols-2">
+        <div className="aspect-[16/9] overflow-hidden rounded-[4px]"><img src="/img/t-para-que-serve.jpg" alt="" className="photo" loading="lazy" /></div>
+        <div className="aspect-[16/9] overflow-hidden rounded-[4px]"><img src="/img/principles.jpg" alt="" className="photo" loading="lazy" /></div>
+      </div>
+    </div>
     </>
   );
 }

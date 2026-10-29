@@ -22,7 +22,7 @@ async function DiaryGate({ t }: { t: Dictionary["tracker"] }) {
 export default function AppPage() {
   return (
     <>
-    <PageHero eyebrow="Meu diário · grátis, sem conta" title="A semana da dose, registrada em um toque." lede="Aplicações, rodízio, peso, efeitos e validade da caneta. Os dados ficam no seu aparelho." image="/img/card-2.jpg" />
+    <PageHero eyebrow="Meu diário · grátis, sem conta" title="A semana da dose, registrada em um toque." lede="Aplicações, rodízio, peso, efeitos e validade da caneta. Os dados ficam no seu aparelho." image="/img/card-2.jpg" crumbs={[{ label: "Início", href: "/" }, { label: "Meu diário" }]} />
     <Suspense fallback={<div className="mx-auto max-w-3xl px-4 py-6 text-sm text-muted">…</div>}>
       <DiaryGate t={dictionary.tracker} />
     </Suspense>
