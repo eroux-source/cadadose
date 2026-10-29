@@ -104,4 +104,78 @@ export const getGuide = (slug: string) => guias.find((g) => g.slug === slug);
 
 import { guiasApps } from "./guias-apps";
 import { guiasMarcas, guiasMarcasExtra } from "./guias-marcas";
-export const guias: Guide[] = [...guiasBulas, ...guiasApps, ...guiasMarcas, ...guiasMarcasExtra];
+
+const saxendaBula = { label: "Bula do paciente Saxenda® (liraglutida), Novo Nordisk — registro ANVISA 1.1766.0032, aprovada em 17/04/2026", url: "https://novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Saxenda_Bula_Paciente1.pdf" };
+const rybelsusBula = { label: "Bula do paciente Rybelsus® (semaglutida), Novo Nordisk — registro ANVISA 1.1766.0037, aprovada em 08/09/2026", url: "https://www.novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Rybelsus_Bula_PACIENTE.pdf" };
+const U2 = "2026-10-28";
+export const guiasExtra: Guide[] = [
+  {
+    slug: "mounjaro-vs-wegovy",
+    title: "Mounjaro ou Wegovy: qual a diferença? Comparação pelas bulas brasileiras",
+    answer: "Mounjaro é tirzepatida (Lilly); Wegovy é semaglutida (Novo Nordisk). Os dois são injeções semanais e, desde 22/04/2026, os dois têm indicação de controle crônico do peso na bula (IMC ≥ 30, ou ≥ 27 com comorbidade). Mounjaro também é indicado para diabetes tipo 2 e apneia do sono; Wegovy, para MASH e redução de risco cardiovascular. Doses: Mounjaro 2,5 a 15 mg, caneta de uso único (4 por caixa), 21 dias fora da geladeira; Wegovy 0,25 a 2,4 mg, caneta multidose (4 doses), 6 semanas após o primeiro uso. “Qual emagrece mais” não está nas bulas.",
+    description: "Mounjaro e Wegovy lado a lado: substância, indicações, escada de doses, caneta, conservação e dose esquecida, só com o que as bulas dizem.",
+    updated: U2,
+    sections: [
+      { heading: "Lado a lado (bulas do paciente)", table: { head: ["", "Mounjaro", "Wegovy"], rows: [
+        ["Substância", "tirzepatida", "semaglutida"],
+        ["Indicações", "diabetes tipo 2; controle crônico do peso; apneia obstrutiva do sono (versão 05/2026)", "controle de peso (adultos e adolescentes ≥ 12 anos); MASH; redução de risco cardiovascular"],
+        ["Escada de doses", "2,5 → 5 → 7,5 → 10 → 12,5 → 15 mg (passos de ≥ 4 semanas)", "0,25 → 0,5 → 1 → 1,7 → 2,4 mg (4 semanas cada)"],
+        ["Caneta", "uso único, 0,5 mL, 4 por caixa (também frasco-ampola)", "multidose, 4 doses"],
+        ["Fora da geladeira", "até 21 dias, abaixo de 30 °C", "6 semanas após o primeiro uso, abaixo de 30 °C"],
+        ["Dose esquecida", "até 96 horas (4 dias)", "até 120 horas (5 dias)"],
+        ["Marco de reavaliação", "5% do peso em 6 meses na maior dose tolerada", "adolescentes: 5% do IMC após 12 semanas"],
+        ["Anticoncepcional oral", "método não oral ou barreira por 4 semanas no início e após cada aumento", "a bula não traz regra equivalente"],
+      ] } },
+      { heading: "O que as bulas não comparam", paragraphs: ["Nenhuma das duas bulas diz qual emagrece mais nem qual tem menos efeitos. Ambas listam náusea, vômito, diarreia e constipação entre os efeitos mais frequentes. A escolha é do médico, pelo seu caso."] },
+    ],
+    faq: [
+      { q: "Posso trocar de Wegovy para Mounjaro?", a: "A troca é decisão médica; as escadas de dose são diferentes e nenhuma bula descreve a conversão." },
+      { q: "Qual aguenta mais tempo fora da geladeira?", a: "Wegovy: 6 semanas após o primeiro uso. Mounjaro: 21 dias." },
+    ],
+    sources: [mounjaroBula, wegovyBula],
+  },
+  {
+    slug: "saxenda-vs-wegovy",
+    title: "Saxenda ou Wegovy: qual a diferença? Comparação pelas bulas brasileiras",
+    answer: "Os dois são da Novo Nordisk e indicados para controle de peso (IMC ≥ 30, ou ≥ 27 com comorbidade; adolescentes ≥ 12 anos). A diferença central: Saxenda é liraglutida, aplicação diária, escada semanal de 0,6 a 3,0 mg, caneta válida por 4 semanas após aberta, dose esquecida em até 12 horas. Wegovy é semaglutida, aplicação semanal, escada de 0,25 a 2,4 mg a cada 4 semanas, caneta válida por 6 semanas, dose esquecida em até 5 dias. Saxenda é contraindicado na gravidez; a bula do Wegovy diz para não usar na gravidez.",
+    description: "Saxenda e Wegovy lado a lado: frequência, doses, canetas, conservação, dose esquecida, só com o que as bulas dizem.",
+    updated: U2,
+    sections: [
+      { heading: "Lado a lado (bulas do paciente)", table: { head: ["", "Saxenda", "Wegovy"], rows: [
+        ["Substância", "liraglutida", "semaglutida"],
+        ["Frequência", "uma vez ao dia", "uma vez por semana"],
+        ["Escada", "0,6 → 1,2 → 1,8 → 2,4 → 3,0 mg (uma semana cada)", "0,25 → 0,5 → 1 → 1,7 → 2,4 mg (4 semanas cada)"],
+        ["Caneta", "18 mg (3 mL), 3 por caixa", "multidose, 4 doses"],
+        ["Após o primeiro uso", "4 semanas (15 a 30 °C ou geladeira)", "6 semanas (abaixo de 30 °C ou geladeira)"],
+        ["Dose esquecida", "até 12 horas; depois pule", "até 5 dias; depois pule"],
+        ["Marco de reavaliação", "5% do peso após 12 semanas a 3,0 mg", "adolescentes: 5% do IMC após 12 semanas"],
+        ["Queda de cabelo na bula", "não listada", "comum"],
+      ] } },
+      { heading: "O que as bulas não comparam", paragraphs: ["Nenhuma diz qual emagrece mais. As duas listam náusea, vômito, diarreia e constipação como muito comuns."] },
+    ],
+    faq: [{ q: "Saxenda é mais fraco que Wegovy?", a: "As bulas não comparam eficácia. São substâncias e esquemas diferentes; a escolha é médica." }],
+    sources: [saxendaBula, wegovyBula],
+  },
+  {
+    slug: "rybelsus-vs-ozempic",
+    title: "Rybelsus ou Ozempic: qual a diferença? Comparação pelas bulas brasileiras",
+    answer: "Mesma substância (semaglutida), mesma indicação de bula (diabetes tipo 2 em adultos) e mesmo fabricante. A diferença é a via: Rybelsus é comprimido diário (3, 7 e 14 mg), tomado em jejum com até 120 mL de água e 30 minutos sem comer; Ozempic é injeção semanal (0,25, 0,5 e 1 mg), caneta de 4 doses, 6 semanas após o primeiro uso. Rybelsus fica em temperatura ambiente; Ozempic, na geladeira até o primeiro uso.",
+    description: "Rybelsus e Ozempic lado a lado: via, doses, regras de uso, conservação e dose esquecida, pelas bulas.",
+    updated: U2,
+    sections: [
+      { heading: "Lado a lado (bulas do paciente)", table: { head: ["", "Rybelsus", "Ozempic"], rows: [
+        ["Via e frequência", "comprimido, uma vez ao dia", "injeção, uma vez por semana"],
+        ["Doses", "3 mg (1º mês) → 7 mg → 14 mg", "0,25 mg (4 semanas) → 0,5 mg → 1 mg"],
+        ["Regra de uso", "jejum ≥ 8 h, até 120 mL de água, 30 min sem comer, não partir", "qualquer hora, independentemente das refeições; agulha nova"],
+        ["Conservação", "15 a 30 °C, no blíster", "geladeira; em uso, 6 semanas abaixo de 30 °C"],
+        ["Dose esquecida", "pule e tome um comprimido na manhã seguinte", "até 5 dias; depois pule"],
+        ["Gravidez", "suspender pelo menos 2 meses antes", "informe o médico; a bula não recomenda o uso"],
+      ] } },
+      { heading: "O que as bulas não comparam", paragraphs: ["Nenhuma das duas tem indicação de emagrecimento. A escolha entre comprimido e injeção é do médico."] },
+    ],
+    faq: [{ q: "Rybelsus emagrece como o Ozempic?", a: "Nenhum dos dois tem emagrecimento como indicação na bula; na do Rybelsus, perda de peso aparece como efeito incomum." }],
+    sources: [rybelsusBula, ozempicBula1],
+  },
+];
+
+export const guias: Guide[] = [...guiasBulas, ...guiasExtra, ...guiasApps, ...guiasMarcas, ...guiasMarcasExtra];

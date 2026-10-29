@@ -15,11 +15,20 @@ export default function PerguntasHub() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-12">
       <span className="eyebrow">Respondido pela bula</span>
-      <h1 className="mt-3 text-3xl font-semibold leading-tight md:text-4xl">Perguntas sobre GLP-1, <span className="text-muted">com a fonte ao lado.</span></h1>
+      <h1 className="mt-3 text-3xl font-semibold leading-tight md:text-4xl">{allArticles.length} perguntas sobre GLP-1, com a fonte ao lado.</h1>
       <p className="mt-3 max-w-2xl text-muted">Cada resposta cita a bula do paciente aprovada pela ANVISA (registro e data na página). Quando a bula não responde, a página diz isso.</p>
 
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold">Por tema</h2>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {[...new Set(allArticles.map((a) => a.intent))].map((i) => (
+            <Link key={i} href={`/temas/${i}`} className="rounded-full border border-border bg-card px-3 py-1.5 text-sm hover:border-accent">{intentLabels[i]}</Link>
+          ))}
+        </div>
+      </section>
+
       <section className="mt-10">
-        <h2 className="text-xl font-semibold">Comparações</h2>
+        <h2 className="text-xl font-semibold">Comparações e mercado</h2>
         <ul className="mt-3 grid gap-3 md:grid-cols-2">
           {guias.map((g) => (
             <li key={g.slug} className="tile border border-border bg-card hover:border-accent">
