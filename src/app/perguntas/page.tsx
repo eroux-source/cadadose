@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { social } from "@/lib/seo";
 import Link from "next/link";
 import { allArticles } from "@/content";
 import { guias } from "@/content/guias";
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
   title: "Perguntas sobre Mounjaro, Ozempic e Wegovy respondidas pela bula",
   description: "Todas as perguntas mais buscadas sobre GLP-1 no Brasil, respondidas com a bula do paciente aprovada pela ANVISA, citada em cada resposta.",
   alternates: { canonical: "/perguntas" },
+  ...social("perguntas", "Perguntas sobre Mounjaro, Ozempic e Wegovy respondidas pela bula", "Todas as perguntas mais buscadas sobre GLP-1 no Brasil, respondidas com a bula do paciente aprovada pela ANVISA.", { path: "/perguntas" }),
 };
 
 /** Theme groups for the filter bar; the dose pages all sit under one group. */

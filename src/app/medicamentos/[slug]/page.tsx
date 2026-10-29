@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { social } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { dictionary as t } from "@/i18n/dictionaries";
@@ -21,6 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${med.name} — ${t.content.allAbout.toLowerCase()} ${med.activeIngredient}`,
     description: t.content.disclaimerShort,
     alternates: { canonical: `/medicamentos/${slug}` },
+    ...social(`med-${slug}`, `${med.name} — ${t.content.allAbout.toLowerCase()} ${med.activeIngredient}`, t.content.disclaimerShort, { path: `/medicamentos/${slug}` }),
   };
 }
 

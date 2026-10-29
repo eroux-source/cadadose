@@ -1,6 +1,6 @@
 /* CadaDose service worker: app shell cache + push notifications (push server arrives in sprint 2). */
 const CACHE = "cadadose-v1";
-const SHELL = ["/app", "/manifest.webmanifest", "/icon.svg"];
+const SHELL = ["/app", "/manifest.webmanifest", "/icon-192.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).catch(() => undefined));
@@ -37,7 +37,7 @@ self.addEventListener("push", (event) => {
   } catch {
     /* plain text or empty payload */
   }
-  event.waitUntil(self.registration.showNotification(data.title, { body: data.body, icon: "/icon.svg", badge: "/icon.svg", data: { url: "/app" } }));
+  event.waitUntil(self.registration.showNotification(data.title, { body: data.body, icon: "/icon-192.png", badge: "/icon-192.png", data: { url: "/app" } }));
 });
 
 self.addEventListener("notificationclick", (event) => {

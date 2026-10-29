@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { social } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
 import Link from "next/link";
 import { allArticles } from "@/content";
 import { guias } from "@/content/guias";
 import { medications } from "@/lib/medications";
 
-export const metadata: Metadata = { title: "Sobre o CadaDose: quem faz, como fazemos, o que não fazemos", description: "Quem está por trás do CadaDose, como cada página é escrita a partir da bula aprovada pela ANVISA, e os limites que nos impomos.", alternates: { canonical: "/sobre" } };
+export const metadata: Metadata = { title: "Sobre o CadaDose: quem faz, como fazemos, o que não fazemos", description: "Quem está por trás do CadaDose, como cada página é escrita a partir da bula aprovada pela ANVISA, e os limites que nos impomos.", alternates: { canonical: "/sobre" }, ...social("sobre", "Sobre o CadaDose", "Quem está por trás do CadaDose, como cada página é escrita a partir da bula aprovada pela ANVISA, e os limites que nos impomos.", { path: "/sobre" }) };
 
 const steps = [
   "Partimos das perguntas que as pessoas realmente digitam (dados de busca do Brasil).",

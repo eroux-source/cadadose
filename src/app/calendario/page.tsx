@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { social } from "@/lib/seo";
 import Calendario from "@/components/calendario/Calendario";
 import PageHero from "@/components/PageHero";
 
@@ -6,6 +7,7 @@ export const metadata: Metadata = {
   title: "Calendário do tratamento com Mounjaro, Ozempic ou Wegovy (pela bula)",
   description: "Monte o calendário das suas aplicações semanais, veja até quando a caneta vale e quantas caixas precisa até a consulta. Baseado na bula; não sugere dose.",
   alternates: { canonical: "/calendario" },
+  ...social("calendario", "Calendário do tratamento com Mounjaro, Ozempic ou Wegovy (pela bula)", "Monte o calendário das suas aplicações semanais, veja até quando a caneta vale e quantas caixas precisa até a consulta. Baseado na bula; não sugere dose.", { path: "/calendario" }),
 };
 
 export default function Page() {

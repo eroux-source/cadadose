@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { social } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allArticles } from "@/content";
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ intent: s
   const { intent } = await params;
   const label = intentLabels[intent as Intent];
   if (!label) return {};
-  return { title: `${label}: Mounjaro, Ozempic e Wegovy, o que cada bula diz`, description: `${label} para cada medicamento GLP-1 vendido no Brasil, com a resposta curta e a fonte na bula.`, alternates: { canonical: `/temas/${intent}` } };
+  return { title: `${label}: Mounjaro, Ozempic e Wegovy, o que cada bula diz`, description: `${label} para cada medicamento GLP-1 vendido no Brasil, com a resposta curta e a fonte na bula.`, alternates: { canonical: `/temas/${intent}` }, ...social(`t-${intent}`, `${label}: Mounjaro, Ozempic e Wegovy, o que cada bula diz`, `${label} para cada medicamento GLP-1 vendido no Brasil, com a resposta curta e a fonte na bula.`, { path: `/temas/${intent}` }) };
 }
 export default async function Tema({ params }: { params: Promise<{ intent: string }> }) {
   const { intent } = await params;

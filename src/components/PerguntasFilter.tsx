@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 
 export interface Item { href: string; img: string; title: string; date: string; intent: string; intentLabel: string; med: string; medLabel: string; answer: string }
@@ -13,6 +13,8 @@ export default function PerguntasFilter({ items, cats, meds }: { items: Item[]; 
   const [med, setMed] = useState("all");
   const [cat, setCat] = useState("all");
   const [q, setQ] = useState("");
+  // `/perguntas?q=…` is the site search action advertised in the WebSite schema.
+  useEffect(() => { try { const v = new URLSearchParams(window.location.search).get("q"); if (v) setQ(v); } catch {} }, []);
 
   const list = useMemo(() => {
     const c = cats.find((x) => x.id === cat);

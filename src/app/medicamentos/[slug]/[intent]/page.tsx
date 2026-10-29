@@ -10,6 +10,7 @@ import ArticleBody from "@/components/ArticleBody";
 import Related from "@/components/Related";
 import { themeImage } from "@/lib/images";
 import PageHero from "@/components/PageHero";
+import { social } from "@/lib/seo";
 
 export function generateStaticParams() {
   return allArticles.map((a) => ({ slug: a.medicationSlug, intent: a.intent }));
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: a.title,
     description: a.description,
     alternates: { canonical: `/medicamentos/${slug}/${intent}` },
-    openGraph: { title: a.title, description: a.description, type: "article", modifiedTime: a.updated },
+    ...social(`a-${slug}-${intent}`, a.title, a.description, { type: "article", modified: a.updated, path: `/medicamentos/${slug}/${intent}` }),
   };
 }
 
@@ -43,7 +44,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       inLanguage: "pt-BR",
       dateModified: a.updated,
       about: { "@type": "Drug", name: med.name, activeIngredient: med.activeIngredient },
-      publisher: { "@type": "Organization", name: siteName, url: siteUrl },
+      image: `${siteUrl}/og/a-${slug}-${intent}.jpg`,
+      primaryImageOfPage: `${siteUrl}${themeImage(intent, slug)}`,
+      author: { "@type": "Organization", name: siteName, url: `${siteUrl}/sobre` },
+      publisher: { "@id": `${siteUrl}/#org` },
+      reviewedBy: { "@type": "Organization", name: "Equipe editorial CadaDose", url: `${siteUrl}/politica-editorial` },
+      speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", "article p.text-lg"] },
+      citation: a.sources.map((s) => s.url),
+      mainEntityOfPage: url,
     },
     { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Perguntas", item: `${siteUrl}/perguntas` }, { "@type": "ListItem", position: 2, name: med.name, item: `${siteUrl}/medicamentos/${slug}` }, { "@type": "ListItem", position: 3, name: intentLabels[a.intent], item: url }] },
     { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: a.faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) },

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { social } from "@/lib/seo";
 import InfoNotice from "@/components/InfoNotice";
 import Link from "next/link";
 import { dictionary } from "@/i18n/dictionaries";
@@ -8,7 +9,7 @@ import { intentLabels } from "@/content/types";
 import { medImage } from "@/lib/images";
 import PageHero from "@/components/PageHero";
 
-export const metadata: Metadata = { title: "Medicamentos GLP-1 no Brasil: Mounjaro, Ozempic, Wegovy, Saxenda, Rybelsus", description: "Cada medicamento GLP-1 vendido no Brasil com a tabela da bula, conservação, dose esquecida e todas as perguntas respondidas pela bula.", alternates: { canonical: "/medicamentos" } };
+export const metadata: Metadata = { title: "Medicamentos GLP-1 no Brasil: Mounjaro, Ozempic, Wegovy, Saxenda, Rybelsus", description: "Cada medicamento GLP-1 vendido no Brasil com a tabela da bula, conservação, dose esquecida e todas as perguntas respondidas pela bula.", alternates: { canonical: "/medicamentos" }, ...social("medicamentos", "Medicamentos GLP-1 no Brasil: Mounjaro, Ozempic, Wegovy, Saxenda, Rybelsus", "Cada medicamento GLP-1 vendido no Brasil com a tabela da bula, conservação, dose esquecida e todas as perguntas respondidas pela bula.", { path: "/medicamentos" }) };
 
 export default async function MedsIndex() {
   const t = dictionary;

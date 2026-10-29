@@ -29,3 +29,8 @@
 - Search Console impressions at D+7 / D+30 / D+60; `tools/seo/forecast.py` for the targets.
 - Weekly: 10 pt-BR questions to ChatGPT/Perplexity, note citations of cadadose.com.
 - Monthly: `python3 tools/seo/check-bulas.py` (also automated).
+
+## Imagens sociais e favicon
+- `public/og/*.jpg` são as cartas de compartilhamento (WhatsApp, Instagram, Twitter, Google Discover). Geradas por `node scripts/gen-og.mjs` (precisa das fontes Instrument Serif e Inter instaladas no sistema para o sharp). Rode de novo após adicionar artigos, e `./scripts/gen-article-images.sh` após adicionar fotos em `public/img/a`.
+- Para testar o preview do WhatsApp depois do deploy: envie o link em uma conversa consigo mesmo, ou valide em https://developers.facebook.com/tools/debug/ (o WhatsApp usa o mesmo cache; "Scrape again" força a atualização).
+- Favicon: `src/app/icon.svg`, `favicon.ico`, `apple-icon.png`; PWA: `public/icon-192.png`, `public/icon-512.png`.
