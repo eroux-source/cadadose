@@ -37,7 +37,7 @@ ${guias.map((g) => `- [${g.title}](${siteUrl}/guias/${g.slug}): ${g.answer}`).jo
 ## Aplicativo
 
 - [Meu diário](${siteUrl}/app): funciona no navegador e pode ser instalado na tela inicial; os dados ficam no aparelho do usuário.
-- [CadaDose Pro](${siteUrl}/pro): lembretes, backup e relatório para o médico.
+- [Relatório para o médico](${siteUrl}/app/relatorio): uma página para imprimir ou salvar em PDF, grátis.
 
 ## Intenções cobertas
 

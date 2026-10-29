@@ -4,13 +4,12 @@
 1. Import the GitHub repo `eroux-source/cadadose` in Vercel (framework: Next.js, defaults are fine).
 2. Environment variables (Production):
    - `NEXT_PUBLIC_SITE_URL=https://cadadose.com`
-   - `LEAD_WEBHOOK_URL=` any JSON webhook that stores leads (Make/Zapier/n8n scenario → Google Sheet or Klaviyo; or a Google Apps Script web app; or a Slack incoming webhook). Payload: `{contact, med, want[], source, plan[], ua, at}`. Without it, leads are only logged.
    - `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=cadadose.com` (optional; or add GA4 in `layout.tsx`).
    - Later, for Pro: `NEXT_PUBLIC_PADDLE_*` (see `.env.example`).
 3. Add the domain `cadadose.com` (+ `www` redirect) in Vercel → DNS at the registrar.
 
-## 2. Test the lead flow (2 min)
-- Open `/calendario`, fill it, submit an e-mail → check the webhook destination. Same on `/em-breve`.
+## 2. Smoke test (2 min)
+- Open `/`, `/calendario`, `/app` (log one shot), `/medicamentos/mounjaro/validade-depois-de-aberta`, `/widget/validade?med=ozempic`, `/feed.xml`, `/llms.txt`.
 
 ## 3. Search engines (15 min)
 - Google Search Console: add property (domain), verify via DNS TXT, submit `https://cadadose.com/sitemap.xml`.

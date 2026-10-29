@@ -10,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${siteUrl}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${siteUrl}/medicamentos`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${siteUrl}/pro`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${siteUrl}/calendario`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     ...["sobre", "politica-editorial", "fontes", "para-clinicas"].map((p) => ({ url: `${siteUrl}/${p}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.5 })),
     ...[...new Set(allArticles.map((a) => a.intent))].map((i) => ({ url: `${siteUrl}/temas/${i}`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.7 })),

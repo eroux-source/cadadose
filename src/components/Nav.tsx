@@ -13,8 +13,8 @@ export default function Nav() {
           <Link href="/perguntas" className="hover:text-accent">Perguntas</Link>
           <Link href="/calendario" className="hover:text-accent">Calendário</Link>
           <Link href="/medicamentos" className="hover:text-accent">{t.nav.meds}</Link>
-                    <Link href="/em-breve" className="btn btn-primary !py-1.5 !px-4 text-sm">
-            Quero o app
+                    <Link href="/app" className="btn btn-primary !py-1.5 !px-4 text-sm">
+            Meu diário
           </Link>
         </nav>
       </div>

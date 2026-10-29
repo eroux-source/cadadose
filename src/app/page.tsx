@@ -20,7 +20,7 @@ const ownAnswers: Record<string, string> = {
   "O diário calcula ou recomenda a minha dose?":
     "Não. Você informa a dose exatamente como está na sua receita e o diário só registra. Mudanças de dose são decisão do seu médico; as tabelas que publicamos reproduzem a bula aprovada pela ANVISA, com a fonte ao lado.",
   "Preciso criar conta ou pagar para usar?":
-    "Não. O diário funciona no navegador do celular, sem cadastro, e os dados ficam no seu aparelho. O CadaDose Pro é opcional e adiciona o relatório em PDF e o backup.",
+    "Não. O diário funciona no navegador do celular, sem cadastro, e os dados ficam no seu aparelho. Tudo é gratuito.",
 };
 
 const also = [
@@ -68,7 +68,7 @@ export default function Landing() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">{t.hero.subtitle}</p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link href="/em-breve" className="btn bg-warm text-warm-ink hover:brightness-105">Quero o app</Link>
+            <Link href="/app" className="btn bg-warm text-warm-ink hover:brightness-105">Abrir meu diário, é grátis</Link>
             <Link href="/perguntas" className="btn border border-white/40 text-white hover:border-white">Ver as respostas da bula</Link>
           </div>
           <ul className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm text-white/75">
@@ -120,7 +120,7 @@ export default function Landing() {
             bullets={[
               "Aplicações, doses, peso e efeitos das últimas semanas em uma página.",
               "Imprima, salve em PDF ou mande por WhatsApp antes da consulta.",
-              "Relatório em PDF faz parte do CadaDose Pro.",
+              "Grátis, como o resto do diário.",
             ]}
           >
             <MockReport />
@@ -228,7 +228,7 @@ export default function Landing() {
           <div>
             <h2 className="text-3xl font-semibold leading-tight md:text-4xl">Você cuida do tratamento. <span className="text-muted">O diário cuida do resto.</span></h2>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/em-breve" className="btn btn-primary">Quero o app</Link>
+              <Link href="/app" className="btn btn-primary">Abrir meu diário, é grátis</Link>
               <Link href="/perguntas" className="btn btn-ghost">Ler as respostas</Link>
             </div>
             <p className="mt-4 text-sm text-muted">{t.hero.privacy}</p>

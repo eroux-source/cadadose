@@ -24,8 +24,6 @@ export default function Calendario() {
   const [doseIdx, setDoseIdx] = useState(0);
   const [weeksIn, setWeeksIn] = useState(0);
   const [consultIn, setConsultIn] = useState(8);
-  const [contact, setContact] = useState("");
-  const [sent, setSent] = useState<"idle" | "sending" | "done" | "error">("idle");
 
   const steps = med.doseStepsMg;
   const plan = useMemo(() => {
@@ -46,13 +44,6 @@ export default function Calendario() {
   const boxes = med.dosesPerPen === 1 ? Math.ceil(untilConsult.length / 4) : pensNeeded;
   const d0 = new Date(start + "T12:00:00");
   const penExpiry = med.storageDays ? addDays(d0, med.storageDays) : null;
-
-  async function submit(e: React.FormEvent) {
-    e.preventDefault();
-    setSent("sending");
-    const r = await fetch("/api/lead", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ contact, med: slug, source: "calendario", want: ["calendario", "lembrete"], plan: untilConsult.map((r) => `${r.date.toISOString().slice(0, 10)} ${r.dose}`) }) }).catch(() => null);
-    setSent(r?.ok ? "done" : "error");
-  }
 
   const inp = "mt-1 w-full rounded-xl border border-border bg-background px-3 py-2.5";
   if (!mounted) return <p className="text-sm text-muted">Carregando o calendário…</p>;
@@ -106,22 +97,11 @@ export default function Calendario() {
           <InfoNotice className="mt-3" />
         </div>
 
-        <form onSubmit={submit} className="mt-4 rounded-2xl bg-accent p-5 text-white">
-          {sent === "done" ? (
-            <p className="font-semibold">Pronto. Você recebe o calendário e o aviso de cada aplicação.</p>
-          ) : (
-            <>
-              <p className="font-semibold">Receber este calendário com lembrete de cada aplicação</p>
-              <p className="mt-1 text-sm text-white/80">Por e-mail ou WhatsApp. Também avisamos quando o app sair.</p>
-              <div className="mt-3 flex flex-col gap-2 sm:flex-row">
-                <input required value={contact} onChange={(e) => setContact(e.target.value)} placeholder="voce@email.com ou (11) 9…" className="flex-1 rounded-xl px-3 py-2.5 text-foreground" />
-                <button disabled={sent === "sending"} className="btn bg-warm text-warm-ink">{sent === "sending" ? "Enviando…" : "Quero receber"}</button>
-              </div>
-              {sent === "error" && <p className="mt-2 text-sm">Não deu certo. Tente de novo.</p>}
-              <p className="mt-2 text-xs text-white/70">Sem spam, sem venda de dados. Você pode pedir para apagar quando quiser.</p>
-            </>
-          )}
-        </form>
+        <div className="mt-4 rounded-2xl bg-accent-soft p-5">
+          <p className="font-semibold">Quer o lembrete de cada aplicação no celular?</p>
+          <p className="mt-1 text-sm text-muted">O diário é grátis, sem conta, e avisa no dia da dose. Os dados ficam no seu aparelho.</p>
+          <Link href="/app" className="btn btn-primary mt-3">Abrir meu diário</Link>
+        </div>
       </div>
     </div>
   );

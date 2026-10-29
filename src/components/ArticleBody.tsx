@@ -71,7 +71,7 @@ export default function ArticleBody({ a, note, path, title }: { a: Body; note?: 
       </section>
 
       {path && title && <CiteBlock title={title} path={path} updated={a.updated} />}
-      <div className="mt-10 flex flex-wrap gap-3"><Link href="/calendario" className="btn btn-primary">Montar meu calendário de aplicações</Link><Link href="/em-breve" className="btn btn-ghost">Quero o app</Link></div>
+      <div className="mt-10 flex flex-wrap gap-3"><Link href="/calendario" className="btn btn-primary">Montar meu calendário de aplicações</Link><Link href="/app" className="btn btn-ghost">Abrir meu diário</Link></div>
     </>
   );
 }

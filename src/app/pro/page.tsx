@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ProCheckout from "@/components/ProCheckout";
 
 export const metadata: Metadata = {
+  robots: { index: false },
   title: "CadaDose Pro — lembretes, backup e relatório",
   description: "Lembretes no celular, backup e sincronização entre aparelhos, relatório para o médico. R$ 19,90 por mês ou R$ 149 por ano, com PIX.",
   alternates: { canonical: "/pro" },

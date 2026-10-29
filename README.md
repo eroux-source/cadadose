@@ -2,7 +2,7 @@
 
 Diário de tratamento com GLP-1 (Mounjaro, Ozempic, Wegovy, versões manipuladas) para o Brasil. Site + PWA, Next.js 16.
 
-- `/` landing · `/medicamentos/[slug]/[intent]` páginas de conteúdo · `/app` diário (local-first) · `/app/relatorio` relatório para o médico · `/pro` assinatura · `/llms.txt`, `/sitemap.xml`, `/robots.txt`.
+- `/` landing · `/medicamentos/[slug]/[intent]` páginas de conteúdo · `/app` diário (local-first) · `/app/relatorio` relatório para o médico · `/llms.txt`, `/sitemap.xml`, `/robots.txt`.
 - Dados do usuário ficam no aparelho (`localStorage`). Nenhum backend ainda.
 
 ## Regra de conteúdo (não negociável)
@@ -37,9 +37,9 @@ Variáveis (ver `.env.example`): `NEXT_PUBLIC_SITE_URL`; Paddle (`NEXT_PUBLIC_PA
 
 ## Estado em 29/10/2026
 
-- 234 páginas: 128 respostas (Mounjaro, Ozempic, Wegovy, Saxenda, Rybelsus, manipulados), 11 guias, 28 hubs de tema, calendário, em-breve, sobre, política editorial, fontes, para-clínicas, widget.
+- 234 páginas: 128 respostas (Mounjaro, Ozempic, Wegovy, Saxenda, Rybelsus, manipulados), 11 guias, 28 hubs de tema, calendário, sobre, política editorial, fontes, para-clínicas, widget.
 - Cada resposta: answer-first, seções com a frase da bula entre aspas, FAQ, fontes com registro/data, InfoNotice, bloco "Citar esta página", links relacionados, OG image, JSON-LD (MedicalWebPage, FAQPage, BreadcrumbList).
 - GEO: `/llms.txt`, `/llms-full.txt`, `/feed.xml`, Organization JSON-LD, páginas E-E-A-T.
-- Lead capture: `/calendario` e `/em-breve` → `POST /api/lead` → `LEAD_WEBHOOK_URL`.
+- Tudo gratuito, sem conta e sem captura de contato: o sinal é medido só por tráfego (Search Console / analytics).
 - Máquina SEO: `tools/seo/` (ingest, gaps, forecast, check-bulas, indexnow) + Action mensal de verificação das bulas.
 - Deploy: ver `DEPLOY.md`.
