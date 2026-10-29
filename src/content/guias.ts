@@ -103,7 +103,7 @@ const guiasBulas: Guide[] = [
 export const getGuide = (slug: string) => guias.find((g) => g.slug === slug);
 
 import { guiasApps } from "./guias-apps";
-import { guiasMarcas, guiasMarcasExtra } from "./guias-marcas";
+import { guiasMarcas, guiasMarcasExtra, guiaCaneta } from "./guias-marcas";
 
 const saxendaBula = { label: "Bula do paciente Saxenda® (liraglutida), Novo Nordisk — registro ANVISA 1.1766.0032, aprovada em 17/04/2026", url: "https://novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Saxenda_Bula_Paciente1.pdf" };
 const rybelsusBula = { label: "Bula do paciente Rybelsus® (semaglutida), Novo Nordisk — registro ANVISA 1.1766.0037, aprovada em 08/09/2026", url: "https://www.novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Rybelsus_Bula_PACIENTE.pdf" };
@@ -178,4 +178,4 @@ export const guiasExtra: Guide[] = [
   },
 ];
 
-export const guias: Guide[] = [...guiasBulas, ...guiasExtra, ...guiasApps, ...guiasMarcas, ...guiasMarcasExtra];
+export const guias: Guide[] = [...guiasBulas, ...guiasExtra, ...guiasApps, ...guiasMarcas, ...guiasMarcasExtra, ...guiaCaneta];

@@ -6,7 +6,7 @@ import { dictionary as t } from "@/i18n/dictionaries";
 import { guias, getGuide } from "@/content/guias";
 import ArticleBody from "@/components/ArticleBody";
 import { guiasApps } from "@/content/guias-apps";
-import { guiasMarcas, guiasMarcasExtra } from "@/content/guias-marcas";
+import { guiasMarcas, guiasMarcasExtra, guiaCaneta } from "@/content/guias-marcas";
 
 export function generateStaticParams() {
   return guias.map((g) => ({ slug: g.slug }));
@@ -32,9 +32,9 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
     <article className="mx-auto max-w-3xl px-4 py-12">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <nav className="text-sm text-muted"><Link href="/medicamentos" className="hover:text-accent">{t.nav.meds}</Link> › Comparações</nav>
-      <span className="eyebrow mt-4">{guiasApps.some((x) => x.slug === slug) ? "Comparação de apps" : [...guiasMarcas, ...guiasMarcasExtra].some((x) => x.slug === slug) ? "Mercado brasileiro" : "Comparação pelas bulas"}</span>
+      <span className="eyebrow mt-4">{guiasApps.some((x) => x.slug === slug) ? "Comparação de apps" : [...guiasMarcas, ...guiasMarcasExtra, ...guiaCaneta].some((x) => x.slug === slug) ? "Mercado brasileiro" : "Comparação pelas bulas"}</span>
       <h1 className="mt-2 text-3xl font-semibold leading-tight md:text-4xl">{g.title}</h1>
-      <ArticleBody a={g} path={`/guias/${slug}`} title={g.title} note={guiasApps.some((x) => x.slug === slug) ? "Baseado nas fichas oficiais das lojas de apps, citadas em cada trecho." : [...guiasMarcas, ...guiasMarcasExtra].some((x) => x.slug === slug) ? "Baseado em comunicados da ANVISA e reportagens que os citam, indicados em cada trecho." : undefined} />
+      <ArticleBody a={g} path={`/guias/${slug}`} title={g.title} note={guiasApps.some((x) => x.slug === slug) ? "Baseado nas fichas oficiais das lojas de apps, citadas em cada trecho." : [...guiasMarcas, ...guiasMarcasExtra, ...guiaCaneta].some((x) => x.slug === slug) ? "Baseado em comunicados da ANVISA e reportagens que os citam, indicados em cada trecho." : undefined} />
     </article>
   );
 }

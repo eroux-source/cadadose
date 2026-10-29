@@ -42,7 +42,7 @@ export const guiasMarcas: Guide[] = [
   },
   {
     slug: "canetas-aprovadas-anvisa-2026",
-    title: "Canetas de GLP-1 aprovadas pela ANVISA em 2026: a lista e o que cada registro diz",
+    title: "Caneta emagrecedora brasileira: as canetas de GLP-1 aprovadas pela ANVISA em 2026 e o que cada registro diz",
     answer:
       "Em 2026 a ANVISA registrou novas canetas de semaglutida, liraglutida e tirzepatida no Brasil: Ozivy (EMS, 26/05), Semavy (Cosmed), Owozy (Ávita Care), Zempneo (Brainfarma), Seemasun (Sun), Orsema (Ranbaxy) em 29/07; semaglutida genérica e Semaclique (Germed) e Yluméc (EMS) em agosto; liraglutida genérica da EMS em 08/09; e a versão multidose do Mounjaro (Lilly) em 18/03. Registro não é venda: cada produto ainda precisa de preço aprovado pela CMED. Esta lista vem de uma reportagem que compila os registros; confira cada um no portal da ANVISA.",
     description: "Lista das canetas de semaglutida, liraglutida e tirzepatida registradas pela ANVISA em 2026, com empresa, indicação e data.",
@@ -142,5 +142,32 @@ export const guiasMarcasExtra: Guide[] = [
       { q: "Existe genérico do Mounjaro?", a: "Não localizamos registro de tirzepatida genérica na ANVISA até 28/10/2026. As canetas de tirzepatida vendidas como genérico vêm do Paraguai e foram proibidas." },
     ],
     sources: [mjBula, anvisaOzivy, diarioRO, istoe, tnh1, nt200, bulario],
+  },
+];
+
+export const guiaCaneta: Guide[] = [
+  {
+    slug: "caneta-emagrecedora-quais-tem-registro",
+    title: "Caneta emagrecedora: quais têm registro na ANVISA e o que a bula de cada uma diz",
+    answer:
+      "“Caneta emagrecedora” não é um produto: é o apelido das canetas injetáveis de GLP-1. No Brasil, as que têm registro na ANVISA e bula aprovada para controle do peso são Wegovy (semaglutida, semanal), Mounjaro (tirzepatida, semanal, indicação de peso desde 22/04/2026) e Saxenda (liraglutida, diária). Ozempic, Rybelsus e as semaglutidas nacionais registradas em 2026 têm bula para diabetes tipo 2. Tirzec, Lipoless, Gluconex, Tirzedral e T36 não têm registro e foram proibidas. Todas as registradas exigem receita retida.",
+    description: "O que é a “caneta emagrecedora”, quais produtos têm registro ANVISA e indicação de peso na bula, e quais são proibidos.",
+    updated: U,
+    sections: [
+      { heading: "Com registro e indicação de controle do peso na bula", table: { head: ["Produto", "Substância", "Como se usa", "Fora da geladeira (bula)"], rows: [
+        ["Wegovy", "semaglutida 0,25 a 2,4 mg", "1 vez por semana, caneta de 4 doses", "6 semanas após o primeiro uso"],
+        ["Mounjaro", "tirzepatida 2,5 a 15 mg", "1 vez por semana, caneta de uso único (4 por caixa)", "até 21 dias, abaixo de 30 °C"],
+        ["Saxenda", "liraglutida 0,6 a 3,0 mg", "1 vez por dia, caneta de 18 mg", "4 semanas após o primeiro uso"],
+      ] } },
+      { heading: "Com registro, mas bula para diabetes tipo 2", bullets: ["Ozempic (semaglutida, injeção semanal).", "Rybelsus (semaglutida em comprimido).", "Ozivy, Semavy, Owozy, Zempneo, Seemasun, Orsema e genéricos registrados em 2026 (semaglutida)."] },
+      { heading: "Sem registro (proibidas pela ANVISA)", paragraphs: ["Tirzec, Lipoless, Lipoland, Gluconex, Tirzedral, T36, Synedica, TG: canetas de origem paraguaia ou desconhecida. Resolução RE 1.519 (DOU 15/04/2026) para Gluconex e Tirzedral; as demais em proibições citadas pela imprensa. Sem bula aprovada, não há regra de dose, conservação ou efeitos que este site possa publicar."] },
+      { heading: "Regras comuns a todas as registradas", bullets: ["Receita retida obrigatória (RDC 973/2025).", "A escolha e a dose são do médico; nenhuma bula diz qual “emagrece mais”.", "Náusea, vômito, diarreia e constipação aparecem como efeitos frequentes em todas as bulas."] },
+    ],
+    faq: [
+      { q: "Qual é a melhor caneta emagrecedora?", a: "As bulas não comparam eficácia. Com registro e indicação de peso: Wegovy, Mounjaro e Saxenda. A escolha é médica." },
+      { q: "Caneta emagrecedora precisa de receita?", a: "Sim, com retenção na farmácia (RDC 973/2025)." },
+      { q: "Caneta emagrecedora brasileira existe?", a: "As semaglutidas nacionais registradas em 2026 têm bula para diabetes tipo 2, não para peso. A liraglutida genérica da EMS com referência Saxenda/Olire foi registrada para obesidade (reportagem de 15/09/2026)." },
+    ],
+    sources: [mjBula, { label: "Bula do paciente Wegovy® — Novo Nordisk, registro ANVISA 1.1766.0039, aprovada em 04/05/2026", url: "https://www.novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Wegovy_Bula_Paciente.pdf" }, { label: "Bula do paciente Saxenda® — Novo Nordisk, registro ANVISA 1.1766.0032, aprovada em 17/04/2026", url: "https://novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Saxenda_Bula_Paciente1.pdf" }, istoe, tnh1, diarioRO, anvisaOzivy, bulario],
   },
 ];

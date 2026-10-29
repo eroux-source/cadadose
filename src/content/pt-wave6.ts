@@ -45,7 +45,7 @@ const mjSteps: [Article["intent"], string, string, string][] = [
   ["dose-15-mg", "15 mg", "A dose máxima. “A dose máxima de MOUNJARO é 15 mg uma vez por semana.” Também é uma das doses de manutenção recomendadas. Em adolescentes com diabetes tipo 2, o máximo é 10 mg.", "Dose máxima em adultos segundo a bula."],
 ];
 const mjDose = mjSteps.map(([intent, mg, answer, short]) =>
-  A("mounjaro", intent, `Mounjaro ${mg}: o que a bula diz sobre essa dose`,
+  A("mounjaro", intent, `Mounjaro (tirzepatida) ${mg}: o que a bula diz sobre essa dose`,
     `${answer} Cada caneta de uso único de 0,5 mL contém uma dose; a caixa tem 4 canetas (4 semanas).`,
     `Mounjaro ${mg} segundo a bula brasileira: ${short}`,
     [
@@ -70,7 +70,7 @@ const wgSteps: [Article["intent"], string, string][] = [
   ["dose-2-4-mg", "2,4 mg", "Dose de manutenção a partir da semana 17; “depois de atingir a dose recomendada de 2,4 mg, não aumente mais esta dose”."],
 ];
 const wgDose = wgSteps.map(([intent, mg, role]) =>
-  A("wegovy", intent, `Wegovy ${mg}: o que a bula diz sobre essa dose`,
+  A("wegovy", intent, `Wegovy (semaglutida) ${mg}: o que a bula diz sobre essa dose`,
     `${role} A bula do Wegovy aumenta a dose a cada 4 semanas até 2,4 mg (dose de manutenção) ou a dose máxima tolerada. Se o enjoo incomodar muito, a bula orienta conversar com o médico sobre adiar o aumento ou voltar à dose anterior. Cada caneta tem 4 doses da mesma concentração.`,
     `Wegovy ${mg} segundo a bula brasileira: ${role}`,
     [
@@ -91,7 +91,7 @@ const ozSteps: [Article["intent"], string, string, { label: string; url: string 
   ["dose-1-mg", "1 mg", "Dose máxima na bula brasileira do paciente: após pelo menos 4 semanas em 0,5 mg, o médico pode aumentar para 1 mg.", oz],
 ];
 const ozDose = ozSteps.map(([intent, mg, role, src]) =>
-  A("ozempic", intent, `Ozempic ${mg}: o que a bula diz sobre essa dose`,
+  A("ozempic", intent, `Ozempic (semaglutida) ${mg}: o que a bula diz sobre essa dose`,
     `${role} A escada na bula é 0,25 mg (4 semanas) → 0,5 mg → 1 mg, sempre uma vez por semana, por decisão médica. Cada caneta tem 4 doses; a caneta em uso dura 6 semanas.`,
     `Ozempic ${mg} segundo a bula brasileira: ${role}`,
     [

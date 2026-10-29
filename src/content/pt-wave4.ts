@@ -31,7 +31,7 @@ export const ptWave4: Article[] = [
   {
     medicationSlug: "mounjaro",
     intent: "para-que-serve",
-    title: "Para que serve Mounjaro (tirzepatida): a indicação da bula brasileira",
+    title: "O que é Mounjaro (tirzepatida) e para que serve: a indicação da bula brasileira",
     answer:
       "Segundo a bula brasileira versão 05/2026 (ampliação de uso aprovada pela ANVISA em 22/04/2026), Mounjaro tem três indicações: melhorar o controle glicêmico de adultos com diabetes tipo 2; controle crônico do peso em adultos com IMC igual ou maior que 30, ou igual ou maior que 27 com pelo menos uma condição relacionada ao peso; e tratamento da apneia obstrutiva do sono moderada a grave em adultos com obesidade. Sempre junto com dieta e atividade física.",
     description: "Indicação oficial do Mounjaro no Brasil segundo a bula do paciente, e como o medicamento age no corpo.",
@@ -194,7 +194,7 @@ export const ptWave4: Article[] = [
   {
     medicationSlug: "ozempic",
     intent: "para-que-serve",
-    title: "Para que serve Ozempic (semaglutida): a indicação da bula brasileira",
+    title: "O que é Ozempic (semaglutida) e para que serve: a indicação da bula brasileira",
     answer:
       "Segundo a bula, Ozempic é indicado \"para tratar pacientes adultos com diabetes tipo 2 não satisfatoriamente controlada\", com dieta e exercícios, e para reduzir o risco de piora dos rins e de morte cardiovascular em adultos com diabetes tipo 2 e doença renal crônica. Perda de peso não é uma indicação na bula: aparece apenas como efeito colateral.",
     description: "Indicação oficial do Ozempic no Brasil, como age, e o que a bula diz (e não diz) sobre emagrecimento.",
@@ -315,7 +315,7 @@ export const ptWave4: Article[] = [
   {
     medicationSlug: "wegovy",
     intent: "para-que-serve",
-    title: "Para que serve Wegovy (semaglutida): a indicação da bula brasileira",
+    title: "O que é Wegovy (semaglutida) e para que serve: a indicação da bula brasileira",
     answer:
       "Segundo a bula, Wegovy é indicado para controle de peso em adultos com IMC igual ou maior que 30, ou IMC entre 27 e 30 com alguma condição relacionada ao peso (como diabetes ou hipertensão); em adolescentes a partir de 12 anos com obesidade e peso acima de 60 kg; para tratar MASH (doença hepática) com fibrose moderada a avançada sem cirrose; e para reduzir risco cardiovascular em adultos com doença cardíaca estabelecida e IMC igual ou maior que 27.",
     description: "Indicações oficiais do Wegovy no Brasil segundo a bula do paciente, e como o medicamento age.",
