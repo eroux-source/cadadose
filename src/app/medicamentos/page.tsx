@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import InfoNotice from "@/components/InfoNotice";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -5,6 +6,8 @@ import { dictionary } from "@/i18n/dictionaries";
 import { medications } from "@/lib/medications";
 import { getArticlesForMedication } from "@/content";
 import { intentLabels } from "@/content/types";
+
+export const metadata: Metadata = { title: "Medicamentos GLP-1 no Brasil: Mounjaro, Ozempic, Wegovy, Saxenda, Rybelsus", description: "Cada medicamento GLP-1 vendido no Brasil com a tabela da bula, conservação, dose esquecida e todas as perguntas respondidas pela bula.", alternates: { canonical: "/medicamentos" } };
 
 export default async function MedsIndex() {
   

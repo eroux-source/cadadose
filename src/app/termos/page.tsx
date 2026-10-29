@@ -1,4 +1,7 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+
+export const metadata: Metadata = { title: "Termos de uso", description: "Termos de uso do CadaDose: site informativo baseado em bulas, sem orientação médica.", alternates: { canonical: "/termos" } };
 
 const copy = {
   pt: {

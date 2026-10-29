@@ -1,4 +1,7 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+
+export const metadata: Metadata = { title: "Privacidade e LGPD", description: "Como o CadaDose trata seus dados: diário no aparelho, contatos deixados no calendário, LGPD.", alternates: { canonical: "/privacidade" } };
 
 const copy = {
   pt: {
@@ -7,6 +10,7 @@ const copy = {
       "O CadaDose foi feito para que seus dados de saúde fiquem com você. O diário funciona no seu navegador e guarda as informações no armazenamento local do seu aparelho. Nada é enviado aos nossos servidores, a não ser que você crie uma conta para sincronizar entre aparelhos (recurso opcional, em desenvolvimento).",
       "Dados de saúde são dados pessoais sensíveis segundo a LGPD (Lei 13.709/2018). Quando a sincronização estiver disponível, ela só será ativada com seu consentimento específico, os dados serão criptografados e você poderá apagá-los a qualquer momento.",
       "Não vendemos medicamentos, não recebemos comissão de farmácias ou fabricantes e não compartilhamos dados com terceiros para publicidade.",
+      "Calendário e lista de espera: se você deixar e-mail ou WhatsApp para receber o calendário ou o aviso de lançamento, guardamos apenas esse contato, o medicamento informado e as preferências marcadas, para enviar o que você pediu. Você pode pedir a exclusão a qualquer momento pelo mesmo canal ou por privacidade@cadadose.com.",
       "Contato do encarregado de dados (LGPD): privacidade@cadadose.com.",
     ],
   },

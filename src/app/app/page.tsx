@@ -5,7 +5,7 @@ import { dictionary, type Dictionary } from "@/i18n/dictionaries";
 import Tracker from "@/components/tracker/Tracker";
 import Pwa from "@/components/Pwa";
 
-export const metadata: Metadata = { robots: { index: false } };
+export const metadata: Metadata = { title: "Meu diário (versão de teste)", robots: { index: false } };
 
 /** The diary is per-user and time-based: it renders at request time, inside a Suspense shell. */
 async function DiaryGate({ t }: { t: Dictionary["tracker"] }) {
