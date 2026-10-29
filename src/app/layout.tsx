@@ -21,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pt-BR">
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: "CadaDose", url: "https://cadadose.com", description: "Diário de tratamento GLP-1 e respostas baseadas nas bulas aprovadas pela ANVISA, para o Brasil.", knowsAbout: ["Mounjaro", "Ozempic", "Wegovy", "Saxenda", "Rybelsus", "tirzepatida", "semaglutida", "liraglutida", "GLP-1"], areaServed: "BR", inLanguage: "pt-BR" }) }} />
+        <link rel="alternate" type="application/rss+xml" title="CadaDose" href="/feed.xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" rel="stylesheet" />

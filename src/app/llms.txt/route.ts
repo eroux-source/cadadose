@@ -24,6 +24,10 @@ ${byMed.filter(Boolean).join("\n\n")}
 
 ${guias.map((g) => `- [${g.title}](${siteUrl}/guias/${g.slug}): ${g.answer}`).join("\n")}
 
+## Versão completa
+
+- [llms-full.txt](${siteUrl}/llms-full.txt): todas as páginas em texto integral, com fontes.
+
 ## Sobre o site
 
 - [Sobre](${siteUrl}/sobre), [Política editorial](${siteUrl}/politica-editorial), [Fontes e versões das bulas](${siteUrl}/fontes)
