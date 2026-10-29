@@ -98,6 +98,26 @@ export const medications: Medication[] = [
     ],
   },
   {
+    slug: "saxenda",
+    name: "Saxenda (liraglutida)",
+    activeIngredient: "liraglutida",
+    form: "multidose-pen",
+    frequency: "daily",
+    doseStepsMg: [0.6, 1.2, 1.8, 2.4, 3],
+    dosesPerPen: null, // 18 mg por caneta; o número de doses depende da dose diária
+    storageDays: 28,
+    storageLabel: "após o primeiro uso (4 semanas), entre 15 °C e 30 °C ou em geladeira",
+    maxTempC: 30,
+    missedDoseWindowHours: 12,
+    reviewed: false,
+    sources: [
+      {
+        label: "Bula do paciente Saxenda® (liraglutida) — Novo Nordisk, registro ANVISA 1.1766.0032, aprovada em 17/04/2026",
+        url: "https://novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Saxenda_Bula_Paciente1.pdf",
+      },
+    ],
+  },
+  {
     slug: "semaglutida-manipulada",
     name: "Semaglutida manipulada (frasco)",
     activeIngredient: "semaglutida",

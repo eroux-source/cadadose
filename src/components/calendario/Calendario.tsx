@@ -61,7 +61,7 @@ export default function Calendario() {
       <form className="rounded-2xl border border-border bg-card p-5" onSubmit={(e) => e.preventDefault()}>
         <label className="block text-sm font-medium">Medicamento</label>
         <select className={inp} value={slug} onChange={(e) => { setSlug(e.target.value); setDoseIdx(0); }}>
-          {medications.filter((m) => m.doseStepsMg.length > 0 || m.form === "vial").map((m) => <option key={m.slug} value={m.slug}>{m.name}</option>)}
+          {medications.filter((m) => m.frequency === "weekly").map((m) => <option key={m.slug} value={m.slug}>{m.name}</option>)}
         </select>
         <label className="mt-4 block text-sm font-medium">Data da próxima aplicação</label>
         <input type="date" className={inp} value={start} onChange={(e) => setStart(e.target.value)} />
