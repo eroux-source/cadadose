@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { allArticles } from "@/content";
 import { guias } from "@/content/guias";
-import { medications } from "@/lib/medications";
+import { medications, getMedication } from "@/lib/medications";
+import PerguntasFilter from "@/components/PerguntasFilter";
 import { intentLabels } from "@/content/types";
-import { themeImage, guideImage, medImage } from "@/lib/images";
+import { themeImage, guideImage } from "@/lib/images";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
@@ -12,6 +13,17 @@ export const metadata: Metadata = {
   description: "Todas as perguntas mais buscadas sobre GLP-1 no Brasil, respondidas com a bula do paciente aprovada pela ANVISA, citada em cada resposta.",
   alternates: { canonical: "/perguntas" },
 };
+
+/** Theme groups for the filter bar; the dose pages all sit under one group. */
+const cats = [
+  { id: "aplicacao", label: "Aplicação", intents: ["como-aplicar", "onde-aplicar", "melhor-horario", "agulha-e-caneta", "frasco-ampola", "esqueci-de-aplicar"] },
+  { id: "doses", label: "Doses", intents: ["tabela-de-dose", "dose-0-25-mg", "dose-0-5-mg", "dose-1-mg", "dose-1-7-mg", "dose-2-4-mg", "dose-2-5-mg", "dose-5-mg", "dose-7-5-mg", "dose-10-mg", "dose-12-5-mg", "dose-15-mg"] },
+  { id: "conservacao", label: "Conservação e viagem", intents: ["validade-depois-de-aberta", "viagem-e-transporte", "quanto-tempo-fica-no-corpo"] },
+  { id: "efeitos", label: "Efeitos colaterais", intents: ["efeitos-colaterais", "nausea-o-que-fazer", "prisao-de-ventre", "reacao-no-local", "queda-de-cabelo", "alergia", "hipoglicemia", "desidratacao-e-rins", "menstruacao"] },
+  { id: "saude", label: "Condições de saúde", intents: ["quem-nao-pode-tomar", "gravidez-e-amamentacao", "anticoncepcional", "tireoide", "vesicula-e-pancreatite", "pressao-alta", "retinopatia", "interacoes-com-remedios"] },
+  { id: "rotina", label: "Rotina e resultados", intents: ["para-que-serve", "quantos-quilos", "o-que-comer", "pode-beber-alcool", "parar-o-tratamento"] },
+  { id: "regras", label: "Receita e ANVISA", intents: ["precisa-de-receita", "regras-anvisa"] },
+];
 
 const fmt = (d: string) => new Date(d + "T12:00:00").toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" });
 
@@ -45,14 +57,6 @@ export default function PerguntasHub() {
           </div>
         </Link>
 
-        {/* Themes */}
-        <section className="mt-16">
-          <span className="eyebrow dark">Por tema</span>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {themes.map((i) => <Link key={i} href={`/temas/${i}`} className="chip hover:border-forest hover:text-forest">{intentLabels[i]}</Link>)}
-          </div>
-        </section>
-
         {/* Guides */}
         <section className="mt-16">
           <div className="flex items-end justify-between gap-4"><h2>Comparações e mercado</h2><span className="text-sm text-muted">{guias.length} guias</span></div>
@@ -61,23 +65,17 @@ export default function PerguntasHub() {
           </div>
         </section>
 
-        {/* Per medication */}
-        {medications.map((m) => {
-          const arts = allArticles.filter((a) => a.medicationSlug === m.slug);
-          if (!arts.length) return null;
-          return (
-            <section key={m.slug} className="mt-20">
-              <div className="grid items-center gap-6 rounded-[4px] bg-card p-4 md:grid-cols-[160px_1fr_auto] md:p-5">
-                <div className="aspect-[4/3] overflow-hidden rounded-[4px]"><img src={medImage(m.slug)} alt="" className="photo" loading="lazy" /></div>
-                <div><h2 className="text-3xl">{m.name}</h2><p className="mt-1 text-sm text-muted">{arts.length} perguntas respondidas pela bula · {m.activeIngredient}</p></div>
-                <Link href={`/medicamentos/${m.slug}`} className="btn btn-dark">Ver o medicamento</Link>
-              </div>
-              <div className="mt-8 grid gap-8 sm:grid-cols-2 md:grid-cols-4">
-                {arts.map((a) => <Card key={a.intent} href={`/medicamentos/${m.slug}/${a.intent}`} img={themeImage(a.intent, m.slug)} meta={[fmt(a.updated), intentLabels[a.intent]]} title={a.title} />)}
-              </div>
-            </section>
-          );
-        })}
+        {/* Filterable list */}
+        <section className="mt-20">
+          <div className="flex items-end justify-between gap-4"><h2>Todas as perguntas</h2><span className="text-sm text-muted">{allArticles.length} páginas</span></div>
+          <div className="mt-8">
+            <PerguntasFilter
+              items={allArticles.map((a) => ({ href: `/medicamentos/${a.medicationSlug}/${a.intent}`, img: themeImage(a.intent, a.medicationSlug), title: a.title, date: a.updated, intent: a.intent, intentLabel: intentLabels[a.intent], med: a.medicationSlug, medLabel: getMedication(a.medicationSlug)?.name.split(" (")[0] ?? a.medicationSlug, answer: a.answer }))}
+              cats={cats}
+              meds={medications.filter((m) => allArticles.some((a) => a.medicationSlug === m.slug)).map((m) => ({ slug: m.slug, label: m.name.split(" (")[0] }))}
+            />
+          </div>
+        </section>
       </div>
     </>
   );
