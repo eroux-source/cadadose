@@ -43,7 +43,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       url,
       inLanguage: "pt-BR",
       dateModified: a.updated,
-      about: { "@type": "Drug", name: med.name, activeIngredient: med.activeIngredient },
+      // Not schema.org/Drug: Drug is a Product subtype and Google then demands offers/reviews (product snippets). We sell nothing.
+      about: { "@type": "MedicalEntity", name: med.name, alternateName: med.activeIngredient },
       image: `${siteUrl}/og/a-${slug}-${intent}.jpg`,
       primaryImageOfPage: `${siteUrl}${themeImage(intent, slug)}`,
       author: { "@type": "Organization", name: siteName, url: `${siteUrl}/sobre` },
