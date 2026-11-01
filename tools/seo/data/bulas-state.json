@@ -1,1 +1,44 @@
-{}
+{
+ "https://bkt-prd-grupopanvel-datalake-documents.s3.amazonaws.com/bulas/anomesdia=20260513/codigo_item=89181/bula_paciente.pdf": {
+  "label": "Bula do paciente Mounjaro® (tirzepatida), Eli Lilly do Brasil — registro ANVISA 1.1260.0202, versão 05/2026 (ampliação de uso aprovada em 22/04/2026)",
+  "sha": "48ab778d4652af10",
+  "bytes": 1736448,
+  "checked": "2026-11-01"
+ },
+ "https://www.novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Ozempic_3mL_1mg_Paciente.pdf": {
+  "label": "Bula do paciente Ozempic® 1 mg, Novo Nordisk — registro ANVISA 1.1766.0036, aprovada em 17/04/2026",
+  "sha": "80a63b1aa83a0cab",
+  "bytes": 470836,
+  "checked": "2026-11-01"
+ },
+ "https://www.novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Ozempic_1-5mL_0-25mg_0-5mg_Bula_Paciente.pdf": {
+  "label": "Bula do paciente Ozempic® 0,25 mg / 0,5 mg, Novo Nordisk — registro ANVISA 1.1766.0036, aprovada em 17/04/2026",
+  "sha": "056c4a5e90c46f89",
+  "bytes": 508311,
+  "checked": "2026-11-01"
+ },
+ "https://www.novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Wegovy_Bula_Paciente.pdf": {
+  "label": "Bula do paciente Wegovy® (semaglutida), Novo Nordisk — registro ANVISA 1.1766.0039, aprovada em 04/05/2026",
+  "sha": "3fbba4d96479b43e",
+  "bytes": 460071,
+  "checked": "2026-11-01"
+ },
+ "https://novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Saxenda_Bula_Paciente1.pdf": {
+  "label": "Bula do paciente Saxenda® (liraglutida), Novo Nordisk — registro ANVISA 1.1766.0032, aprovada em 17/04/2026",
+  "sha": "c5a4dce16b719169",
+  "bytes": 719020,
+  "checked": "2026-11-01"
+ },
+ "https://www.novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Rybelsus_Bula_PACIENTE.pdf": {
+  "label": "Bula do paciente Rybelsus® (semaglutida), Novo Nordisk — registro ANVISA 1.1766.0037, aprovada em 08/09/2026",
+  "sha": "0089449a94694e45",
+  "bytes": 253842,
+  "checked": "2026-11-01"
+ },
+ "https://consultas.anvisa.gov.br/#/bulario/": {
+  "label": "Bulário Eletrônico — ANVISA (confira a versão mais recente)",
+  "sha": "0cbb6e7ae98f3a70",
+  "bytes": 19812,
+  "checked": "2026-11-01"
+ }
+}
