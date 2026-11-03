@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { social } from "@/lib/seo";
+import { siteUrl } from "@/lib/locales";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { dictionary as t } from "@/i18n/dictionaries";
@@ -19,10 +20,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const med = getMedication(slug);
   if (!med) return {};
   return {
-    title: `${med.name} — ${t.content.allAbout.toLowerCase()} ${med.activeIngredient}`,
-    description: t.content.disclaimerShort,
+    title: `${med.name.split(" (")[0]}: bula, doses, validade e ${getArticlesForMedication(slug).length} perguntas respondidas`,
+    description: `Tudo sobre ${med.name} pela bula aprovada pela ANVISA: tabela de doses, validade depois de aberto, dose esquecida, efeitos colaterais, receita. ${t.content.disclaimerShort}`,
     alternates: { canonical: `/medicamentos/${slug}` },
-    ...social(`med-${slug}`, `${med.name} — ${t.content.allAbout.toLowerCase()} ${med.activeIngredient}`, t.content.disclaimerShort, { path: `/medicamentos/${slug}` }),
+    ...social(`med-${slug}`, `${med.name.split(" (")[0]}: bula, doses, validade e perguntas respondidas`, `Tudo sobre ${med.name} pela bula aprovada pela ANVISA.`, { path: `/medicamentos/${slug}` }),
   };
 }
 
@@ -41,8 +42,10 @@ export default async function MedicationHub({ params }: { params: Promise<{ slug
   if (med.maxTempC) facts.push(["Temperatura máxima", `${med.maxTempC} °C`]);
   if (med.missedDoseWindowHours) facts.push(["Janela da dose esquecida", `${med.missedDoseWindowHours} h`]);
 
+  const crumbsLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Medicamentos", item: `${siteUrl}/medicamentos` }, { "@type": "ListItem", position: 2, name: short, item: `${siteUrl}/medicamentos/${slug}` }] };
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbsLd) }} />
       <PageHero eyebrow={`${med.activeIngredient} · ${med.frequency === "daily" ? "uso diário" : "aplicação semanal"}`} title={`${short}: ${articles.length} perguntas respondidas pela bula`} lede={t.content.disclaimerShort} image={medImage(slug)} crumbs={[{ label: "Medicamentos", href: "/medicamentos" }, { label: short }]} />
 
       <div className="mx-auto max-w-7xl px-6 py-14 md:px-10 md:py-20">

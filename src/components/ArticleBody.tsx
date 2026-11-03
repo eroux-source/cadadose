@@ -66,6 +66,7 @@ export default function ArticleBody({ a, note, path, title, image }: { a: Body; 
                   </table>
                 </div>
               )}
+              {s.links && <ul className="mt-4 flex flex-wrap gap-2">{s.links.map((l) => <li key={l.href}><Link href={l.href} className="chip hover:border-forest hover:text-forest">{l.label} ↗</Link></li>)}</ul>}
               <p className="mt-3 text-xs text-label">Fonte: <a href={a.sources[0].url} rel="noopener" className="underline">{a.sources[0].label}</a></p>
             </section>
           ))}

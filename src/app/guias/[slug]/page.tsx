@@ -29,6 +29,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   const url = `${siteUrl}/guias/${slug}`;
   const jsonLd = [
     { "@context": "https://schema.org", "@type": "MedicalWebPage", name: g.title, description: g.description, url, inLanguage: "pt-BR", dateModified: g.updated, image: `${siteUrl}/og/g-${slug}.jpg`, author: { "@type": "Organization", name: siteName, url: `${siteUrl}/sobre` }, publisher: { "@id": `${siteUrl}/#org` }, citation: g.sources.map((s) => s.url), mainEntityOfPage: url, speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", "article p.text-lg"] } },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Perguntas", item: `${siteUrl}/perguntas` }, { "@type": "ListItem", position: 2, name: "Guias", item: `${siteUrl}/perguntas` }, { "@type": "ListItem", position: 3, name: g.title, item: url }] },
     { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: g.faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) },
   ];
   return (

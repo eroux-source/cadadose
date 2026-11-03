@@ -24,7 +24,7 @@ const cff = {
 const sx = { label: "Bula do paciente Saxenda® (liraglutida), Novo Nordisk — registro ANVISA 1.1766.0032, aprovada em 17/04/2026", url: "https://novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Saxenda_Bula_Paciente1.pdf" };
 const rb = { label: "Bula do paciente Rybelsus® (semaglutida), Novo Nordisk — registro ANVISA 1.1766.0037, aprovada em 08/09/2026", url: "https://www.novonordisk.com.br/content/dam/nncorp/br/pt/pdfs/bulas/patient/Rybelsus_Bula_PACIENTE.pdf" };
 const bulario = { label: "Bulário Eletrônico — ANVISA (confira a versão mais recente)", url: "https://consultas.anvisa.gov.br/#/bulario/" };
-const U = "2026-10-28";
+const U = "2026-11-03";
 
 const A = (medicationSlug: string, intent: Article["intent"], title: string, answer: string, description: string, sections: Section[], faq: { q: string; a: string }[], sources: { label: string; url: string }[]): Article =>
   ({ medicationSlug, intent, title, answer, description, updated: U, reviewed: false, sections, faq, sources });
@@ -44,10 +44,18 @@ const mjSteps: [Article["intent"], string, string, string][] = [
   ["dose-12-5-mg", "12,5 mg", "Um passo intermediário entre 10 e 15 mg, permitido pela regra de “acréscimos de 2,5 mg após o mínimo de 4 semanas na dose atual”. Não está entre as doses de manutenção recomendadas listadas na bula (5, 10 e 15 mg).", "Passo intermediário entre 10 e 15 mg."],
   ["dose-15-mg", "15 mg", "A dose máxima. “A dose máxima de MOUNJARO é 15 mg uma vez por semana.” Também é uma das doses de manutenção recomendadas. Em adolescentes com diabetes tipo 2, o máximo é 10 mg.", "Dose máxima em adultos segundo a bula."],
 ];
+const mjTitles: Record<string, string> = {
+  "dose-2-5-mg": "Mounjaro 2,5 mg: dose inicial por 4 semanas, segundo a bula",
+  "dose-5-mg": "Mounjaro 5 mg: primeira dose de manutenção, segundo a bula",
+  "dose-7-5-mg": "Mounjaro 7,5 mg: passo entre 5 e 10 mg, segundo a bula",
+  "dose-10-mg": "Mounjaro 10 mg: dose de manutenção, segundo a bula",
+  "dose-12-5-mg": "Mounjaro 12,5 mg: passo entre 10 e 15 mg, segundo a bula",
+  "dose-15-mg": "Mounjaro 15 mg: dose máxima, segundo a bula",
+};
 const mjDose = mjSteps.map(([intent, mg, answer, short]) =>
-  A("mounjaro", intent, `Mounjaro (tirzepatida) ${mg}: o que a bula diz sobre essa dose`,
+  A("mounjaro", intent, mjTitles[intent],
     `${answer} Cada caneta de uso único de 0,5 mL contém uma dose; a caixa tem 4 canetas (4 semanas).`,
-    `Mounjaro ${mg} segundo a bula brasileira: ${short}`,
+    `Mounjaro (tirzepatida) ${mg} (${mg.replace(",", ".").replace(" ", "")}) segundo a bula brasileira: ${short} Quanto tempo ficar, quando aumentar, o que fazer se esquecer.`,
     [
       { heading: "A escada de doses na bula (seção 6)", table: { head: ["Dose", "Papel na bula"], rows: [["2,5 mg", "Dose inicial, 4 semanas"], ["5 mg", "Manutenção (após 4 semanas em 2,5 mg)"], ["7,5 mg", "Passo intermediário"], ["10 mg", "Manutenção"], ["12,5 mg", "Passo intermediário"], ["15 mg", "Manutenção e dose máxima"]] } },
       { heading: "Regras de aumento", bullets: ["“Se necessário, aumentos de dose podem ser feitos em acréscimos de 2,5 mg após o mínimo de 4 semanas na dose atual.”", "“A dose máxima de MOUNJARO é 15 mg uma vez por semana.”", "Controle do peso: se não houver perda de pelo menos 5% do peso inicial em 6 meses na maior dose tolerada, o médico decide se continua (bula versão 05/2026)."] },
@@ -70,9 +78,9 @@ const wgSteps: [Article["intent"], string, string][] = [
   ["dose-2-4-mg", "2,4 mg", "Dose de manutenção a partir da semana 17; “depois de atingir a dose recomendada de 2,4 mg, não aumente mais esta dose”."],
 ];
 const wgDose = wgSteps.map(([intent, mg, role]) =>
-  A("wegovy", intent, `Wegovy (semaglutida) ${mg}: o que a bula diz sobre essa dose`,
+  A("wegovy", intent, `Wegovy ${mg}: ${role.replace(/[.;].*$/, "").replace(/^Dose de manutenção a partir da semana 17/, "dose de manutenção (semana 17 em diante)").replace(/^Dose de início/, "dose de início").replace(/^Semanas/, "semanas")}, segundo a bula`,
     `${role} A bula do Wegovy aumenta a dose a cada 4 semanas até 2,4 mg (dose de manutenção) ou a dose máxima tolerada. Se o enjoo incomodar muito, a bula orienta conversar com o médico sobre adiar o aumento ou voltar à dose anterior. Cada caneta tem 4 doses da mesma concentração.`,
-    `Wegovy ${mg} segundo a bula brasileira: ${role}`,
+    `Wegovy (semaglutida) ${mg} (${mg.replace(",", ".").replace(" ", "")}) segundo a bula brasileira: ${role} Escada completa de 0,25 a 2,4 mg e o que fazer com o enjoo.`,
     [
       { heading: "A escada de doses na bula (seção 6)", table: { head: ["Semanas", "Dose semanal"], rows: [["1–4", "0,25 mg"], ["5–8", "0,5 mg"], ["9–12", "1 mg"], ["13–16", "1,7 mg"], ["17 em diante", "2,4 mg (manutenção)"]] } },
       { heading: "O que a bula diz sobre tolerância", bullets: ["“Caso você esteja se sentindo muito incomodado por conta do enjoo (náuseas) ou vômitos, converse com seu médico sobre adiar o aumento da dose ou diminuir para a dose anterior até que os sintomas melhorem.”", "“A dose deve ser aumentada até atingir 2,4 mg (dose de manutenção) ou a dose máxima tolerada.”"] },
@@ -91,9 +99,9 @@ const ozSteps: [Article["intent"], string, string, { label: string; url: string 
   ["dose-1-mg", "1 mg", "Dose máxima na bula brasileira do paciente: após pelo menos 4 semanas em 0,5 mg, o médico pode aumentar para 1 mg.", oz],
 ];
 const ozDose = ozSteps.map(([intent, mg, role, src]) =>
-  A("ozempic", intent, `Ozempic (semaglutida) ${mg}: o que a bula diz sobre essa dose`,
+  A("ozempic", intent, `Ozempic ${mg}: ${intent === "dose-1-mg" ? "dose máxima da bula brasileira" : role.replace(/[.;].*$/, "").toLowerCase()}, segundo a bula`,
     `${role} A escada na bula é 0,25 mg (4 semanas) → 0,5 mg → 1 mg, sempre uma vez por semana, por decisão médica. Cada caneta tem 4 doses; a caneta em uso dura 6 semanas.`,
-    `Ozempic ${mg} segundo a bula brasileira: ${role}`,
+    `Ozempic (semaglutida) ${mg} (${mg.replace(",", ".").replace(" ", "")}) segundo a bula brasileira: ${role} Escada 0,25 → 0,5 → 1 mg e canetas.`,
     [
       { heading: "A escada de doses na bula", table: { head: ["Período", "Dose semanal"], rows: [["Semanas 1–4", "0,25 mg (início)"], ["A partir da semana 5", "0,5 mg"], ["Após ≥ 4 semanas em 0,5 mg, se o médico decidir", "1 mg"]] } },
       { heading: "Canetas", paragraphs: ["A caneta de 0,25/0,5 mg (1,5 mL) e a caneta de 1 mg (3 mL) são apresentações diferentes; cada uma entrega 4 doses. Agulha nova a cada aplicação; caneta em uso por até 6 semanas."] },
@@ -106,9 +114,9 @@ const ozDose = ozSteps.map(([intent, mg, role, src]) =>
 
 // ───────── PRECISA DE RECEITA ─────────
 const receita = (slug: string, nome: string, bula: { label: string; url: string }) =>
-  A(slug, "precisa-de-receita", `${nome} precisa de receita? O que a regra da ANVISA exige`,
+  A(slug, "precisa-de-receita", `${nome} precisa de receita? Receita retida, digital e online: a regra da ANVISA`,
     `Sim. Desde a RDC 973/2025 (com a IN 360/2025), medicamentos à base de semaglutida, liraglutida, dulaglutida, tirzepatida e lixisenatida só são vendidos com receita, e a farmácia retém uma via: “A retenção da receita é obrigatória”. A receita vale 90 dias e a venda é registrada no SNGPC. Isso vale para ${nome}.`,
-    `${nome} exige receita médica retida (RDC 973/2025). Validade da receita, via retida e receita digital.`,
+    `${nome} exige receita médica retida (RDC 973/2025). Dá para comprar online ou sem receita? Validade de 90 dias, via retida e receita digital pelo SNCR.`,
     [
       { heading: "O que mudou (RDC 973/2025 e IN 360/2025)", bullets: ["Receita obrigatória em duas vias; a farmácia fica com uma (“A retenção da receita é obrigatória”).", "A receita vale por 90 dias a partir da emissão.", "Compra e venda registradas no SNGPC.", "Receita digital só vale se emitida por sistema integrado ao SNCR.", "A regra alcança semaglutida, liraglutida, dulaglutida, tirzepatida e lixisenatida, isoladas ou em associação."] },
       { heading: "O que a bula diz", paragraphs: [`A bula do ${nome} traz a tarja “Venda sob prescrição médica”. A decisão de iniciar, manter ou mudar a dose é do médico.`] },

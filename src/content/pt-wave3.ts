@@ -64,7 +64,7 @@ export const ptWave3: Article[] = [
   {
     medicationSlug: "ozempic",
     intent: "tabela-de-dose",
-    title: "Tabela de doses do Ozempic (semaglutida) segundo a bula brasileira",
+    title: "Tabela de doses do Ozempic: 0,25, 0,5 e 1 mg, semana a semana (bula brasileira)",
     answer:
       "Segundo a bula, Ozempic começa com 0,25 mg uma vez por semana durante 4 semanas e passa para 0,5 mg por semana. Se o controle glicêmico ainda for insuficiente com 0,5 mg, o médico pode aumentar para 1 mg uma vez por semana, a dose mais alta listada na bula brasileira. A dose de 0,25 mg é de adaptação, não de manutenção.",
     description: "Esquema de doses do Ozempic no Brasil (0,25 mg, 0,5 mg e 1 mg) conforme a bula, e quantas doses tem cada caneta.",
@@ -174,7 +174,7 @@ export const ptWave3: Article[] = [
   {
     medicationSlug: "wegovy",
     intent: "tabela-de-dose",
-    title: "Tabela de doses do Wegovy (semaglutida) segundo a bula brasileira",
+    title: "Tabela de doses do Wegovy: 0,25 a 2,4 mg, semana a semana (bula brasileira)",
     answer:
       "Segundo a bula, Wegovy sobe em etapas de 4 semanas: 0,25 mg (semanas 1 a 4), 0,5 mg (5 a 8), 1 mg (9 a 12), 1,7 mg (13 a 16) e 2,4 mg a partir da semana 17, que é a dose de manutenção. A partir da semana 21, em condições específicas, o médico pode considerar 7,2 mg por semana (três aplicações de 2,4 mg).",
     description: "Esquema de doses do Wegovy no Brasil, de 0,25 mg a 2,4 mg, conforme a bula, com a opção de 7,2 mg em condições específicas.",

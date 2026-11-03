@@ -14,6 +14,11 @@ const cffNorma2026 = {
   url: "https://site.cff.org.br/noticia/Noticias-gerais/14/04/2026/anvisa-prepara-nova-norma-com-regras-para-manipulacao-de-canetas-emagrecedoras",
 };
 
+const mounjaroBula = {
+  label: "Bula do paciente Mounjaro® (tirzepatida), Eli Lilly do Brasil — registro ANVISA 1.1260.0202, versão 05/2026 (ampliação de uso aprovada em 22/04/2026)",
+  url: "https://bkt-prd-grupopanvel-datalake-documents.s3.amazonaws.com/bulas/anomesdia=20260513/codigo_item=89181/bula_paciente.pdf",
+};
+
 const sharedSections = [
   {
     heading: "Receita obrigatória e retida (RDC 973/2025)",
@@ -90,5 +95,53 @@ export const ptManipulados: Article[] = [
     ],
     faq: sharedFaq,
     sources: [nt200, cffRdc973, cffNorma2026],
+  },
+  {
+    medicationSlug: "tirzepatida-manipulada",
+    intent: "gravidez-e-amamentacao",
+    title: "Quem amamenta pode tomar “Mounjaro de pobre” (tirzepatida manipulada)? O que dizem a bula e a ANVISA",
+    answer:
+      "Não existe bula para “Mounjaro de pobre”: o nome é usado para a tirzepatida manipulada, que não tem registro nem bula na ANVISA. A única bula de tirzepatida no Brasil é a do Mounjaro, e ela diz que a quantidade no leite materno é “considerada indetectável a muito baixa”, com uso na amamentação sujeito a avaliação médica. Para o manipulado, a ANVISA afirma que esses injetáveis não têm “comprovação de estabilidade, esterilidade e equivalência terapêutica”, ou seja, o que vale para o Mounjaro não pode ser estendido a ele. A decisão é do médico.",
+    description: "“Mounjaro de pobre” é a tirzepatida manipulada, sem bula. O que a bula do Mounjaro diz sobre amamentação e por que a ANVISA não considera o manipulado equivalente.",
+    updated: "2026-11-03",
+    reviewed: false,
+    sections: [
+      {
+        heading: "O que é chamado de “Mounjaro de pobre”",
+        paragraphs: [
+          "A expressão aparece nas buscas para a tirzepatida manipulada em farmácia (frasco com seringa) e, às vezes, para outras canetas sem registro. Nenhum desses produtos tem bula aprovada pela ANVISA. O único medicamento com tirzepatida registrado no Brasil é o Mounjaro (registro 1.1260.0202).",
+        ],
+        links: [
+          { label: "“Mounjaro natural” ou “de pobre” existe?", href: "/guias/mounjaro-natural-ou-de-pobre-existe" },
+          { label: "Tirzepatida manipulada: regras da ANVISA", href: "/medicamentos/tirzepatida-manipulada/regras-anvisa" },
+        ],
+      },
+      {
+        heading: "O que a bula do Mounjaro diz sobre amamentação",
+        paragraphs: [
+          "A bula do paciente informa que a quantidade de tirzepatida no leite materno é “considerada indetectável a muito baixa”, e que o uso durante a amamentação deve ser avaliado pelo médico. A bula não libera o uso por conta própria.",
+        ],
+        links: [{ label: "Mounjaro na gravidez e na amamentação (bula)", href: "/medicamentos/mounjaro/gravidez-e-amamentacao" }],
+      },
+      {
+        heading: "Por que isso não se transfere ao manipulado (Nota Técnica 200/2025)",
+        bullets: [
+          "A ANVISA classifica os injetáveis de GLP-1 manipulados como de alto risco “sem comprovação de estabilidade, esterilidade e equivalência terapêutica”.",
+          "“A manipulação rotineira dessas substâncias em farmácias não se mostra viável do ponto de vista sanitário.”",
+          "O insumo precisa ter identidade, pureza e rastreabilidade documentadas; é “vedado o uso de IFAs” sem origem e boas práticas comprovadas.",
+          "Sem equivalência comprovada, não há como afirmar que a quantidade que passa ao leite seja a mesma descrita na bula do Mounjaro.",
+        ],
+      },
+      {
+        heading: "Receita obrigatória (RDC 973/2025)",
+        paragraphs: ["Tirzepatida, manipulada ou não, só é dispensada com receita retida em duas vias, válida por 90 dias, com registro no SNGPC (IN 360/2025)."],
+      },
+    ],
+    faq: [
+      { q: "Quem amamenta pode tomar Mounjaro de pobre?", a: "Não há bula nem avaliação da ANVISA para a tirzepatida manipulada, então não existe orientação oficial de uso na amamentação. A bula do Mounjaro descreve a quantidade no leite como indetectável a muito baixa, com uso sujeito ao médico; a ANVISA diz que o manipulado não tem equivalência comprovada. Fale com quem prescreveu." },
+      { q: "A bula do Mounjaro vale para o manipulado?", a: "Não. A bula se refere ao produto registrado; a Nota Técnica 200/2025 afirma que os manipulados não têm comprovação de estabilidade, esterilidade e equivalência terapêutica." },
+      { q: "E na gravidez?", a: "A bula do Mounjaro diz que, para controle do peso, o medicamento não deve ser usado na gravidez, e que deve ser interrompido pelo menos 1 mês antes de uma gravidez planejada. Para o manipulado, não há bula." },
+    ],
+    sources: [mounjaroBula, nt200, cffRdc973],
   },
 ];

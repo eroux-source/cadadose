@@ -41,6 +41,8 @@ export interface Section {
   bullets?: string[];
   /** Simple table: header row + rows. */
   table?: { head: string[]; rows: string[][] };
+  /** Internal links shown under the section ("Leia também"). */
+  links?: { label: string; href: string }[];
 }
 
 export interface Article {

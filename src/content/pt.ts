@@ -78,7 +78,7 @@ export const ptArticles: Article[] = [
   {
     medicationSlug: "mounjaro",
     intent: "tabela-de-dose",
-    title: "Tabela de doses do Mounjaro (tirzepatida) segundo a bula brasileira",
+    title: "Tabela de doses do Mounjaro: 2,5 a 15 mg, semana a semana (bula brasileira)",
     answer:
       "Segundo a bula, Mounjaro começa com 2,5 mg uma vez por semana. Após 4 semanas, passa para 5 mg por semana. Aumentos seguintes são de 2,5 mg, cada um após pelo menos 4 semanas na dose atual. A dose máxima é 15 mg uma vez por semana. Quem define cada mudança é o médico.",
     description: "Esquema de doses do Mounjaro no Brasil, de 2,5 mg a 15 mg, conforme a bula: dose inicial, intervalo entre aumentos e dose máxima.",

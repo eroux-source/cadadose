@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { social } from "@/lib/seo";
+import { siteUrl } from "@/lib/locales";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allArticles } from "@/content";
@@ -23,8 +24,13 @@ export default async function Tema({ params }: { params: Promise<{ intent: strin
   const arts = allArticles.filter((a) => a.intent === intent);
   if (!label || !arts.length) notFound();
   const others = intents.filter((i) => i !== intent).slice(0, 12);
+  const jsonLd = [
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Perguntas", item: `${siteUrl}/perguntas` }, { "@type": "ListItem", position: 2, name: label, item: `${siteUrl}/temas/${intent}` }] },
+    { "@context": "https://schema.org", "@type": "ItemList", name: `${label}: o que diz a bula de cada medicamento`, itemListElement: arts.map((a, i) => ({ "@type": "ListItem", position: i + 1, name: a.title, url: `${siteUrl}/medicamentos/${a.medicationSlug}/${a.intent}` })) },
+  ];
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PageHero eyebrow="Tema" title={`${label}: o que diz a bula de cada medicamento`} lede="A mesma pergunta, respondida pela bula de cada produto. As respostas diferem porque as bulas diferem." image={themeImage(intent)} crumbs={[{ label: "Perguntas", href: "/perguntas" }, { label }]} />
 
       <div className="mx-auto max-w-7xl px-6 py-14 md:px-10 md:py-20">

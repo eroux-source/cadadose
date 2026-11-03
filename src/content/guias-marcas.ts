@@ -134,6 +134,11 @@ export const guiasMarcasExtra: Guide[] = [
         "Não há “tirzepatida natural”: tirzepatida é uma molécula sintética produzida por laboratório, com registro de medicamento. Chás, cápsulas de berberina, canela ou “GLP-1 natural” não têm bula que os equipare e não são regulados como medicamento.",
         "Não há “Mounjaro de pobre” registrado: o termo circula para canetas contrabandeadas do Paraguai (Tirzec, Lipoless, Gluconex, Tirzedral, T36), proibidas pela ANVISA, ou para manipulados, que a ANVISA só admite em caráter excepcional (Nota Técnica 200/2025).",
       ] },
+      { heading: "Perguntas que chegam junto com “Mounjaro de pobre”", paragraphs: ["Quem amamenta, quem está grávida ou quem usa anticoncepcional pergunta se as regras da bula do Mounjaro valem para o manipulado. Não valem: a ANVISA não reconhece equivalência. As páginas abaixo mostram o que a bula do Mounjaro diz e por que isso não se transfere."], links: [
+        { label: "Quem amamenta pode tomar “Mounjaro de pobre”?", href: "/medicamentos/tirzepatida-manipulada/gravidez-e-amamentacao" },
+        { label: "Mounjaro na gravidez e na amamentação", href: "/medicamentos/mounjaro/gravidez-e-amamentacao" },
+        { label: "Tirzepatida manipulada: regras da ANVISA", href: "/medicamentos/tirzepatida-manipulada/regras-anvisa" },
+      ] },
       { heading: "Se a questão é preço", paragraphs: ["Este site não publica preços nem indica onde comprar. O que a regulação permite: medicamentos registrados, com receita retida (RDC 973/2025). Em 2026 a ANVISA registrou semaglutidas nacionais e liraglutidas genéricas, que dependem de preço da CMED para chegar às farmácias. Converse com o médico sobre o que está disponível e registrado."] },
     ],
     faq: [
