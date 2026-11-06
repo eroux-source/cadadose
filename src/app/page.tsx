@@ -7,7 +7,7 @@ import { intentLabels } from "@/content/types";
 import { medImage, themeImage } from "@/lib/images";
 import InfoNotice from "@/components/InfoNotice";
 
-const ribbon = ["Como aplicar", "Esqueci de aplicar", "Fora da geladeira", "Efeitos colaterais", "Precisa de receita?", "Gravidez e amamentação", "Tabela de doses", "Anticoncepcional", "Viagem", "Náusea: o que fazer"];
+const ribbon: [string, string][] = [["Como aplicar", "/temas/como-aplicar"], ["Esqueci de aplicar", "/temas/esqueci-de-aplicar"], ["Fora da geladeira", "/medicamentos/mounjaro/validade-depois-de-aberta"], ["Efeitos colaterais", "/temas/efeitos-colaterais"], ["Precisa de receita?", "/temas/precisa-de-receita"], ["Gravidez e amamentação", "/temas/gravidez-e-amamentacao"], ["Tabela de doses", "/medicamentos/mounjaro/tabela-de-dose"], ["Anticoncepcional", "/medicamentos/mounjaro/anticoncepcional"], ["Viagem", "/temas/viagem-e-transporte"], ["Náusea: o que fazer", "/temas/nausea-o-que-fazer"]];
 
 const principles = [
   { img: "/img/principles.jpg", title: "A bula antes da opinião", text: "Cada frase aponta para uma frase da bula do paciente, com a seção." },
@@ -45,6 +45,12 @@ export default function Landing() {
               <span className="dot block">Entender</span>
             </h1>
             <p className="mt-8 max-w-md text-base font-light text-white/75 md:text-lg">{count} perguntas sobre Mounjaro, Ozempic, Wegovy, Saxenda e Rybelsus, respondidas com a bula aprovada pela ANVISA, frase por frase. E um diário gratuito para a semana da dose.</p>
+            <p className="mt-6 flex flex-wrap gap-2 text-xs">
+              <span className="text-white/50">Mais lidas:</span>
+              <Link href="/medicamentos/mounjaro/validade-depois-de-aberta" className="underline underline-offset-4 hover:text-accent">Mounjaro fora da geladeira: 21 dias</Link>
+              <Link href="/medicamentos/mounjaro/tabela-de-dose" className="underline underline-offset-4 hover:text-accent">Tabela de doses do Mounjaro</Link>
+              <Link href="/medicamentos/wegovy/validade-depois-de-aberta" className="underline underline-offset-4 hover:text-accent">Wegovy depois de aberto</Link>
+            </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link href="/perguntas" className="btn btn-primary">Ver as respostas</Link>
               <Link href="/app" className="text-sm font-light text-white/80 underline underline-offset-4 hover:text-accent">Abrir meu diário</Link>
@@ -69,7 +75,7 @@ export default function Landing() {
 
       {/* RIBBON */}
       <div className="ribbon -rotate-1">
-        <div className="ribbon-track">{[...ribbon, ...ribbon].map((r, i) => <span key={i}>{r}</span>)}</div>
+        <div className="ribbon-track">{[...ribbon, ...ribbon].map(([r, href], i) => <Link key={i} href={href} className="hover:underline">{r}</Link>)}</div>
       </div>
 
       {/* COMMITMENT */}

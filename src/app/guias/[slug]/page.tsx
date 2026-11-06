@@ -22,6 +22,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return { title: g.title, description: g.description, alternates: { canonical: `/guias/${slug}` }, ...social(`g-${slug}`, g.title, g.description, { type: "article", modified: g.updated, path: `/guias/${slug}` }) };
 }
 
+/** Guides send readers to the medication pages that answer the practical questions. */
+const guideAlso = [
+  { label: "Validade do Mounjaro fora da geladeira: 21 dias, segundo a bula", href: "/medicamentos/mounjaro/validade-depois-de-aberta" },
+  { label: "Tabela de doses do Mounjaro: 2,5 a 15 mg, semana a semana", href: "/medicamentos/mounjaro/tabela-de-dose" },
+  { label: "Validade do Wegovy depois de aberto: 6 semanas", href: "/medicamentos/wegovy/validade-depois-de-aberta" },
+  { label: "Mounjaro precisa de receita? A regra da ANVISA", href: "/medicamentos/mounjaro/precisa-de-receita" },
+];
+
 export default async function GuidePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const g = getGuide(slug);
@@ -37,7 +45,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PageHero eyebrow={guiasApps.some((x) => x.slug === slug) ? "Comparação de apps" : [...guiasMarcas, ...guiasMarcasExtra, ...guiaCaneta].some((x) => x.slug === slug) ? "Mercado brasileiro" : "Comparação pelas bulas"} title={g.title} lede={g.description} tall crumbs={[{ label: "Perguntas", href: "/perguntas" }, { label: "Guias" }]} />
     <article>
-      <ArticleBody a={g} path={`/guias/${slug}`} title={g.title} image={guideImage(slug)} note={guiasApps.some((x) => x.slug === slug) ? "Baseado nas fichas oficiais das lojas de apps, citadas em cada trecho." : [...guiasMarcas, ...guiasMarcasExtra, ...guiaCaneta].some((x) => x.slug === slug) ? "Baseado em comunicados da ANVISA e reportagens que os citam, indicados em cada trecho." : undefined} />
+      <ArticleBody a={g} path={`/guias/${slug}`} title={g.title} image={guideImage(slug)} also={guideAlso} note={guiasApps.some((x) => x.slug === slug) ? "Baseado nas fichas oficiais das lojas de apps, citadas em cada trecho." : [...guiasMarcas, ...guiasMarcasExtra, ...guiaCaneta].some((x) => x.slug === slug) ? "Baseado em comunicados da ANVISA e reportagens que os citam, indicados em cada trecho." : undefined} />
     </article>
     </>
   );

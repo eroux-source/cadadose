@@ -13,7 +13,7 @@ interface Body {
 }
 
 /** Shared renderer (Healers blog-post layout): wide image, sticky sidebar with sources, answer box, sections each with source line, FAQ accordion, full source list. */
-export default function ArticleBody({ a, note, path, title, image }: { a: Body; note?: string; path?: string; title?: string; image?: string }) {
+export default function ArticleBody({ a, note, path, title, image, also }: { a: Body; note?: string; path?: string; title?: string; image?: string; also?: { label: string; href: string }[] }) {
   const Src = () => (
     <>
       {a.sources.map((s, i) => (
@@ -71,6 +71,12 @@ export default function ArticleBody({ a, note, path, title, image }: { a: Body; 
             </section>
           ))}
 
+          {also && also.length > 0 && (
+            <section className="mt-12 rounded-[4px] bg-card p-6">
+              <p className="eyebrow dark">Leia também</p>
+              <ul className="mt-3 grid gap-2 sm:grid-cols-2">{also.map((l) => <li key={l.href}><Link href={l.href} className="block rounded-[4px] border border-border px-3 py-2 text-sm hover:border-forest hover:text-forest">{l.label} ↗</Link></li>)}</ul>
+            </section>
+          )}
           <section id="faq" className="mt-12 scroll-mt-28">
             <h2 className="text-3xl">{t.content.faq}</h2>
             <div className="mt-4 divide-y divide-border border-y border-border">

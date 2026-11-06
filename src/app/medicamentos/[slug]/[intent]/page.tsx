@@ -10,6 +10,7 @@ import ArticleBody from "@/components/ArticleBody";
 import Related from "@/components/Related";
 import { themeImage } from "@/lib/images";
 import PageHero from "@/components/PageHero";
+import { relatedIntents } from "@/lib/related-intents";
 import { social } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -57,12 +58,17 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Perguntas", item: `${siteUrl}/perguntas` }, { "@type": "ListItem", position: 2, name: med.name, item: `${siteUrl}/medicamentos/${slug}` }, { "@type": "ListItem", position: 3, name: intentLabels[a.intent], item: url }] },
     { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: a.faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) },
   ];
+  const also = relatedIntents(a.intent)
+    .map((i) => allArticles.find((x) => x.medicationSlug === slug && x.intent === i))
+    .filter((x): x is NonNullable<typeof x> => !!x)
+    .slice(0, 6)
+    .map((x) => ({ label: x.title, href: `/medicamentos/${x.medicationSlug}/${x.intent}` }));
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PageHero eyebrow={intentLabels[a.intent]} title={a.title} lede={a.description} tall crumbs={[{ label: "Perguntas", href: "/perguntas" }, { label: med.name, href: `/medicamentos/${slug}` }, { label: intentLabels[a.intent] }]} />
       <article>
-        <ArticleBody a={a} path={`/medicamentos/${slug}/${intent}`} title={a.title} image={themeImage(intent, slug)} />
+        <ArticleBody a={a} path={`/medicamentos/${slug}/${intent}`} title={a.title} image={themeImage(intent, slug)} also={also} />
       </article>
       <Related slug={slug} intent={intent} />
     </>
