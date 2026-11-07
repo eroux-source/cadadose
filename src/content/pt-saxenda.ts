@@ -27,11 +27,11 @@ export const ptSaxenda: Article[] = [
     "Escada de doses do Saxenda segundo a bula brasileira, e o que há em cada caneta.",
     [
       { heading: "A escada (seção 6)", table: { head: ["Semana", "Dose diária"], rows: [["1", "0,6 mg"], ["2", "1,2 mg"], ["3", "1,8 mg"], ["4", "2,4 mg"], ["5 em diante", "3,0 mg"]] } },
-      { heading: "Quantas doses tem a caneta", paragraphs: ["Cada caneta contém 18 mg (6 mg/mL × 3 mL). O número de dias depende da dose: 30 dias a 0,6 mg, 15 dias a 1,2 mg, 10 dias a 1,8 mg, 7 dias a 2,4 mg, 6 dias a 3,0 mg (conta aritmética sobre os 18 mg da bula). A caneta em uso vale 4 semanas após o primeiro uso."] },
+      { heading: "O que há em cada caneta", paragraphs: ["A bula diz: “Um sistema de aplicação preenchido contém 18 mg de liraglutida em 3 mL.” E, sobre o prazo: “Após o primeiro uso, Saxenda® é válido por 4 semanas”, em temperatura ambiente (15 °C a 30 °C) ou em geladeira. Quantos dias cada caneta dura depende da dose da sua receita: a bula não traz essa conta, e este site não a faz. Pergunte ao médico ou ao farmacêutico."] },
       { heading: "O que este site não faz", paragraphs: ["Não calculamos nem sugerimos a sua dose. Você registra a dose da receita; a escada acima é a da bula."] },
       diario,
     ],
-    [{ q: "Posso ficar em 1,8 mg?", a: "A bula descreve a escada até 3,0 mg. Qualquer dose de manutenção diferente é decisão do médico." }, { q: "Quantas canetas por mês a 3,0 mg?", a: "A 3,0 mg/dia cada caneta dura 6 dias (18 mg); a caixa de 3 canetas cobre 18 dias. Confira com o médico e a farmácia." }]),
+    [{ q: "Posso ficar em 1,8 mg?", a: "A bula descreve a escada até 3,0 mg. Qualquer dose de manutenção diferente é decisão do médico." }, { q: "Quantas canetas de Saxenda por mês?", a: "A bula informa que cada caneta contém 18 mg e vale 4 semanas após o primeiro uso; não diz quantas canetas usar por mês. Isso depende da dose prescrita: confira com o médico e a farmácia." }]),
   A("como-aplicar", "Como aplicar Saxenda: locais, horário e rodízio diário, segundo a bula",
     "Saxenda é aplicado uma vez ao dia, por via subcutânea, “a parte da frente das coxas, a frente da cintura (abdome), ou a parte superior do braço”. A bula orienta: “Mude o local da injeção todos os dias para diminuir o risco de desenvolvimento de caroços.” “Não injete em uma veia ou músculo.” Use agulha nova a cada aplicação.",
     "Locais de aplicação, rodízio diário e horário do Saxenda segundo a bula brasileira.",
@@ -55,7 +55,7 @@ export const ptSaxenda: Article[] = [
     "Validade da caneta de Saxenda em uso e conservação antes do primeiro uso, pela bula.",
     [
       { heading: "Texto da bula (seção 5)", bullets: ["Antes do primeiro uso: “Armazenar em geladeira (de 2 °C a 8 °C).” “Não congelar.”", "“Após o primeiro uso, Saxenda® é válido por 4 semanas”, entre 15 °C e 30 °C ou entre 2 °C e 8 °C."] },
-      { heading: "Na prática", paragraphs: ["Anote a data em que abriu a caneta; o diário conta os 28 dias. Uma caneta de 18 mg dura menos de 4 semanas em qualquer dose acima de 0,6 mg, então o limite que costuma valer é o número de doses, não a validade."] },
+      { heading: "Na prática", paragraphs: ["Anote a data em que abriu a caneta; o diário conta os 28 dias. A caneta também acaba quando os 18 mg terminam: use o contador de dose da caneta, não uma conta."] },
       diario,
     ],
     [{ q: "Saxenda precisa ficar na geladeira depois de aberto?", a: "Pode ficar entre 15 °C e 30 °C ou na geladeira, por 4 semanas, segundo a bula." }]),
