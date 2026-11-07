@@ -28,14 +28,14 @@ Tokens : fond `#eae9e2`, encre `#1b2b2b` / `#0c1313`, accent menthe `#7cea99`, f
 ## Contenu
 
 - Modèle : `src/content/types.ts` (`Article {medicationSlug, intent, title, answer, description, updated, reviewed, sections[], faq[], sources[]}`, `Section` avec `paragraphs|steps|bullets|table|links`, `Intent` union ~46 valeurs, `intentLabels`).
-- Agrégation : `src/content/index.ts` (`allArticles`, 136 articles : pt, wave3…8, saxenda, rybelsus, manipulados) et `src/content/guias.ts` (12 guides).
+- Agrégation : `src/content/index.ts` (`allArticles`, 144 articles : pt, wave3…8, saxenda, rybelsus, ozivy, manipulados) et `src/content/guias.ts` (13 guides).
 - Catalogue médicaments : `src/lib/medications.ts` (champ sans source = `null`).
 - Ajouter un article = l'ajouter dans le fichier wave correspondant avec ses `sources`, puis : `./scripts/gen-article-images.sh` (manifeste des photos), `node scripts/gen-og.mjs` (cartes sociales ; nécessite Instrument Serif + Inter installées pour fontconfig), build, commit. Les images par article vivent dans `public/img/a/a-<med>-<intent>.webp` (fallback automatique vers la photo du thème).
 - Images : générées sur Higgsfield (`gpt_image_2_5`), sans marque, sans texte. Le conteneur ne peut pas télécharger depuis le CDN Higgsfield : transfert via le navigateur intégré (fetch → canvas → base64).
 
 ## SEO / GEO (état au 7 nov. 2026)
 
-- Pages : 208 (accueil, 136 articles, 12 guides, 45 thèmes `/temas/[intent]`, 7 hubs `/medicamentos/[slug]`, perguntas, calendario, app, sobre, politica-editorial, fontes, para-clinicas, widget `/widget/validade`).
+- Pages : 218 (accueil, 144 articles, 13 guides, 45 thèmes `/temas/[intent]`, 8 hubs `/medicamentos/[slug]`, perguntas, calendario, app, sobre, politica-editorial, fontes, para-clinicas, widget `/widget/validade`).
 - Balisage : MedicalWebPage + FAQPage + BreadcrumbList sur les articles ; WebSite (SearchAction `/perguntas?q=`) + Organization dans le layout ; ItemList sur les thèmes ; `/llms.txt`, `/llms-full.txt`, `/feed.xml`, sitemap avec `image:loc`, robots qui autorise explicitement les crawlers IA (hors `/app`, `/pro`, `/api`).
 - Social : 206 cartes JPEG statiques dans `public/og/` (< 100 Ko pour WhatsApp), via `src/lib/seo.ts#social()`. Favicon : `src/app/icon.svg`, `favicon.ico`, `apple-icon.png`, `public/icon-192/512.png`.
 - Analytics : GA4 `G-BEGVPYBY9Q` (`src/components/Analytics.tsx`, override `NEXT_PUBLIC_GA_ID`, `off` pour désactiver). Search Console vérifiée (domaine), sitemap soumis. Tâche planifiée « Récap GA CadaDose » tous les 3 jours à 18 h 42 (Buenos Aires).
@@ -44,6 +44,9 @@ Tokens : fond `#eae9e2`, encre `#1b2b2b` / `#0c1313`, accent menthe `#7cea99`, f
 - Boucle hebdo recommandée : lire les requêtes Search Console → créer la page pour toute requête qui monte sans page dédiée (exemple fait : `tirzepatida-manipulada/gravidez-e-amamentacao`), renforcer les titres avec la formulation exacte des gens (ex. « quantos quilos por semana », « 0.25mg »).
 - Outils : `tools/seo/` (ingest.py, gaps.py, forecast.py, check-bulas.py mensuel via GitHub Action, indexnow.sh pour Bing). Dataset `tools/seo/data/keywords-br-2026-10-28.csv` (4 479 clusters, 9 M recherches/mois).
 - Levier n°1 restant : **liens entrants** (domaine neuf, 0 backlink). Textes pour groupes/forums brésiliens à rédiger en portugais, valeur d'abord, lien en dernier, vers une page précise.
+
+- Nouveautés 7 nov. 2026 : Ozivy (bula EMS, 8 pages) et guide Wegovy em comprimido (avis ANVISA du 04/11/2026, bula patient pas encore publiée : à compléter dès sa sortie).
+- `gen-og.mjs` : sur ce Mac, les polices ont été installées dans `~/Library/Fonts` (TTF convertis depuis `@fontsource`). Le script réécrit toutes les cartes avec des octets différents : ne committer que les cartes nouvelles ou dont le titre a changé.
 
 ## Déploiement
 
