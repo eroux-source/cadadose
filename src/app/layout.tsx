@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     default: "CadaDose — Mounjaro, Ozempic e Wegovy respondidos pela bula, e o diário do tratamento",
     template: `%s · ${siteName}`,
   },
-  description: "Mais de 120 perguntas sobre Mounjaro, Ozempic, Wegovy, Saxenda e Rybelsus respondidas com a bula aprovada pela ANVISA, citada em cada frase. Calendário do tratamento gratuito. Sem calculadora de dose, sem venda de medicamentos.",
+  description: "Mais de 140 perguntas sobre Mounjaro, Ozempic, Wegovy, Saxenda, Rybelsus e Ozivy respondidas pela bula aprovada pela ANVISA, citada trecho a trecho. Sem calculadora de dose.",
   alternates: { canonical: "/" },
   manifest: "/manifest.webmanifest",
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },

@@ -6,7 +6,8 @@ import { guias } from "@/content/guias";
 import { themeImage, guideImage } from "@/lib/images";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date("2026-11-07"); // bump on each content release
+  // Latest content date (articles and guides), so the sitemap moves only when content does.
+  const now = new Date([...allArticles.map((a) => a.updated), ...guias.map((g) => g.updated)].sort().at(-1)!);
   return [
     { url: `${siteUrl}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${siteUrl}/medicamentos`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },

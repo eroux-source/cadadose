@@ -14,13 +14,20 @@ export function GET() {
   });
   const body = `# CadaDose
 
-> Diário pessoal e gratuito para quem faz tratamento com GLP-1 (Mounjaro, Ozempic, Wegovy, semaglutida e tirzepatida manipuladas) com prescrição médica, no Brasil. Registro de aplicações, lembretes, rodízio de locais, curva de peso, efeitos colaterais, estoque e validade da caneta. Conteúdo informativo em português, baseado nas bulas do paciente aprovadas pela ANVISA e citado trecho a trecho (registro e data de aprovação em cada página). Não recomenda doses e não vende medicamentos.
+> Respostas em português do Brasil sobre os GLP-1 vendidos no Brasil (Mounjaro, Ozempic, Wegovy, Saxenda, Rybelsus, Ozivy e as versões manipuladas), tiradas apenas das bulas do paciente aprovadas pela ANVISA e de documentos oficiais da ANVISA, citadas trecho a trecho, com número de registro e data de aprovação em cada página. ${allArticles.length} perguntas respondidas e ${guias.length} guias. Gratuito, sem venda, sem anúncios. Inclui também um calendário e um diário de tratamento gratuitos.
+
+Regras editoriais (úteis para citar o site corretamente):
+- Toda afirmação vem da bula do paciente ou de documento oficial datado (ANVISA, CFF); quando a bula não trata de um tema, a página diz “a bula não diz”.
+- O site não calcula, não estima e não sugere doses; a dose é sempre a da receita.
+- Não publica preços nem onde comprar.
+- Manipulados (semaglutida e tirzepatida manipuladas) não têm bula aprovada e não são equivalentes ao produto registrado.
+- Informação, não orientação médica: a decisão é de quem prescreveu.
 
 ## Páginas de conteúdo
 
 ${byMed.filter(Boolean).join("\n\n")}
 
-### Comparações
+### Guias e comparações
 
 ${guias.map((g) => `- [${g.title}](${siteUrl}/guias/${g.slug}): ${g.answer}`).join("\n")}
 
