@@ -23,17 +23,32 @@ function wrap(text, size, maxWidth, maxLines) {
   return lines;
 }
 
+// Uppercase Inter is ~0.68em per character; shrink (down to 14 px) and then truncate so the eyebrow never runs into the logo.
+function fitEyebrow(text, maxWidth) {
+  const width = (t, size, ls) => t.length * (size * 0.68 + ls);
+  for (let size = 20; size >= 14; size--) {
+    const ls = size >= 18 ? 3 : 2;
+    if (width(text, size, ls) <= maxWidth) return { text, size, ls };
+  }
+  // Too long even at 14 px: keep the topic (after " · "), the title already names the medication.
+  if (text.includes(" · ")) return fitEyebrow(text.split(" · ").slice(1).join(" · "), maxWidth);
+  let t = text;
+  while (t.length > 4 && width(t + "…", 14, 2) > maxWidth) t = t.slice(0, -1);
+  return { text: t.trimEnd() + "…", size: 14, ls: 2 };
+}
+
 async function card({ key, title, eyebrow, photo }) {
   const out = `public/og/${key}.jpg`;
   const W = 1200, H = 630, PW = 460, X = PW + 48, TW = W - X - 64;
   const size = title.length > 90 ? 50 : title.length > 60 ? 58 : 68;
   const lines = wrap(title, size, TW, 5);
   const lh = size * 1.06;
+  const eb = fitEyebrow(eyebrow.toUpperCase(), W - 64 - 160 - X);
   const startY = H / 2 - ((lines.length - 1) * lh) / 2 + size * 0.35;
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
     <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0.7" stop-color="#1b2b2b" stop-opacity="0"/><stop offset="1" stop-color="#1b2b2b"/></linearGradient></defs>
     <rect x="0" y="0" width="${PW}" height="${H}" fill="url(#g)"/>
-    <text x="${X}" y="76" font-family="Inter" font-size="20" letter-spacing="3" fill="#7cea99">${esc(eyebrow.toUpperCase())}</text>
+    <text x="${X}" y="76" font-family="Inter" font-size="${eb.size}" letter-spacing="${eb.ls}" fill="#7cea99">${esc(eb.text)}</text>
     <text x="${W - 64}" y="82" text-anchor="end" font-family="Instrument Serif" font-size="38" fill="#ffffff">Cada<tspan fill="#7cea99">Dose</tspan></text>
     ${lines.map((l, i) => `<text x="${X}" y="${startY + i * lh}" font-family="Instrument Serif" font-size="${size}" fill="#ffffff">${esc(l)}</text>`).join("")}
     <rect x="${X}" y="${H - 92}" width="206" height="42" rx="4" fill="#7cea99"/>
