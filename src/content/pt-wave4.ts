@@ -333,12 +333,13 @@ export const ptWave4: Article[] = [
       },
       { heading: "Como age", paragraphs: ["A bula descreve o Wegovy como semelhante a \"um hormônio natural denominado peptídeo semelhante ao glucagon-1 (GLP-1)\", que reduz o apetite. No fígado, reduz gordura, inflamação e cicatrização."] },
       { heading: "Resultados numéricos", paragraphs: ["A bula do paciente não traz percentuais médios de perda de peso. Esses dados estão nos estudos clínicos e na bula do profissional de saúde; pergunte ao seu médico o que esperar no seu caso."] },
+      { heading: "E o Wegovy em comprimido?", paragraphs: ["Esta página segue a bula do Wegovy injetável. Em 04/11/2026 a ANVISA aprovou também a via oral do Wegovy (comprimido diário) para obesidade e sobrepeso com comorbidade em adultos (notícia oficial da ANVISA, Resolução 4.249/2026). A bula do paciente do comprimido ainda não foi publicada."], links: [{ label: "Wegovy em comprimido: o que a ANVISA aprovou", href: "/guias/wegovy-comprimido-semaglutida-oral" }] },
     ],
     faq: [
       { q: "Wegovy e Ozempic são iguais?", a: "Têm a mesma substância (semaglutida), mas indicações e doses diferentes: Wegovy é aprovado para controle de peso (até 2,4 mg); Ozempic, para diabetes tipo 2 (até 1 mg na bula brasileira)." },
       { q: "Adolescente pode usar Wegovy?", a: "A partir de 12 anos, com obesidade e peso acima de 60 kg, segundo a bula. Abaixo de 12 anos, não é recomendado." },
     ],
-    sources: [wegovyBula],
+    sources: [wegovyBula, { label: "ANVISA — Anvisa aprova primeiro medicamento de GLP-1 oral para obesidade (Wegovy em comprimido), notícia oficial de 04/11/2026", url: "https://www.gov.br/anvisa/pt-br/assuntos/noticias-anvisa/2026/anvisa-aprova-primeiro-medicamento-de-glp-1-oral-para-obesidade" }],
   },
   {
     medicationSlug: "wegovy",

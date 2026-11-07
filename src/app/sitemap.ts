@@ -6,7 +6,7 @@ import { guias } from "@/content/guias";
 import { themeImage, guideImage } from "@/lib/images";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date("2026-11-03"); // bump on each content release
+  const now = new Date("2026-11-07"); // bump on each content release
   return [
     { url: `${siteUrl}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${siteUrl}/medicamentos`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },

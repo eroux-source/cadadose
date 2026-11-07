@@ -3,6 +3,7 @@ const THEME = new Set(["como-aplicar","tabela-de-dose","esqueci-de-aplicar","val
 const MED = new Set(["mounjaro","ozempic","wegovy","saxenda","rybelsus"]);
 
 export function medImage(slug: string) {
+  if (slug === "ozivy") return "/img/med-ozempic.jpg"; // same unbranded semaglutide pen photo
   return MED.has(slug) ? `/img/med-${slug}.jpg` : "/img/med-manipulado.jpg";
 }
 import { ARTICLE_IMAGES } from "./article-images";

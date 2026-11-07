@@ -138,6 +138,26 @@ export const medications: Medication[] = [
     ],
   },
   {
+    slug: "ozivy",
+    name: "Ozivy (semaglutida, EMS)",
+    activeIngredient: "semaglutida",
+    form: "multidose-pen",
+    frequency: "weekly",
+    doseStepsMg: [0.25, 0.5, 1],
+    dosesPerPen: null, // caneta 1,5 mL (0,25/0,5 mg) ou 3 mL (4 doses de 1 mg): depende da caneta
+    storageDays: 56,
+    storageLabel: "após o primeiro uso (8 semanas), na geladeira",
+    maxTempC: null, // a bula pede geladeira (2 °C a 8 °C) também durante o uso
+    missedDoseWindowHours: 120,
+    reviewed: false,
+    sources: [
+      {
+        label: "Bula do paciente OZIVY® (semaglutida 1,34 mg/mL), EMS S/A — registro ANVISA 1.0235.1473, aprovada pela Anvisa em 26/05/2026 (bula-pac-813190-EMS)",
+        url: "https://bulas-ecommerce.s3.sa-east-1.amazonaws.com/ozivy.bula_46739bbe-50f9-47dc-b126-4c1de23c1699.pdf",
+      },
+    ],
+  },
+  {
     slug: "semaglutida-manipulada",
     name: "Semaglutida manipulada (frasco)",
     activeIngredient: "semaglutida",

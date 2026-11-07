@@ -9,8 +9,9 @@ import { ptSaxenda } from "./pt-saxenda";
 import { ptRybelsus } from "./pt-rybelsus";
 import { ptWave7 } from "./pt-wave7";
 import { ptWave8 } from "./pt-wave8";
+import { ptOzivy } from "./pt-ozivy";
 
-export const allArticles: Article[] = [...ptArticles, ...ptWave3, ...ptWave4, ...ptWave5, ...ptWave6, ...ptSaxenda, ...ptRybelsus, ...ptWave7, ...ptWave8, ...ptManipulados];
+export const allArticles: Article[] = [...ptArticles, ...ptWave3, ...ptWave4, ...ptWave5, ...ptWave6, ...ptSaxenda, ...ptRybelsus, ...ptWave7, ...ptWave8, ...ptOzivy, ...ptManipulados];
 export const getArticle = (slug: string, intent: string) =>
   allArticles.find((a) => a.medicationSlug === slug && a.intent === (intent as Intent));
 export const getArticlesForMedication = (slug: string) => allArticles.filter((a) => a.medicationSlug === slug);
