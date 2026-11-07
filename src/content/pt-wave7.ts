@@ -13,9 +13,9 @@ const silent = (nome: string, tema: string): Section => ({ heading: "O que a bul
 const diario: Section = { heading: "Como registrar no diário", paragraphs: ["No CadaDose você anota o que observou, com data e dose da semana. Na consulta, o relatório mostra o padrão; o médico decide com dados."] };
 
 const menstr = (slug: string, nome: string, src: { label: string; url: string }) =>
-  A(slug, "menstruacao", `${nome} atrasa a menstruação? O que a bula diz (e não diz)`,
+  A(slug, "menstruacao", `${nome} atrasa ou desregula a menstruação? O ciclo menstrual na bula`,
     `A bula do paciente do ${nome} não menciona menstruação, ciclo menstrual ou atraso menstrual, nem entre os efeitos listados nem nas advertências. Isso não prova que não aconteça; significa que não consta na bula aprovada. Se o seu ciclo mudou, registre e informe o médico, que pode investigar outras causas, incluindo gravidez (a bula contraindica o uso na gravidez).`,
-    `${nome} e menstruação: o que consta e o que não consta na bula brasileira.`,
+    `${nome} atrasa, corta ou altera o ciclo menstrual? O que consta e o que não consta na bula brasileira.`,
     [silent(nome, "menstruação, ciclo menstrual ou atraso menstrual"), { heading: "O que consta e pode importar", bullets: ["A bula não recomenda o uso na gravidez: um atraso menstrual merece teste de gravidez e conversa com o médico.", "A bula lista efeitos como náusea, vômito e cansaço; nenhum deles é descrito como relacionado ao ciclo."] }, diario],
     [{ q: `${nome} corta a menstruação?`, a: "A bula não trata do assunto. Informe o médico." }, { q: "Atrasou e estou usando. O que faço?", a: "Faça um teste de gravidez e fale com o médico: a bula não recomenda o uso na gravidez." }], [src, bulario]);
 

@@ -78,7 +78,7 @@ const wgSteps: [Article["intent"], string, string][] = [
   ["dose-2-4-mg", "2,4 mg", "Dose de manutenção a partir da semana 17; “depois de atingir a dose recomendada de 2,4 mg, não aumente mais esta dose”."],
 ];
 const wgDose = wgSteps.map(([intent, mg, role]) =>
-  A("wegovy", intent, `Wegovy ${mg}: ${role.replace(/[.;].*$/, "").replace(/^Dose de manutenção a partir da semana 17/, "dose de manutenção (semana 17 em diante)").replace(/^Dose de início/, "dose de início").replace(/^Semanas/, "semanas")}, segundo a bula`,
+  A("wegovy", intent, `Wegovy ${mg} (${mg.replace(",", ".").replace(" ", "")}): ${role.replace(/[.;].*$/, "").replace(/^Dose de manutenção a partir da semana 17/, "dose de manutenção (semana 17 em diante)").replace(/^Dose de início/, "dose de início").replace(/^Semanas/, "semanas")}, segundo a bula`,
     `${role} A bula do Wegovy aumenta a dose a cada 4 semanas até 2,4 mg (dose de manutenção) ou a dose máxima tolerada. Se o enjoo incomodar muito, a bula orienta conversar com o médico sobre adiar o aumento ou voltar à dose anterior. Cada caneta tem 4 doses da mesma concentração.`,
     `Wegovy (semaglutida) ${mg} (${mg.replace(",", ".").replace(" ", "")}) segundo a bula brasileira: ${role} Escada completa de 0,25 a 2,4 mg e o que fazer com o enjoo.`,
     [

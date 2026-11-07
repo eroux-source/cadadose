@@ -392,15 +392,16 @@ export const ptWave5: Article[] = [
 
   // ───────── AGULHA E CANETA ─────────
   A("wegovy", "agulha-e-caneta",
-    "Agulha do Wegovy: pode reutilizar? O que a bula diz",
+    "Agulhas para caneta Wegovy: quais são compatíveis e pode reutilizar? O que a bula diz",
     "Não. A bula do Wegovy orienta: “Sempre use uma agulha nova em cada injeção” e “Nunca reutilize suas agulhas, pois isso pode resultar em agulhas entupidas, contaminação, infecção e dosagem imprecisa.” Mantenha a caneta tampada para proteger da luz e não use se tiver congelado.",
-    "Reutilização de agulhas, tampa e cuidados com a caneta de Wegovy segundo a bula.",
+    "Agulhas compatíveis com a caneta de Wegovy (até 8 mm, NovoFine), quantas vêm na caixa e por que não reutilizar, segundo a bula.",
     [
+      { heading: "Quais agulhas servem (instruções de uso)", bullets: ["“Wegovy® pode ser administrado com agulhas de até 8 mm de comprimento.”", "“Seu sistema de aplicação foi desenvolvido para ser utilizado com agulhas descartáveis NovoFine®.”", "Na caixa: “1 sistema de aplicação preenchido e 4 agulhas descartáveis NovoFine® Plus”."] },
       { heading: "Texto da bula (instruções de uso)", bullets: ["“Sempre use uma agulha nova em cada injeção.”", "“Nunca reutilize suas agulhas, pois isso pode resultar em agulhas entupidas, contaminação, infecção e dosagem imprecisa.”"] },
       { heading: "Cuidados com a caneta (seção 5)", bullets: ["“mantenha-o tampado para protegê-lo da luz.”", "“Não congelar e não utilizar Wegovy® se tiver sido congelado.”"] },
       { heading: "Dose maior que a indicada (seção 9)", paragraphs: ["“Se você utilizar Wegovy® em uma quantidade maior do que deveria, fale imediatamente com o seu médico.”"] },
     ],
-    [{ q: "Apliquei Wegovy duas vezes sem querer. O que faço?", a: "A bula orienta falar imediatamente com o seu médico." }],
+    [{ q: "Quais agulhas são compatíveis com a caneta Wegovy?", a: "A bula diz que a caneta foi desenvolvida para agulhas descartáveis NovoFine® e aceita agulhas de até 8 mm de comprimento. A caixa traz 4 agulhas NovoFine® Plus." }, { q: "Apliquei Wegovy duas vezes sem querer. O que faço?", a: "A bula orienta falar imediatamente com o seu médico." }],
     [wg, bulario]),
 
   // ───────── RETINOPATIA ─────────
@@ -427,9 +428,9 @@ export const ptWave5: Article[] = [
 
   // ───────── MEIA-VIDA ─────────
   A("mounjaro", "quanto-tempo-fica-no-corpo",
-    "Quanto tempo o Mounjaro fica no corpo? A meia-vida segundo a bula",
+    "Meia-vida do Mounjaro: quanto tempo fica no corpo, segundo a bula (cerca de 5 dias)",
     "A bula do Mounjaro cita uma meia-vida de aproximadamente 5 dias. Isso significa que, a cada 5 dias, a quantidade no sangue cai pela metade; é por isso que a aplicação é semanal. O CadaDose não calcula nem mostra “nível do medicamento”: a bula não traz curva para o paciente, e estimativa não é medição.",
-    "Meia-vida do Mounjaro segundo a bula brasileira e por que o diário não estima nível no sangue.",
+    "Qual a meia-vida do Mounjaro e quantos dias fica no corpo? O que a bula brasileira diz, e por que o diário não estima nível no sangue.",
     [
       { heading: "Texto da bula (seção 9)", paragraphs: ["“levando em conta a meia-vida de MOUNJARO (aproximadamente 5 dias)”."] },
       { heading: "Por que não mostramos “nível do medicamento”", paragraphs: ["Alguns apps exibem uma curva estimada de concentração. A bula do paciente não traz esse dado para uso individual, e uma estimativa pode dar falsa segurança em decisões de dose, que são do seu médico."] },

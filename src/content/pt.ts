@@ -150,10 +150,10 @@ export const ptArticles: Article[] = [
   {
     medicationSlug: "mounjaro",
     intent: "validade-depois-de-aberta",
-    title: "Validade do Mounjaro fora da geladeira: 21 dias, segundo a bula",
+    title: "Validade do Mounjaro: quanto tempo pode ficar fora da geladeira (21 dias) e depois de aberto",
     answer:
       "A caneta de Mounjaro deve ficar na geladeira, entre 2 °C e 8 °C, na embalagem original, e não pode ser congelada. Fora da geladeira, a bula permite manter a caneta em temperatura abaixo de 30 °C por até 21 dias. Como a caneta brasileira é de uso único, não existe \"depois de aberta\": cada caneta é descartada após a aplicação.",
-    description: "Conservação do Mounjaro no Brasil segundo a bula: geladeira, até 21 dias fora de refrigeração abaixo de 30 °C, e caneta de uso único.",
+    description: "Qual a validade do Mounjaro? Na geladeira até a data da embalagem; fora da geladeira, até 21 dias abaixo de 30 °C; depois de aberto não existe, a caneta é de uso único.",
     updated: "2026-10-28",
     reviewed: false,
     sections: [

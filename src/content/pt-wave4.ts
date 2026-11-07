@@ -108,19 +108,21 @@ export const ptWave4: Article[] = [
   {
     medicationSlug: "mounjaro",
     intent: "melhor-horario",
-    title: "Qual o melhor horário para tomar Mounjaro? O que diz a bula",
+    title: "Melhor horário e melhor dia da semana para tomar Mounjaro: o que diz a bula",
     answer:
       "Não existe horário obrigatório. A bula orienta \"administrar MOUNJARO em qualquer horário do dia, independente das refeições\", uma vez por semana. O que importa é manter o mesmo dia da semana; se quiser mudar o dia, respeite pelo menos 3 dias (72 horas) entre as doses.",
-    description: "Horário de aplicação do Mounjaro segundo a bula: qualquer hora, com ou sem alimentos, uma vez por semana.",
+    description: "Qual o melhor horário e o melhor dia da semana para aplicar Mounjaro? A bula: qualquer hora, com ou sem alimentos, e troca de dia com 3 dias de intervalo.",
     updated: U,
     reviewed: false,
     sections: [
       { heading: "A regra da bula", bullets: ["Qualquer horário do dia.", "Com ou sem alimentos.", "Uma vez por semana, sempre no mesmo dia.", "Mudança de dia: intervalo mínimo de 72 horas entre as doses."] },
+      { heading: "Existe melhor dia da semana?", paragraphs: ["A bula não indica um dia da semana melhor que outro. O que ela diz é como trocar: “o dia da administração semanal pode ser alterado, se necessário, contanto que o intervalo entre as duas doses seja de pelo menos 3 dias (72 horas)”."] },
       { heading: "Na prática", paragraphs: ["Escolha um dia e um horário que você consiga manter. O diário CadaDose lembra você no dia e na hora escolhidos e registra cada aplicação."] },
     ],
     faq: [
       { q: "Mounjaro é melhor de manhã ou à noite?", a: "A bula não faz diferença: qualquer horário do dia, independente das refeições." },
       { q: "Preciso aplicar em jejum?", a: "Não. A bula diz que a aplicação independe das refeições." },
+      { q: "Qual o melhor dia da semana para tomar Mounjaro?", a: "A bula não define um melhor dia. Para trocar de dia, as duas doses precisam ficar a pelo menos 3 dias (72 horas) uma da outra." },
     ],
     sources: [mounjaroBula],
   },
@@ -194,19 +196,21 @@ export const ptWave4: Article[] = [
   {
     medicationSlug: "ozempic",
     intent: "para-que-serve",
-    title: "Ozempic: o que é, para que serve e o que diz a bula brasileira",
+    title: "Ozempic: o que é, princípio ativo, composição e para que serve (bula brasileira)",
     answer:
       "Segundo a bula, Ozempic é indicado \"para tratar pacientes adultos com diabetes tipo 2 não satisfatoriamente controlada\", com dieta e exercícios, e para reduzir o risco de piora dos rins e de morte cardiovascular em adultos com diabetes tipo 2 e doença renal crônica. Perda de peso não é uma indicação na bula: aparece apenas como efeito colateral.",
-    description: "Indicação oficial do Ozempic no Brasil, como age, e o que a bula diz (e não diz) sobre emagrecimento.",
+    description: "Ozempic é semaglutida: princípio ativo, composição, indicação oficial no Brasil, como age, e o que a bula diz (e não diz) sobre emagrecimento.",
     updated: U,
     reviewed: false,
     sections: [
       { heading: "As indicações na bula", bullets: ["Diabetes tipo 2 em adultos, com dieta e exercícios.", "Redução do risco de piora da função renal e de morte cardiovascular em adultos com diabetes tipo 2 e doença renal crônica."] },
+      { heading: "Princípio ativo e composição (seção “Composição”)", bullets: ["“Ozempic® contém o princípio ativo semaglutida.”", "“Cada mL de solução injetável contém 1,34 mg de semaglutida.”", "Excipientes: “fosfato de sódio dibásico di-hidratado, propilenoglicol, fenol, ácido clorídrico (ajuste de pH), hidróxido de sódio (ajuste de pH) e água para injetáveis.”", "A semaglutida do Ozempic é “produzido em células Saccharomyces cerevisiae por tecnologia de DNA recombinante”.", "Caneta de 1 mg: “Um sistema de aplicação preenchido contém 4 mg de semaglutida em 3 mL.”"] },
       { heading: "Como age", paragraphs: ["\"Estimula a secreção de insulina e diminui a secreção de glucagon, somente quando a glicose sanguínea estiver elevada.\""] },
       { heading: "E para emagrecer?", paragraphs: ["Na bula do Ozempic, perda de peso está listada entre os efeitos comuns, não entre as indicações. O medicamento da mesma substância aprovado para controle de peso é o Wegovy. Siga o que seu médico prescreveu."] },
     ],
     faq: [
       { q: "Ozempic é para emagrecer?", a: "Não segundo a bula: a indicação é o diabetes tipo 2. Perda de peso aparece como efeito colateral comum. Wegovy é o produto com semaglutida aprovado para controle de peso." },
+      { q: "Ozempic é semaglutida?", a: "Sim. A bula diz: “Ozempic® contém o princípio ativo semaglutida”, 1,34 mg por mL." },
       { q: "Ozempic serve para menores de 18 anos?", a: "A bula diz que não é recomendado em crianças e adolescentes com menos de 18 anos." },
     ],
     sources: [ozempicBula1, bulario],
