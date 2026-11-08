@@ -21,13 +21,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!med) return {};
   return {
     title: med.sources.length
-      ? `${med.name.split(" (")[0]}: bula, doses, validade e ${getArticlesForMedication(slug).length} perguntas respondidas`
+      ? `Bula do ${med.name.split(" (")[0]} explicada: doses, validade e ${getArticlesForMedication(slug).length} perguntas respondidas`
       : `${med.name.split(" (")[0]}: sem bula aprovada, o que a ANVISA diz`,
     description: med.sources.length
       ? `${med.name}: tabela de doses, validade depois de aberto, dose esquecida e efeitos colaterais, citados da bula aprovada pela ANVISA.`
       : `${med.name}: sem bula aprovada. O que a ANVISA diz (Nota Técnica 200/2025, RDC 973/2025) e por que não equivale ao produto registrado.`,
     alternates: { canonical: `/medicamentos/${slug}` },
-    ...social(`med-${slug}`, med.sources.length ? `${med.name.split(" (")[0]}: bula, doses, validade e perguntas respondidas` : `${med.name.split(" (")[0]}: sem bula aprovada, o que a ANVISA diz`, med.sources.length ? `Tudo sobre ${med.name} pela bula aprovada pela ANVISA.` : `${med.name}: o que a ANVISA diz.`, { path: `/medicamentos/${slug}` }),
+    ...social(`med-${slug}`, med.sources.length ? `Bula do ${med.name.split(" (")[0]} explicada: doses, validade e perguntas respondidas` : `${med.name.split(" (")[0]}: sem bula aprovada, o que a ANVISA diz`, med.sources.length ? `Tudo sobre ${med.name} pela bula aprovada pela ANVISA.` : `${med.name}: o que a ANVISA diz.`, { path: `/medicamentos/${slug}` }),
   };
 }
 
@@ -46,18 +46,19 @@ export default async function MedicationHub({ params }: { params: Promise<{ slug
   if (med.maxTempC) facts.push(["Temperatura máxima", `${med.maxTempC} °C`]);
   if (med.missedDoseWindowHours) facts.push(["Janela da dose esquecida", `${med.missedDoseWindowHours} h`]);
 
+  const pageLd = med.sources.length ? { "@context": "https://schema.org", "@type": "MedicalWebPage", name: `Bula do ${short} explicada`, url: `${siteUrl}/medicamentos/${slug}`, inLanguage: "pt-BR", about: { "@type": "MedicalEntity", name: med.name }, citation: med.sources.map((s) => ({ "@type": "CreativeWork", name: s.label, url: s.url })), hasPart: articles.map((a) => ({ "@type": "WebPage", name: a.title, url: `${siteUrl}/medicamentos/${slug}/${a.intent}` })) } : null;
   const crumbsLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Medicamentos", item: `${siteUrl}/medicamentos` }, { "@type": "ListItem", position: 2, name: short, item: `${siteUrl}/medicamentos/${slug}` }] };
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbsLd) }} />
-      <PageHero eyebrow={`${med.activeIngredient} · ${med.frequency === "daily" ? "uso diário" : "aplicação semanal"}`} title={med.sources.length ? `${short}: ${articles.length} perguntas respondidas pela bula` : `${short}: sem bula aprovada, o que a ANVISA diz`} lede={t.content.disclaimerShort} image={medImage(slug)} crumbs={[{ label: "Medicamentos", href: "/medicamentos" }, { label: short }]} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageLd ? [crumbsLd, pageLd] : crumbsLd) }} />
+      <PageHero eyebrow={`${med.activeIngredient} · ${med.frequency === "daily" ? "uso diário" : "aplicação semanal"}`} title={med.sources.length ? `Bula do ${short} explicada: ${articles.length} perguntas respondidas` : `${short}: sem bula aprovada, o que a ANVISA diz`} lede={t.content.disclaimerShort} image={medImage(slug)} crumbs={[{ label: "Medicamentos", href: "/medicamentos" }, { label: short }]} />
 
       <div className="mx-auto max-w-7xl px-6 py-14 md:px-10 md:py-20">
         {facts.length > 0 && (
           <section className="grid gap-4 md:grid-cols-[1fr_2fr]">
             <div className="tile flex flex-col justify-between bg-forest text-white">
               <p className="eyebrow">O que a bula fixa</p>
-              <h2 className="mt-6 text-4xl">Números da bula, sem interpretação</h2>
+              <h2 className="mt-6 text-4xl">{med.sources.length ? `A bula do ${short} em números` : "Números da bula, sem interpretação"}</h2>
               <p className="mt-4 text-xs text-white/70">Fonte: {med.sources.map((s, i) => <span key={s.url}>{i > 0 ? " · " : ""}<a href={s.url} rel="noopener" className="underline">{s.label}</a></span>)}</p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
