@@ -78,10 +78,10 @@ export const ptArticles: Article[] = [
   {
     medicationSlug: "mounjaro",
     intent: "tabela-de-dose",
-    title: "Tabela de doses do Mounjaro: 2,5 a 15 mg, semana a semana (bula brasileira)",
+    title: "Tabela do Mounjaro: doses de 2,5 a 15 mg (em mg e mL), dose inicial e dose máxima, pela bula",
     answer:
-      "Segundo a bula, Mounjaro começa com 2,5 mg uma vez por semana. Após 4 semanas, passa para 5 mg por semana. Aumentos seguintes são de 2,5 mg, cada um após pelo menos 4 semanas na dose atual. A dose máxima é 15 mg uma vez por semana. Quem define cada mudança é o médico.",
-    description: "Esquema de doses do Mounjaro no Brasil, de 2,5 mg a 15 mg, conforme a bula: dose inicial, intervalo entre aumentos e dose máxima.",
+      "Segundo a bula, Mounjaro começa com 2,5 mg uma vez por semana. Após 4 semanas, passa para 5 mg por semana. Aumentos seguintes são de 2,5 mg, cada um após pelo menos 4 semanas na dose atual. A dose máxima é 15 mg uma vez por semana em adultos (10 mg em pacientes pediátricos acima de 10 anos com diabetes tipo 2). Quem define cada mudança é o médico.",
+    description: "Tabela de dosagem do Mounjaro pela bula brasileira: dose inicial 2,5 mg, aumentos de 2,5 mg a cada 4 semanas, doses de manutenção, dose máxima e quantos mL tem cada caneta.",
     updated: "2026-10-28",
     reviewed: false,
     sections: [
@@ -93,13 +93,25 @@ export const ptArticles: Article[] = [
             ["2,5 mg", "Dose inicial, por 4 semanas"],
             ["5 mg", "Após as 4 semanas iniciais"],
             ["7,5 mg · 10 mg · 12,5 mg", "Aumentos de 2,5 mg, cada um após pelo menos 4 semanas na dose atual, por decisão médica"],
-            ["15 mg", "Dose máxima: \"A dose máxima de MOUNJARO é 15 mg uma vez por semana.\""],
+            ["15 mg", "Dose máxima em adultos: \"A dose máxima de MOUNJARO é 15 mg uma vez por semana.\""],
           ],
         },
       },
       {
+        heading: "Doses de manutenção, por indicação (seção 6)",
+        bullets: [
+          "Diabetes tipo 2 e controle crônico do peso, adultos: “as doses de manutenção recomendadas são 5 mg, 10 mg e 15 mg.”",
+          "Diabetes tipo 2, pacientes pediátricos acima de 10 anos: “as doses de manutenção recomendadas são 5 mg e 10 mg. A dose máxima de MOUNJARO é 10 mg uma vez por semana.”",
+          "Apneia obstrutiva do sono: “A dose de manutenção recomendada é 10 mg ou 15 mg.”",
+        ],
+      },
+      {
         heading: "Apresentações no Brasil",
         paragraphs: ["Canetas de uso único de 0,5 mL com 2,5 mg, 5 mg, 7,5 mg, 10 mg, 12,5 mg ou 15 mg de tirzepatida, 4 canetas por caixa. Ao mudar de dose, muda-se de caixa."],
+      },
+      {
+        heading: "E em mL?",
+        paragraphs: ["Toda caneta tem o mesmo volume. A bula: “contendo 2,5 mg, 5 mg, 7,5 mg, 10 mg, 12,5 mg ou 15 mg de tirzepatida em 0,5 mL” e “Cada embalagem contém 4 canetas aplicadoras de 0,5 mL. Caneta de uso único.” O que muda de uma dose para outra é a concentração, não o volume. A bula também diz: “Não fracionar a dose.”"],
       },
       {
         heading: "O que a tabela não decide",
@@ -108,7 +120,8 @@ export const ptArticles: Article[] = [
     ],
     faq: [
       { q: "Qual é a dose inicial do Mounjaro?", a: "2,5 mg uma vez por semana, por 4 semanas, segundo a bula." },
-      { q: "Qual é a dose máxima do Mounjaro?", a: "15 mg uma vez por semana." },
+      { q: "Qual é a dose máxima do Mounjaro?", a: "Em adultos, 15 mg uma vez por semana. Em pacientes pediátricos acima de 10 anos com diabetes tipo 2, a bula fixa a dose máxima em 10 mg uma vez por semana." },
+      { q: "Quantos mL tem cada dose do Mounjaro?", a: "Todas as canetas têm 0,5 mL; a dose (2,5 a 15 mg) muda pela concentração. A bula diz para não fracionar a dose." },
       { q: "De quanto em quanto tempo a dose aumenta?", a: "Em passos de 2,5 mg, cada um após pelo menos 4 semanas na dose atual, sempre por decisão médica." },
     ],
     sources: [mounjaroBula, anvisaBulario],
