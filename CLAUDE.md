@@ -46,7 +46,7 @@ Tokens : fond `#eae9e2`, encre `#1b2b2b` / `#0c1313`, accent menthe `#7cea99`, f
 - Levier n°1 restant : **liens entrants** (domaine neuf, 0 backlink). Textes pour groupes/forums brésiliens à rédiger en portugais, valeur d'abord, lien en dernier, vers une page précise.
 
 - Nouveautés 7 nov. 2026 : Ozivy (bula EMS, 8 pages) et guide Wegovy em comprimido (avis ANVISA du 04/11/2026, bula patient pas encore publiée : à compléter dès sa sortie).
-- `gen-og.mjs` : sur ce Mac, les polices ont été installées dans `~/Library/Fonts` (TTF convertis depuis `@fontsource`). Le script réécrit toutes les cartes avec des octets différents : ne committer que les cartes nouvelles ou dont le titre a changé.
+- `gen-og.mjs` : sur ce Mac, les polices ont été installées dans `~/Library/Fonts` (TTF convertis depuis `@fontsource`). Avec ces polices installées, la sortie est stable : seules les cartes dont le titre ou le sous-titre change sont modifiées.
 
 ## Déploiement
 
