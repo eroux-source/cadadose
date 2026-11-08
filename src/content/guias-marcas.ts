@@ -99,6 +99,8 @@ export const guiasMarcas: Guide[] = [
     faq: [
       { q: "O Wegovy em comprimido foi aprovado no Brasil?", a: "Sim. A ANVISA aprovou a via oral do Wegovy em 04/11/2026 (Resolução 4.249/2026), para obesidade e sobrepeso com comorbidade em adultos." },
       { q: "Wegovy em comprimido precisa de receita?", a: "A notícia da ANVISA não trata do tipo de receita, e a bula do comprimido ainda não foi publicada. A RDC 973/2025 exige receita retida para medicamentos à base de semaglutida, e a ANVISA ainda não detalhou como isso se aplica ao comprimido." },
+      { q: "Existem interações do Wegovy em comprimido com outros remédios?", a: "A ANVISA informa que o comprimido deve ser tomado em jejum, “aguardando-se pelo menos 30 minutos antes da ingestão de alimentos, bebidas ou outros medicamentos”. A lista de interações estará na bula do paciente, que ainda não foi publicada; até lá, a bula não diz. Informe ao médico todos os remédios que você usa." },
+      { q: "Esqueci de tomar o Wegovy em comprimido. E agora?", a: "A notícia da ANVISA não trata de dose esquecida e a bula do comprimido ainda não foi publicada: a bula não diz ainda. Pergunte ao médico ou ao farmacêutico." },
       { q: "Wegovy em comprimido é o mesmo que Rybelsus?", a: "Mesma substância (semaglutida), mas produtos, doses e indicações diferentes: Rybelsus é para diabetes tipo 2 (3, 7 e 14 mg); o Wegovy em comprimido foi aprovado para obesidade, com dose de manutenção de 25 mg, segundo a ANVISA." },
       { q: "Quanto se perde de peso com o Wegovy em comprimido?", a: "A ANVISA cita o estudo OASIS 4: em 64 semanas, perda média de peso corporal “superior a 13%” com 25 mg. Resultado médio de estudo não é previsão individual." },
     ],
